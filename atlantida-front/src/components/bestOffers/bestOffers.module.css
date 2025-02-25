@@ -1,0 +1,23 @@
+.bestOffers {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 120px 0;
+}
+
+.title {
+    font-family: inter-bold;
+    font-size: 48px;
+    color: #194569;
+}
+
+.cards {
+
+}
+
+.card {
+    width: 350px;
+    height: 450px;
+    background-color: red;
+}
