@@ -1,2 +1,3 @@
-package Repository;public interface CartaoRepository {
+package Repository;
+public interface CartaoRepository {
 }

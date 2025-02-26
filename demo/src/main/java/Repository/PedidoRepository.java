@@ -1,2 +1,3 @@
-package Repository;public interface PedidoRepository {
+package Repository;
+public interface PedidoRepository {
 }

@@ -1,2 +1,3 @@
-package model;public class Cliente {
+package Model;
+public class Cliente {
 }

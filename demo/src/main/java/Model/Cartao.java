@@ -1,2 +1,3 @@
-package Model;public class Cartao {
+package Model;
+public class Cartao {
 }

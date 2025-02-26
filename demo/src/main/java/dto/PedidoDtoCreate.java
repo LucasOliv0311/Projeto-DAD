@@ -1,2 +1,3 @@
-package dto;public class PedidoDtoCreate {
+package dto;
+public class PedidoDtoCreate {
 }
