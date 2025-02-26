@@ -1,2 +1,3 @@
-package Service;public class PedidoService {
+package Service;
+public class PedidoService {
 }

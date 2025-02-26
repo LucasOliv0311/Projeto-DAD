@@ -1,2 +1,3 @@
-package Service;public class ProdutoService {
+package Service;
+public class ProdutoService {
 }

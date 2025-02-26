@@ -1,2 +1,3 @@
-package dto;public class CartaoDtoCreate {
+package dto;
+public class CartaoDtoCreate {
 }

@@ -1,2 +1,3 @@
-package Model;public class Pedido {
+package Model;
+public class Pedido {
 }
