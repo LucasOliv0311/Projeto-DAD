@@ -1,2 +1,4 @@
-package api;public interface PedidoApi {
+package api;
+
+public interface PedidoApi {
 }

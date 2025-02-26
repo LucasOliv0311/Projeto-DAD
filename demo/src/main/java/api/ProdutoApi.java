@@ -1,2 +1,4 @@
-package api;public interface ProdutoApi {
+package api;
+
+public interface ProdutoApi {
 }

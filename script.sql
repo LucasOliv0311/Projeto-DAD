@@ -24,13 +24,14 @@ CREATE TABLE Produto (
     id_produto SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     descricao TEXT,
+    tipo VARCHAR(100) NOT NULL,
     preco DECIMAL(10,2) NOT NULL CHECK (preco >= 0),
     estoque INT NOT NULL CHECK (estoque >= 0)
 );
 
 CREATE TABLE Pedido (
     id_pedido SERIAL PRIMARY KEY,
-    id_cliente INT NOT NULL,
+    id_produto INT NOT NULL,
     data_pedido TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     valor_total DECIMAL(10,2) NOT NULL CHECK (valor_total >= 0),
     id_cartao INT NOT NULL,
@@ -47,9 +48,9 @@ INSERT INTO Cartao (numero_cartao, validade, cvv, bandeira, tipo, id_cliente) VA
 ('1234567812345678', '2026-12-01', '123', 'Visa', 'Crédito', 1),
 ('8765432187654321', '2025-06-01', '456', 'Mastercard', 'Débito', 2);
 
-INSERT INTO Produto (nome, descricao, preco, estoque) VALUES
-('Notebook', 'Notebook potente com 16GB RAM', 4500.00, 10),
-('Mouse', 'Mouse óptico sem fio', 150.00, 50);
+INSERT INTO Produto (nome, descricao, tipo, preco, estoque) VALUES
+('Notebook', 'Notebook potente com 16GB RAM', 'tech', 4500.00, 10),
+('Mouse', 'Mouse óptico sem fio', 'tech', 150.00, 50);
 
 INSERT INTO Pedido (id_cliente, valor_total, id_cartao) VALUES
 (1, 4650.00, 1),

@@ -1,2 +1,4 @@
-package api;public interface CartaoApi {
+package api;
+
+public interface CartaoApi {
 }

@@ -1,2 +1,4 @@
-package Controller;public class CartaoController {
+package Controller;
+
+public class CartaoController {
 }

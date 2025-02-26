@@ -1,2 +1,4 @@
-package ControllerTest;public class CartaoControllerTest {
+package ControllerTest;
+
+class CartaoControllerTest {
 }
