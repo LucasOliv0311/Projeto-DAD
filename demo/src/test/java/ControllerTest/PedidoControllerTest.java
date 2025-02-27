@@ -1,2 +1,4 @@
-package ControllerTest;public class PedidoControllerTest {
+package ControllerTest;
+
+class PedidoControllerTest {
 }
