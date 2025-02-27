@@ -1,4 +1,4 @@
 package api;
 
-public class ClenteApi {
+public interface ClienteApi {
 }
