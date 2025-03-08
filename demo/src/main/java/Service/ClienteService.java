@@ -1,47 +1,52 @@
 package Service;
-
 import Model.Cliente;
 import Repository.ClienteRepository;
+import dto.ClienteDtoCreate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ClienteService {
-    private final ClienteRepository clienteRepository;
 
-    public ClienteService(ClienteRepository clienteRepository) {
-        this.clienteRepository = clienteRepository;
-    }
+    @Autowired
+    private ClienteRepository clienteRepository;
 
-    public List<Cliente> listarTodos() {
-        return clienteRepository.findAll();
-    }
-
-    public Cliente buscarPorId(Long id) {
-        return clienteRepository.findById(Math.toIntExact(id)).orElse(null);
-    }
-
-    public Cliente salvar(Cliente cliente) {
+    public Cliente criarCliente(ClienteDtoCreate clienteDTO) {
+        Cliente cliente = new Cliente();
+        cliente.setNome(clienteDTO.getNome());
+        cliente.setCpf(clienteDTO.getCpf());
+        cliente.setTelefone(clienteDTO.getTelefone());
+        cliente.setEmail(clienteDTO.getEmail());
+        cliente.setEndereco(clienteDTO.getEndereco());
         return clienteRepository.save(cliente);
     }
 
-    public Cliente atualizar(Long id, Cliente clienteAtualizado) {
-        Optional<Cliente> clienteExistente = clienteRepository.findById(Math.toIntExact(id));
-        if (clienteExistente.isPresent()) {
-            Cliente cliente = clienteExistente.get();
-            cliente.setNome(clienteAtualizado.getNome());
-            cliente.setCpf(clienteAtualizado.getCpf());
-            cliente.setTelefone(clienteAtualizado.getTelefone());
-            cliente.setEmail(clienteAtualizado.getEmail());
-            cliente.setEndereco(clienteAtualizado.getEndereco());
-            return clienteRepository.save(cliente);
-        }
-        return null;
+    public Cliente buscarCliente(Long id) {
+        return clienteRepository.findById(Math.toIntExact(id)).orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
     }
 
-    public void deletar(Long id) {
-        clienteRepository.deleteById(Math.toIntExact(id));
+    public Cliente buscarClientePorCpf(String cpf) {
+        return clienteRepository.findByCpf(cpf).orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
+    }
+
+    public List<Cliente> listarClientes() {
+        return clienteRepository.findAll();
+    }
+
+    public Cliente atualizarCliente(Long id, ClienteDtoCreate clienteDTO) {
+        Cliente cliente = buscarCliente(id);
+        cliente.setNome(clienteDTO.getNome());
+        cliente.setCpf(clienteDTO.getCpf());
+        cliente.setTelefone(clienteDTO.getTelefone());
+        cliente.setEmail(clienteDTO.getEmail());
+        cliente.setEndereco(clienteDTO.getEndereco());
+        return clienteRepository.save(cliente);
+    }
+
+    public void deletarCliente(Long id) {
+        Cliente cliente = buscarCliente(id);
+        clienteRepository.delete(cliente);
     }
 }

@@ -1,7 +1,9 @@
 package dto;
 
 import jakarta.persistence.Column;
+import lombok.Data;
 
+@Data
 public class ClienteDtoCreate {
     @Column(nullable = false, length = 100)
     private String nome;

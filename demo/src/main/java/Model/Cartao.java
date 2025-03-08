@@ -10,6 +10,7 @@ import java.time.LocalDate;
 public class Cartao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_cartao")
     private Long id;
 
     @Column(nullable = false, unique = true, length = 16)
@@ -29,5 +30,5 @@ public class Cartao {
 
     @ManyToOne
     @JoinColumn(name = "id_cliente", nullable = false)
-    private Cliente cliente;
+    private Cliente idCliente;
 }
