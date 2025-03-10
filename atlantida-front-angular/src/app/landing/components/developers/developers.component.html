@@ -1,0 +1,11 @@
+<div class="developers">
+    <h1 class="title">Desenvolvedores do App</h1>
+
+    <div class="cards">
+        <div class="card" *ngFor="let dev of devs">
+            <img src={{dev.imagePath}} alt="imagem do produto" class="devImage"/>
+
+            <h3 class="devName">{{dev.name}}</h3>
+        </div>
+    </div>
+</div>

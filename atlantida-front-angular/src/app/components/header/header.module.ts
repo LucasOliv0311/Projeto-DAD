@@ -7,4 +7,4 @@ import { HeaderComponent } from "./header.component";
     providers: [],
 })
 
-export class headerModule{};
+export class HeaderModule{};

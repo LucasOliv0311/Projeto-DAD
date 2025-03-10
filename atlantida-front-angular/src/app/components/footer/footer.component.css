@@ -1,0 +1,34 @@
+.footer {
+    width: 100vw;
+    height: 45vh;
+    background-color: white;
+    border-top: 3px solid #efefef;
+}
+
+.content {
+    width: 100vw;
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 70vw;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.link {
+    color: black;
+    font-size: 24px;
+}
+
+.logo {
+    height: 150px;
+}
+
+.copyright {
+    text-align: center;
+}

@@ -1,17 +1,17 @@
 .header {
-    width: 100%;
+    width: 100vw;
     height: 80px;
     background-color: white;
     position: fixed;
     top: 0;
-    border-bottom: 3px solid grey;
+    border-bottom: 3px solid #efefef;
     display: flex;
     justify-content: space-between;
     z-index: 1000;
 }
 
 .brand {
-    padding: 0 10px;
+    padding: 0 60px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,17 +30,17 @@
 
 .title h1 {
     font-family: inter-bold;
-    letter-spacing: 3px;
+    letter-spacing: 4px;
 }
 
 .titleText {
     color: #194569;
-    font-size: 32px;
+    font-size: 24px;
     letter-spacing: 6px;
 }
 
 .inputOptions {
-    padding: 0 20px;
+    padding: 0 60px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -60,11 +60,6 @@
     color: #194569;
 }
 
-.signup:active {
-    background-color: #9aafbd;
-    transition: none;
-}
-
 .login {
     width: 100px;
     display: flex;
@@ -78,12 +73,17 @@
     color: white;
 }
 
-.login:active {
-    background-color: #13344f;
-    transition: none;
-}
-
 .signup:hover, .login:hover {
     cursor: pointer;
     transform: scale(1.05);
+}
+
+.signup:active {
+    background-color: #9aafbd;
+    transform: scale(1);
+}
+
+.login:active {
+    background-color: #13344f;
+    transform: scale(1);
 }
