@@ -48,7 +48,7 @@
 }
 
 .signup {
-    width: 100px;
+    width: 120px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -57,11 +57,14 @@
     transition: 0.5s;
     user-select: none;
     background-color: #B7D0E1;
+    border: none;
     color: #194569;
+    font-size: 16px;
+    text-decoration: none;
 }
 
 .login {
-    width: 100px;
+    width: 120px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -70,7 +73,10 @@
     transition: 0.5s;
     user-select: none;
     background-color: #194569;
+    border: none;
     color: white;
+    font-size: 16px;
+    text-decoration: none;
 }
 
 .signup:hover, .login:hover {

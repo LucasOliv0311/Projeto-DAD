@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Developers } from '../../../interfaces/developers';
 
 @Component({
   selector: 'app-developers',
@@ -6,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './developers.component.css'
 })
 export class DevelopersComponent {
-  devs = [
+  devs: Developers[] = [
     {
       name: "Enzo Braz",
       imagePath: "/assets/images/tilapia.png"
