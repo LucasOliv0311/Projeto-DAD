@@ -11,6 +11,8 @@ import { InfoSectionComponent } from './landing/components/info-section/info-sec
 import { ClientSectionComponent } from './landing/components/client-section/client-section.component';
 import { DevelopersComponent } from './landing/components/developers/developers.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { StoreProductOptionsComponent } from './store/components/product-options/product-options.component';
+import { StoreComponent } from './store/store.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { FooterComponent } from './components/footer/footer.component';
     InfoSectionComponent,
     ClientSectionComponent,
     DevelopersComponent,
+    StoreProductOptionsComponent,
+    StoreComponent,
     FooterComponent
   ],
   imports: [
