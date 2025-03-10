@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.rogers{
+    display: flex;
+}
+.igarata{
+    margin-top: 160px;
+    margin-left: 64px;
+    color: #194569
+}
+.title h1{
+    font-size: 48px;
+    font-family: inter-black;
+}
+.title h4{
+    margin-top: 24px;
+    font-size: 24px;
+    width: 728px;
+    height: 87px;
+    font-family: inter-light;
+}
+.salmon{
+    margin-top: 112px;
+    margin-left: 88px;
+    width: 464px;
+    height: 464px;
+}
