@@ -29,6 +29,6 @@ public class Cartao {
     private String tipo;
 
     @ManyToOne
-    @JoinColumn(name = "id_cliente", nullable = false)
-    private Cliente idCliente;
+    @JoinColumn(name = "id_cliente")
+    private Cliente idCliente; // A propriedade se chama 'idCliente', então o setter correto é 'setIdCliente'
 }

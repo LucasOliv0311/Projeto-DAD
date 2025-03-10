@@ -1,13 +1,10 @@
 package dto;
 
-import Model.Cliente;
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
 import java.time.LocalDate;
+
 @Data
 public class CartaoDtoCreate {
 
@@ -26,11 +23,5 @@ public class CartaoDtoCreate {
     @Column(nullable = false, length = 10)
     private String tipo;
 
-    @ManyToOne
-    @JoinColumn(name = "id_cliente", nullable = false)
-    private int idCliente;
-
-    public CartaoDtoCreate() {}
-
-
+    private Long idCliente; // Alterado para Long para corresponder ao tipo da entidade Cliente
 }
