@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router'; // Importe o Router
 
 @Component({
   selector: 'app-initial-card',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './initial-card.component.css'
 })
 export class InitialCardComponent {
+  constructor(private router: Router) {}
 
+  navigateToStore(): void {
+    this.router.navigate(['/store']);
+  }
 }

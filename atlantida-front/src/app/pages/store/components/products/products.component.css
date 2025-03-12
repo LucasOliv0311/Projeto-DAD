@@ -1,0 +1,31 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+    gap: 56px; /* Espaçamento entre os itens */
+  }
+  
+  .grid-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .more-offers{
+    width: 384px;
+    height: 56px;
+    background-color: #194569;
+    border-radius: 12px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+.more-offers p{
+    font-family: inter-bold;
+    font-size: 24px;
+    color: white;
+    text-align: center;
+    padding-top: 14px;
+}
+.giggs{
+    margin-top: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

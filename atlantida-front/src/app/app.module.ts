@@ -12,18 +12,32 @@ import { DevelopersComponent } from './pages/landing/components/developers/devel
 import { InfoSectionComponent } from './pages/landing/components/info-section/info-section.component';
 import { InitialCardComponent } from './pages/landing/components/initial-card/initial-card.component';
 import { LandingComponent } from './pages/landing/landing.component';
+import { StoreProductOptionsComponent } from './pages/store/components/product-options/product-options.component';
+import { StoreComponent } from './pages/store/store.component';
+import { StoreFilterComponent } from './pages/store/components/filter/filter.component';
+import { StoreFilterCategoriesComponent } from './pages/store/components/filter/components/categories/categories.component';
+import { StoreFilterCutsComponent } from './pages/store/components/filter/components/cuts/cuts.component';
+import { StoreProductsComponent } from './pages/store/components/products/products.component';
+import { StoreProductBoxComponent } from './pages/store/components/products/components/product-box/product-box.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    FooterComponent,
     LandingComponent,
     InitialCardComponent,
     BestOffersComponent,
     InfoSectionComponent,
     ClientSectionComponent,
     DevelopersComponent,
-    FooterComponent,
+    StoreProductOptionsComponent,
+    StoreComponent,
+    StoreFilterComponent,
+    StoreFilterCategoriesComponent,
+    StoreFilterCutsComponent,
+    StoreProductsComponent,
+    StoreProductBoxComponent
   ],
   imports: [
     BrowserModule,

@@ -19,6 +19,13 @@ font-style: normal;
     font-style: normal;
 }
 
+@font-face {
+    font-family: inter-light;
+    src: url('/assets/fonts/Inter/static/Inter_18pt-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 * {
 margin: 0;
 padding: 0;
