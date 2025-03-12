@@ -1,0 +1,21 @@
+<form [formGroup]="form" class="form">
+    <div class="field">
+        <label for="email" class="label">Email ou número de telefone</label>
+        <input type="text" placeholder="Ex: email@atlantida.org.br" formControlName="email" class="text">
+    </div>
+
+    <div class="field">
+        <label for="password" class="label">Digite sua senha</label>
+        <input type="password" placeholder="* * * * * * * * * *" formControlName="password" class="text">
+    </div>
+
+    <div class="buttons">
+        <button class="button confirm" (click)="submit()">
+            CONFIRMAR
+        </button>
+
+        <button class="button signin" (click)="goToSignup()">
+            CADASTRAR-SE
+        </button>
+    </div>
+</form>

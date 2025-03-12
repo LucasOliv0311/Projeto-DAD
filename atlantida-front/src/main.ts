@@ -1,9 +1,9 @@
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
-import { LandingComponent } from './app/landing/landing.component';
+import { LandingComponent } from './app/pages/landing/landing.component';
 import { HeaderComponent } from './app/components/header/header.component';
-import { InitialCardComponent } from './app/landing/components/initial-card/initial-card.component';
+import { InitialCardComponent } from './app/pages/landing/components/initial-card/initial-card.component';
 
 platformBrowserDynamic().bootstrapModule(AppModule, {
   ngZoneEventCoalescing: true

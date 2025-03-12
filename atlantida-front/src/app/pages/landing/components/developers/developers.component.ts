@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Developers } from '../../../interfaces/developers';
+import { Developers } from '../../../../interfaces/Developers';
 
 @Component({
   selector: 'app-developers',
@@ -10,7 +10,7 @@ export class DevelopersComponent {
   devs: Developers[] = [
     {
       name: "Enzo Braz",
-      imagePath: "/assets/images/tilapia.png"
+      imagePath: "/assets/images/dev_enzo.jpg"
     },
     {
       name: "Laura Melges",
