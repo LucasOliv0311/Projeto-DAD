@@ -1,0 +1,24 @@
+.box{
+    margin-top: 56px;
+    background-color: #194569;
+    width: 714px;
+    height: 142px;
+    border-radius: 8px;
+}
+.balls{
+    display: flex;
+    flex-direction: row;
+    margin-left: 32px;
+    margin-right: 32px;
+    justify-content: space-evenly;
+    padding-top: 16px;
+}
+.ball{
+    display: flex;
+    flex-direction: column;
+}
+.ball p{
+    margin-top: 8px;
+    color: white;
+    text-align: center;
+}

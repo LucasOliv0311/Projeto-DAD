@@ -1,0 +1,46 @@
+<form [formGroup]="form" class="form">
+    <div class="field">
+        <label for="name" class="label">Qual o seu nome?</label>
+        <input type="text" placeholder="Seu nome" formControlName="name" class="text name">
+    </div>
+    
+    <div class="field">
+        <label for="email" class="label">Email</label>
+        <input type="text" placeholder="Ex: email@atlantida.org.br" formControlName="email" class="text email">
+    </div>
+
+    <div class="field">
+        <label for="tel" class="label">Telefone</label>
+        <input type="tel" placeholder="** *****-****" formControlName="tel" class="text tel">
+    </div>
+
+    <div class="field">
+        <label for="cpf" class="label">CPF</label>
+        <input type="text" placeholder="***.***.***-**" formControlName="cpf" class="text cpf">
+    </div>
+
+    <div class="field">
+        <label for="endereco" class="label">Endereço</label>
+        <input type="text" placeholder="Ex: Rua Atlântida, 120" formControlName="endereco" class="text endereco">
+    </div>
+
+    <div class="field">
+        <label for="password" class="label">Crie sua senha</label>
+        <input type="password" placeholder="* * * * * * * * * *" formControlName="password" class="text password">
+    </div>
+
+    <div class="field">
+        <label for="confPassword" class="label">Confirme sua senha</label>
+        <input type="password" placeholder="* * * * * * * * * *" formControlName="confPassword" class="text confPassword">
+    </div>
+
+    <div class="buttons">
+        <button class="button confirm" (click)="submit()">
+            CONFIRMAR
+        </button>
+
+        <button class="button login" (click)="goToLogin()">
+            FAZER LOGIN
+        </button>
+    </div>
+</form>

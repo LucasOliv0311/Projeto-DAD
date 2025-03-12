@@ -1,32 +1,46 @@
 .footer {
-    width: 100vw;
-    height: 45vh;
+    width: 100%;
     background-color: white;
     border-top: 3px solid #efefef;
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
 }
 
-.content {
-    width: 100vw;
-    height: 40vh;
+.sideLogo {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 70vw;
+}
+
+.logo {
+    height: 60px;
+}
+
+.content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 50px 0;
 }
 
 .links {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    gap: 200px;
+    list-style-type: none;
 }
 
 .link {
-    color: black;
+    color: #194569;
     font-size: 24px;
+    text-decoration: none;
+    user-select: none;
 }
 
-.logo {
-    height: 150px;
+.link:hover {
+    cursor: pointer;
 }
 
 .copyright {
