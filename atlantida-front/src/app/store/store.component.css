@@ -2,7 +2,9 @@
     margin: 0;
     padding: 0;
 }
-
+.main{
+    margin-bottom: 160px;
+}
 .rogers{
     display: flex;
 }
@@ -27,4 +29,14 @@
     margin-left: 88px;
     width: 464px;
     height: 464px;
+}
+.ruberts{
+    display: flex;
+    margin-top: 128px;
+}
+.filter{
+    margin-left: 64px;
+}
+.products{
+    margin-left: 64px;
 }

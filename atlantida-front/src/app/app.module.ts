@@ -13,6 +13,11 @@ import { DevelopersComponent } from './landing/components/developers/developers.
 import { FooterComponent } from './components/footer/footer.component';
 import { StoreProductOptionsComponent } from './store/components/product-options/product-options.component';
 import { StoreComponent } from './store/store.component';
+import { StoreFilterComponent } from './store/components/filter/filter.component';
+import { StoreFilterCategoriesComponent } from './store/components/filter/components/categories/categories.component';
+import { StoreFilterCutsComponent } from './store/components/filter/components/cuts/cuts.component';
+import { StoreProductsComponent } from './store/components/products/products.component';
+import { StoreProductBoxComponent } from './store/components/products/components/product-box/product-box.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +31,12 @@ import { StoreComponent } from './store/store.component';
     DevelopersComponent,
     StoreProductOptionsComponent,
     StoreComponent,
-    FooterComponent
+    FooterComponent,
+    StoreFilterComponent,
+    StoreFilterCategoriesComponent,
+    StoreFilterCutsComponent,
+    StoreProductsComponent,
+    StoreProductBoxComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,4 +45,4 @@ import { StoreComponent } from './store/store.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { }
