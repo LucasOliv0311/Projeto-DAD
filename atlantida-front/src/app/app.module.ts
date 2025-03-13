@@ -19,6 +19,7 @@ import { StoreFilterCategoriesComponent } from './pages/store/components/filter/
 import { StoreFilterCutsComponent } from './pages/store/components/filter/components/cuts/cuts.component';
 import { StoreProductsComponent } from './pages/store/components/products/products.component';
 import { StoreProductBoxComponent } from './pages/store/components/products/components/product-box/product-box.component';
+import { ShopCartComponent } from './pages/shop-cart/shop-cart.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { StoreProductBoxComponent } from './pages/store/components/products/comp
     StoreFilterCategoriesComponent,
     StoreFilterCutsComponent,
     StoreProductsComponent,
-    StoreProductBoxComponent
+    StoreProductBoxComponent,
+    ShopCartComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-best-offers',
@@ -28,4 +29,11 @@ export class BestOffersComponent {
       imagePath: "/assets/images/sardinha.jpg"
     }
   ];
+
+  constructor(private router: Router) {}
+  
+  navigateToStore() {
+    this.router.navigate(['/store']);
+    window.scrollTo(0, 0);
+  }
 }

@@ -37,8 +37,13 @@ export class HeaderComponent {
     window.scrollTo(0, 0);
   };
 
+  goToShopCart() {
+    this.router.navigate(['shop-cart']);
+    window.scrollTo(0, 0);
+  };
+
   logout() {
     this.authService.logout();
     this.goToLogin();
-  }
+  };
 }
