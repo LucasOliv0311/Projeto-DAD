@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../../services/auth.service';
+import { ItemViewModel } from '../../../../view-models/item.vm';
 
 @Component({
   selector: 'app-best-offers',
@@ -7,33 +9,48 @@ import { Router } from '@angular/router';
   styleUrl: './best-offers.component.css'
 })
 export class BestOffersComponent {
-  items = [
+  items: ItemViewModel[] = [
     {
+      id: 0,
       name: "Tilápia Fresca",
       price: 64.99,
-      imagePath: "/assets/images/tilapia.png"
+      quantity: 1,
+      image: "/assets/images/tilapia.png"
     },
     {
+      id: 1,
       name: "Camarão",
       price: 49.99,
-      imagePath: "/assets/images/camarao.png"
+      quantity: 1,
+      image: "/assets/images/camarao.png"
     },
     {
+      id: 2,
       name: "Filé de Salmão",
       price: 54.99,
-      imagePath: "/assets/images/salmao.png"
+      quantity: 1,
+      image: "/assets/images/salmao.png"
     },
     {
+      id: 3,
       name: "Sardinha",
       price: 29.99,
-      imagePath: "/assets/images/sardinha.jpg"
+      quantity: 1,
+      image: "/assets/images/sardinha.jpg"
     }
   ];
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+  ) {};
+
+  addToShopCart(item: ItemViewModel) {
+    this.authService.addToShopCart(item);
+  }
   
   navigateToStore() {
     this.router.navigate(['/store']);
     window.scrollTo(0, 0);
-  }
+  };
 }

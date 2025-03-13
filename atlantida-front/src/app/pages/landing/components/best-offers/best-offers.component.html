@@ -4,7 +4,7 @@
     <div class="cards">
         <div class="card" *ngFor="let item of items">
             <div class="cardImage">
-                <img src={{item.imagePath}} alt="imagem do produto"/>
+                <img src={{item.image}} alt="imagem do produto"/>
             </div>
 
             <div class="itemDesc">
@@ -13,7 +13,7 @@
                 <h4 class="productPrice">R${{item.price}} /Kg</h4>
             </div>
 
-            <div class="button">Comprar Agora!</div>
+            <div class="button" (click)="addToShopCart(item)">Comprar Agora!</div>
         </div>
     </div>
 

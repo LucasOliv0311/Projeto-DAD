@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { ItemViewModel } from '../../view-models/item.vm';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-shop-cart',
@@ -7,79 +10,48 @@ import { Router } from '@angular/router';
   styleUrl: './shop-cart.component.css'
 })
 export class ShopCartComponent {
-  items = [
-    {
-      id: 0,
-      name: 'tilápia',
-      price: 74.99,
-      image: '/assets/images/tilapia.png',
-      quantity: 1,
-    },
-    {
-      id: 1,
-      name: 'salmão',
-      price: 74.99,
-      image: '/assets/images/salmao.png',
-      quantity: 1,
-    },
-    {
-      id: 2,
-      name: 'salmão',
-      price: 74.99,
-      image: '/assets/images/salmao.png',
-      quantity: 1,
-    },
-    {
-      id: 3,
-      name: 'salmão',
-      price: 74.99,
-      image: '/assets/images/salmao.png',
-      quantity: 1,
-    },
-    {
-      id: 4,
-      name: 'salmão',
-      price: 74.99,
-      image: '/assets/images/salmao.png',
-      quantity: 1,
-    },
-    {
-      id: 5,
-      name: 'salmão',
-      price: 74.99,
-      image: '/assets/images/salmao.png',
-      quantity: 1,
-    },
-  ];
+  shopCart: ItemViewModel[] = [];
+  private subscription!: Subscription;
 
-  constructor(private router: Router) {};
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+  ) {};
 
-  decreaseQuant(index: number) {
-    this.items[index].quantity -= 1;
-
-    if (this.items[index].quantity === 0) {
-      this.removeItem(index);
-    };
+  ngOnInit() {
+    this.subscription = this.authService.shopCart$.subscribe(cart => {
+      this.shopCart = cart;
+    });
   };
 
-  increaseQuant(index: number) {
-    this.items[index].quantity += 1;
+  decreaseQuant(item: ItemViewModel) {
+    this.authService.decreaseQuant(item);
   };
 
-  removeItem(index: number) {
-    this.items.splice(index, 1);
+  increaseQuant(item: ItemViewModel) {
+    this.authService.increaseQuant(item);
+  };
+
+  removeItem(item: ItemViewModel) {
+    this.authService.removeFromShopCart(item);
   };
 
   totalValue() {
-    return this.items.reduce((total, item) => total + item.price * item.quantity, 0);
+    return this.shopCart.reduce((total, item) => total + item.price * item.quantity, 0);
   };
 
   totalItems() {
-    return this.items.reduce((total, item) => total + item.quantity, 0);
+    return this.shopCart.reduce((total, item) => total + item.quantity, 0);
   };
 
   navigateToStore() {
     this.router.navigate(['/store']);
     window.scrollTo(0, 0);
+  };
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   };
 }
