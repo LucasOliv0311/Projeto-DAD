@@ -1,13 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LandingComponent } from './landing/landing.component';
+import { LandingComponent } from './pages/landing/landing.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
   { 
     path: 'store', 
-    loadChildren: () => import('./store/store.module').then(m => m.StoreModule) 
-  }
+    loadChildren: () => import('./pages/store/store.module').then(m => m.StoreModule)
+  },
+  { 
+    path: 'register', 
+    loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule) 
+  },
 ];
 
 @NgModule({

@@ -1,18 +1,41 @@
 <header class="header">
-    <div class="brand">
+    <button class="brand" (click)="goToLanding()">
         <img src="/assets/images/logo.svg" alt="logo" class="logo"/>
         <div class="title">
             <h1 class="titleText">ATLÂNTIDA</h1>
             <h2 class="titleText">PESCADOS</h2>
         </div>
-    </div>
+    </button>
 
-    <div class="inputOptions">
-        <button class="signup">
-            Cadastre-se
-        </button>
-        <button class="login">
-            Fazer Login
-        </button>
-    </div>
+    <ng-container *ngIf="userData; else guestUser">
+        <ng-template *ngTemplateOutlet="loggedUser"></ng-template>
+    </ng-container>
+
+    <ng-template #guestUser>
+        <div class="options">
+            <button class="signup" (click)="goToSignup()">
+                Cadastre-se
+            </button>
+            <button class="login" (click)="goToLogin()">
+                Fazer Login
+            </button>
+        </div>
+    </ng-template>
+
+    <ng-template #loggedUser>
+        <div class="options">
+            <div class="user">
+                <button class="shopCart">
+                    <img src="/assets/images/shopcart_2.svg" alt="carrinho">
+                    Acessar Carrinho
+                </button>
+
+                <img src="/assets/images/avatar.png" alt="imagem de avatar" class="avatarImg">
+            </div>
+
+            <button class="logout" (click)="logout()">
+                Sair
+            </button>
+        </div>
+    </ng-template>
 </header>
