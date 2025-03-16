@@ -1,0 +1,24 @@
+<div class="bestOffers">
+    <h1 class="title">VEJA MAIS OFERTAS</h1>
+
+    <div class="cards">
+        <div class="card" *ngFor="let item of items">
+            <div class="cardImage">
+                <img src={{item.imagePath}} alt="imagem do produto"/>
+            </div>
+
+            <div class="itemDesc">
+                <h3 class="productName">{{item.name}}</h3>
+
+                <h4 class="productPrice">R${{item.price}} /Kg</h4>
+            </div>
+
+            <div class="button">Comprar Agora!</div>
+        </div>
+    </div>
+
+    <div class="moreItems">
+        <img src="/assets/images/plus.png" alt="mais produtos" class="moreItemsIcon">
+        <h3 class="moreItemsText">Ver Mais Produtos</h3>
+    </div>
+</div>

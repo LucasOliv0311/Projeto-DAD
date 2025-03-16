@@ -1,0 +1,104 @@
+.box{
+    display: flex;
+    flex-direction: row;
+    color: #194569;
+}
+.salmaoTitulo{
+    width: 464px;
+    height: 536px;
+}
+.alt-images{
+    margin-top: 48px;
+    display: flex;
+    justify-content: space-between;
+}
+.description{
+    margin-left: 24px;
+    width: 536px;
+    height: 813px;
+    border: 2px solid #194569;
+    border-radius: 16px;
+}
+.title{
+    margin-top: 40px;
+    margin-left: 40px;
+}
+.title, .productDescriptions h6{
+    font-family: inter-light;
+    font-size: 16px;
+}
+.title h4{
+    margin-top: 32px;
+    font-size: 36px;
+    font-family: inter-bold;
+}
+.values h6{
+    font-size: 16px;
+    font-family: inter-light;
+    margin-top: 32px;
+}
+.values h5{
+    font-size: 32px;
+    font-family: inter-bold;
+}
+.weight h6{
+    text-align: end;
+}
+.values{
+    display: flex;
+    flex-direction: row;
+    margin-left: 40px;
+    gap: 277px
+}
+.purchaseInfos{
+    margin-top: 32px;
+    margin-left: 40px;
+    display: flex;
+    flex-direction: row;
+    gap: 64px;
+}
+.quantity{
+    display: flex;
+    flex-direction: row;
+    gap: 16px; 
+}
+.plus,.minus{
+    cursor: pointer;
+}
+.number h6{
+    font-size: 32px;
+    font-family: inter-bold;
+}
+.addToCart{
+    width: 240px;
+    height: 40px;
+    background-color: #F5F5F5;
+    border-radius: 8px;
+    box-shadow:2px 2px 5px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.addToCart:hover{
+    transition: 0.5s;
+    box-shadow:4px 4px 10px rgba(0, 0, 0, 0.3);
+}
+.addToCart h4{
+    font-size: 16px;
+    font-family: inter-bold;
+}
+.productDescriptions{
+    margin-left: 40px;
+    margin-right: 52px;
+    margin-top: 48px;
+}
+.productDescriptions h5{
+    margin-top: 16px;
+    font-size: 24px;
+    font-family: inter-light;
+}
+

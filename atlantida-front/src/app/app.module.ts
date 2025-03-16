@@ -18,6 +18,10 @@ import { StoreFilterCategoriesComponent } from './store/components/filter/compon
 import { StoreFilterCutsComponent } from './store/components/filter/components/cuts/cuts.component';
 import { StoreProductsComponent } from './store/components/products/products.component';
 import { StoreProductBoxComponent } from './store/components/products/components/product-box/product-box.component';
+import { PurchaseComponent } from './purchase/purchase.component';
+import { PurchaseProductInfoComponent } from './purchase/components/product-info/product-info.component';
+import { PurchaseMoreOffersComponent } from './purchase/components/more-offers/more-offers.component';
+import { PurchaseInfoSectionComponent } from './purchase/components/info-section/info-section.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +41,10 @@ import { StoreProductBoxComponent } from './store/components/products/components
     StoreFilterCutsComponent,
     StoreProductsComponent,
     StoreProductBoxComponent,
+    PurchaseComponent,
+    PurchaseProductInfoComponent,
+    PurchaseMoreOffersComponent,
+    PurchaseInfoSectionComponent
   ],
   imports: [
     BrowserModule,
@@ -45,4 +53,4 @@ import { StoreProductBoxComponent } from './store/components/products/components
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { }
