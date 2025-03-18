@@ -6,14 +6,11 @@ import com.ariel.Atlantida.dto.CartaoDtoCreate;
 import com.ariel.Atlantida.Repository.CartaoRepository;
 import com.ariel.Atlantida.Repository.ClienteRepository;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
 public class CartaoService {
-
     private final CartaoRepository cartaoRepository;
-
     private final ClienteRepository clienteRepository;
 
     public CartaoService(CartaoRepository cartaoRepository, ClienteRepository clienteRepository) {
@@ -22,7 +19,7 @@ public class CartaoService {
     }
 
     public Cartao criarCartao(CartaoDtoCreate cartaoDTO) {
-        Cliente cliente = clienteRepository.findById(Math.toIntExact(cartaoDTO.getIdCliente()))
+        Cliente cliente = clienteRepository.findById(cartaoDTO.getClienteId())
                 .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
 
         Cartao cartao = new Cartao();
@@ -36,25 +33,24 @@ public class CartaoService {
         return cartaoRepository.save(cartao);
     }
 
-    public Cartao buscarCartao(Long id) {
+    public Cartao buscarCartao(int id) {
         return cartaoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Cartão não encontrado"));
     }
 
     public List<Cartao> buscarCartoesPorCliente(int clienteId) {
-        Cliente cliente = clienteRepository.findById(Math.toIntExact(clienteId))
+        clienteRepository.findById(clienteId)
                 .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
-        return cartaoRepository.findByClienteId((long) cliente.getIdCliente());
+        return cartaoRepository.findByIdCliente_IdCliente(clienteId);
     }
 
     public List<Cartao> listarCartoes() {
         return cartaoRepository.findAll();
     }
 
-    public Cartao atualizarCartao(Long id, CartaoDtoCreate cartaoDTO) {
+    public Cartao atualizarCartao(int id, CartaoDtoCreate cartaoDTO) {
         Cartao cartao = buscarCartao(id);
-
-        Cliente cliente = clienteRepository.findById(Math.toIntExact(cartaoDTO.getIdCliente()))
+        Cliente cliente = clienteRepository.findById(cartaoDTO.getClienteId())
                 .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
 
         cartao.setNumeroCartao(cartaoDTO.getNumeroCartao());
@@ -67,7 +63,7 @@ public class CartaoService {
         return cartaoRepository.save(cartao);
     }
 
-    public void deletarCartao(Long id) {
+    public void deletarCartao(int id) {
         Cartao cartao = buscarCartao(id);
         cartaoRepository.delete(cartao);
     }

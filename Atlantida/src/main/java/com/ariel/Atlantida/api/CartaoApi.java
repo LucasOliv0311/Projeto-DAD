@@ -36,7 +36,7 @@ public interface CartaoApi {
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = Errors.class)))
     })
     @GetMapping("/{id}")
-    ResponseEntity<Cartao> buscarCartao(@PathVariable("id") Long id);
+    ResponseEntity<Cartao> buscarCartao(@PathVariable("id") int id);
 
     @Operation(summary = "Busca Cartões pelo ID do Cliente")
     @ApiResponses(value = {
@@ -44,7 +44,7 @@ public interface CartaoApi {
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = List.class)))
     })
     @GetMapping("/cliente/{idCliente}")
-    ResponseEntity<List<Cartao>> buscarCartoesPorCliente(@PathVariable("idCliente") Long idCliente);
+    ResponseEntity<List<Cartao>> buscarCartoesPorCliente(@PathVariable("idCliente") int idCliente);
 
     @Operation(summary = "Lista todos os Cartões")
     @ApiResponses(value = {
@@ -62,7 +62,7 @@ public interface CartaoApi {
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = Errors.class)))
     })
     @PutMapping("/{id}")
-    ResponseEntity<Cartao> atualizarCartao(@PathVariable("id") Long id,
+    ResponseEntity<Cartao> atualizarCartao(@PathVariable("id") int id,
                                            @RequestBody CartaoDtoCreate cartaoDtoCreate);
 
     @Operation(summary = "Deleta um Cartão pelo ID")
@@ -72,5 +72,5 @@ public interface CartaoApi {
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = Errors.class)))
     })
     @DeleteMapping("/{id}")
-    ResponseEntity<Void> deletarCartao(@PathVariable("id") Long id);
+    ResponseEntity<Void> deletarCartao(@PathVariable("id") int id);
 }

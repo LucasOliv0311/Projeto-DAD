@@ -1,8 +1,6 @@
 package com.ariel.Atlantida.api;
 
-import com.ariel.Atlantida.Model.Cliente;
 import com.ariel.Atlantida.Model.Produto;
-import com.ariel.Atlantida.dto.ClienteDtoCreate;
 import com.ariel.Atlantida.dto.ProdutoDtoCreate;
 import io.netty.channel.unix.Errors;
 import io.swagger.v3.oas.annotations.Operation;
@@ -16,18 +14,16 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("/produtos")
+@RequestMapping("/produto")
 @Tag(name = "Produto")
 public interface ProdutoApi {
-    @Operation(summary = "Salva um novo Produto")
+    @Operation(summary = "Lista todos os Produtos")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Produto salvo com sucesso",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = Produto.class))),
-            @ApiResponse(responseCode = "409", description = "Conflito ao salvar o Produto",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = Errors.class)))
+            @ApiResponse(responseCode = "200", description = "Lista de Produtos recuperada com sucesso",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = List.class)))
     })
-    @PostMapping
-    ResponseEntity<Produto> salvarProduto(@RequestBody ProdutoDtoCreate produtoDtoCreate);
+    @GetMapping
+    ResponseEntity<List<Produto>> listarTodos();
 
     @Operation(summary = "Busca um Produto pelo ID")
     @ApiResponses(value = {
@@ -36,16 +32,18 @@ public interface ProdutoApi {
             @ApiResponse(responseCode = "404", description = "Produto não encontrado",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = Errors.class)))
     })
-    @GetMapping("/{id}")
-    ResponseEntity<Produto> buscarProduto(@PathVariable("id") Long id);
+    @GetMapping("/{idProduto}")
+    ResponseEntity<Produto> buscarPorId(@PathVariable("idProduto") int idProduto);
 
-    @Operation(summary = "Lista todos os Produtos")
+    @Operation(summary = "Salva um novo Produto")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Lista de Produtos recuperada com sucesso",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = List.class)))
+            @ApiResponse(responseCode = "201", description = "Produto salvo com sucesso",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = Produto.class))),
+            @ApiResponse(responseCode = "409", description = "Conflito ao salvar o Produto",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = Errors.class)))
     })
-    @GetMapping
-    ResponseEntity<List<Produto>> listarProdutos();
+    @PostMapping
+    ResponseEntity<Produto> salvar(@RequestBody Produto produto);
 
     @Operation(summary = "Atualiza um Produto pelo ID")
     @ApiResponses(value = {
@@ -54,9 +52,9 @@ public interface ProdutoApi {
             @ApiResponse(responseCode = "404", description = "Produto não encontrado",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = Errors.class)))
     })
-    @PutMapping("/{id}")
-    ResponseEntity<Produto> atualizarProduto(@PathVariable("id") Long id,
-                                             @RequestBody ProdutoDtoCreate produtoDtoCreate);
+    @PutMapping("/{idProduto}")
+    ResponseEntity<Produto> atualizar(@PathVariable("idProduto") int idProduto,
+                                      @RequestBody Produto produto);
 
     @Operation(summary = "Deleta um Produto pelo ID")
     @ApiResponses(value = {
@@ -64,6 +62,6 @@ public interface ProdutoApi {
             @ApiResponse(responseCode = "404", description = "Produto não encontrado",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = Errors.class)))
     })
-    @DeleteMapping("/{id}")
-    ResponseEntity<Void> deletarProduto(@PathVariable("id") Long id);
+    @DeleteMapping("/{idProduto}")
+    ResponseEntity<Void> deletar(@PathVariable("idProduto") int idProduto);
 }

@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int idProduto;
 
     @Column(nullable = false, length = 100)
     private String nome;
@@ -27,12 +27,12 @@ public class Produto {
     @Column(nullable = false)
     private Integer estoque;
 
-    public Long getId() {
-        return id;
+    public int getIdProduto() {
+        return idProduto;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdProduto(int idProduto) {
+        this.idProduto = idProduto;
     }
 
     public String getNome() {

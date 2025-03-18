@@ -2,8 +2,8 @@ package com.ariel.Atlantida.api;
 
 import com.ariel.Atlantida.Model.Cliente;
 import com.ariel.Atlantida.dto.ClienteDtoCreate;
-import io.netty.channel.unix.Errors;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -12,68 +12,63 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RequestMapping("/clientes")
-@Tag(name = "Cliente")
+@Tag(name = "Cliente", description = "Endpoints para gerenciar clientes")
 public interface ClienteApi {
 
     @Operation(summary = "Cria um novo Cliente")
-    @ApiResponses(value = {
+    @ApiResponses({
             @ApiResponse(responseCode = "201", description = "Cliente criado com sucesso",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = Cliente.class))),
-            @ApiResponse(responseCode = "409", description = "Conflito ao criar o Cliente",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = Errors.class)))
+            @ApiResponse(responseCode = "409", description = "Conflito ao criar o Cliente")
     })
     @PostMapping
-    ResponseEntity<Cliente> criarCliente(@RequestBody ClienteDtoCreate clienteDtoCreate);
+    ResponseEntity<Cliente> criarCliente(@Valid @RequestBody ClienteDtoCreate clienteDtoCreate);
 
     @Operation(summary = "Busca um Cliente pelo ID")
-    @ApiResponses(value = {
+    @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Cliente encontrado",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = Cliente.class))),
-            @ApiResponse(responseCode = "404", description = "Cliente não encontrado",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = Errors.class)))
+            @ApiResponse(responseCode = "404", description = "Cliente não encontrado")
     })
-    @GetMapping("/{id}")
-    ResponseEntity<Cliente> buscarCliente(@PathVariable("id") Long id);
+    @GetMapping("/{idCliente}")
+    ResponseEntity<Cliente> buscarCliente(@PathVariable int idCliente);
 
     @Operation(summary = "Busca um Cliente pelo CPF")
-    @ApiResponses(value = {
+    @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Cliente encontrado",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = Cliente.class))),
-            @ApiResponse(responseCode = "404", description = "Cliente não encontrado",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = Errors.class)))
+            @ApiResponse(responseCode = "404", description = "Cliente não encontrado")
     })
     @GetMapping("/cpf/{cpf}")
-    ResponseEntity<Cliente> buscarClientePorCpf(@PathVariable("cpf") String cpf);
+    ResponseEntity<Cliente> buscarClientePorCpf(@PathVariable String cpf);
 
     @Operation(summary = "Lista todos os Clientes")
-    @ApiResponses(value = {
+    @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Lista de Clientes recuperada com sucesso",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = List.class)))
+                    content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Cliente.class))))
     })
     @GetMapping
     ResponseEntity<List<Cliente>> listarClientes();
 
     @Operation(summary = "Atualiza um Cliente pelo ID")
-    @ApiResponses(value = {
+    @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Cliente atualizado com sucesso",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = Cliente.class))),
-            @ApiResponse(responseCode = "404", description = "Cliente não encontrado",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = Errors.class)))
+            @ApiResponse(responseCode = "404", description = "Cliente não encontrado")
     })
-    @PutMapping("/{id}")
-    ResponseEntity<Cliente> atualizarCliente(@PathVariable("id") Long id,
-                                             @RequestBody ClienteDtoCreate clienteDtoCreate);
+    @PutMapping("/{idCliente}")
+    ResponseEntity<Cliente> atualizarCliente(@PathVariable int idCliente,
+                                             @Valid @RequestBody ClienteDtoCreate clienteDtoCreate);
 
     @Operation(summary = "Deleta um Cliente pelo ID")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Cliente deletado com sucesso"),
-            @ApiResponse(responseCode = "404", description = "Cliente não encontrado",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = Errors.class)))
+    @ApiResponses({
+            @ApiResponse(responseCode = "204", description = "Cliente deletado com sucesso"),
+            @ApiResponse(responseCode = "404", description = "Cliente não encontrado")
     })
-    @DeleteMapping("/{id}")
-    ResponseEntity<Void> deletarCliente(@PathVariable("id") Long id);
+    @DeleteMapping("/{idCliente}")
+    ResponseEntity<Void> deletarCliente(@PathVariable int idCliente);
 }
-

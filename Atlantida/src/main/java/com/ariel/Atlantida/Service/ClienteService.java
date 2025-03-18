@@ -15,6 +15,7 @@ public class ClienteService {
         this.clienteRepository = clienteRepository;
     }
 
+
     public Cliente criarCliente(ClienteDtoCreate clienteDTO) {
         Cliente cliente = new Cliente();
         cliente.setNome(clienteDTO.getNome());
@@ -25,20 +26,22 @@ public class ClienteService {
         return clienteRepository.save(cliente);
     }
 
-    public Cliente buscarCliente(Long id) {
-        return clienteRepository.findById(Math.toIntExact(id)).orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
+    public Cliente buscarCliente(int idCliente) {
+        return clienteRepository.findById(idCliente)
+                .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
     }
 
     public Cliente buscarClientePorCpf(String cpf) {
-        return clienteRepository.findByCpf(cpf).orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
+        return clienteRepository.findByCpf(cpf)
+                .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
     }
 
     public List<Cliente> listarClientes() {
         return clienteRepository.findAll();
     }
 
-    public Cliente atualizarCliente(Long id, ClienteDtoCreate clienteDTO) {
-        Cliente cliente = buscarCliente(id);
+    public Cliente atualizarCliente(int idCliente, ClienteDtoCreate clienteDTO) {
+        Cliente cliente = buscarCliente(idCliente);
         cliente.setNome(clienteDTO.getNome());
         cliente.setCpf(clienteDTO.getCpf());
         cliente.setTelefone(clienteDTO.getTelefone());
@@ -47,8 +50,8 @@ public class ClienteService {
         return clienteRepository.save(cliente);
     }
 
-    public void deletarCliente(Long id) {
-        Cliente cliente = buscarCliente(id);
+    public void deletarCliente(int idCliente) {
+        Cliente cliente = buscarCliente(idCliente);
         clienteRepository.delete(cliente);
     }
 }

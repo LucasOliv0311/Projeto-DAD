@@ -1,9 +1,8 @@
 package com.ariel.Atlantida.Controller;
 
-import com.ariel.Atlantida.Model.Pedido;
 import com.ariel.Atlantida.Model.Produto;
-import com.ariel.Atlantida.Service.PedidoService;
 import com.ariel.Atlantida.Service.ProdutoService;
+import com.ariel.Atlantida.api.ProdutoApi;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,38 +10,38 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/produto")
-public class ProdutoController {
+public class ProdutoController implements ProdutoApi {
     private final ProdutoService produtoService;
 
     public ProdutoController(ProdutoService produtoService) {
         this.produtoService = produtoService;
     }
 
-    @GetMapping
+    @Override
     public ResponseEntity<List<Produto>> listarTodos() {
         return ResponseEntity.ok(produtoService.listarTodos());
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Produto> buscarPorId(@PathVariable Long id) {
-        Produto produto = produtoService.buscarPorId(id);
+    @Override
+    public ResponseEntity<Produto> buscarPorId(@PathVariable int idProduto) {
+        Produto produto = produtoService.buscarPorId(idProduto);
         return produto != null ? ResponseEntity.ok(produto) : ResponseEntity.notFound().build();
     }
 
-    @PostMapping
+    @Override
     public ResponseEntity<Produto> salvar(@RequestBody Produto produto) {
         return ResponseEntity.ok(produtoService.salvar(produto));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Produto> atualizar(@PathVariable Long id, @RequestBody Produto produto) {
-        Produto produtoAtualizado = produtoService.atualizar(id, produto);
+    @Override
+    public ResponseEntity<Produto> atualizar(@PathVariable int idProduto, @RequestBody Produto produto) {
+        Produto produtoAtualizado = produtoService.atualizar(idProduto, produto);
         return produtoAtualizado != null ? ResponseEntity.ok(produtoAtualizado) : ResponseEntity.notFound().build();
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletar(@PathVariable Long id) {
-        produtoService.deletar(id);
+    @Override
+    public ResponseEntity<Void> deletar(@PathVariable int idProduto) {
+        produtoService.deletar(idProduto);
         return ResponseEntity.noContent().build();
     }
 }

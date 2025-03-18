@@ -1,35 +1,29 @@
 package com.ariel.Atlantida.dto;
 
-import com.ariel.Atlantida.Model.Cartao;
-import com.ariel.Atlantida.Model.Produto;
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import lombok.Data;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
+
+
+import com.ariel.Atlantida.Model.Produto;
+import lombok.Data;
 
 @Data
 public class PedidoDtoCreate {
-    @ManyToOne
-    @JoinColumn(name = "id_produto", nullable = false)
-    private Produto produto;
-    @Column(nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private int idPedido;
+    private Integer idProduto;
     private LocalDateTime dataPedido;
-    @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal valorTotal;
-    @ManyToOne
-    @JoinColumn(name = "id_cartao")
-    private Cartao cartao;
+    private Integer idCartao;
 
-    public Produto getProduto() {
-        return produto;
+    public int getIdPedido() {
+        return idPedido;
     }
 
-    public void setProduto(Produto produto) {
-        this.produto = produto;
+    public void setIdPedido(int idPedido) {
+        this.idPedido = idPedido;
     }
+
 
     public LocalDateTime getDataPedido() {
         return dataPedido;
@@ -47,11 +41,19 @@ public class PedidoDtoCreate {
         this.valorTotal = valorTotal;
     }
 
-    public Cartao getCartao() {
-        return cartao;
+    public Integer getIdCartao() {
+        return idCartao;
     }
 
-    public void setCartao(Cartao cartao) {
-        this.cartao = cartao;
+    public void setIdCartao(Integer idCartao) {
+        this.idCartao = idCartao;
+    }
+
+    public Integer getIdProduto() {
+        return idProduto;
+    }
+
+    public void setIdProduto(Integer idProduto) {
+        this.idProduto = idProduto;
     }
 }

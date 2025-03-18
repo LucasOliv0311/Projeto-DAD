@@ -23,7 +23,7 @@ public class CartaoDtoCreate {
     @Column(nullable = false, length = 10)
     private String tipo;
 
-    private Long clienteId;
+    private int clienteId;
 
     public String getNumeroCartao() {
         return numeroCartao;
@@ -65,11 +65,11 @@ public class CartaoDtoCreate {
         this.tipo = tipo;
     }
 
-    public Long getIdCliente() {
+    public int getClienteId() {
         return clienteId;
     }
 
-    public void setIdCliente(Long clienteId) {
+    public void setClienteId(int clienteId) {
         this.clienteId = clienteId;
     }
 }

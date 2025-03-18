@@ -1,47 +1,70 @@
 package com.ariel.Atlantida.Service;
 
 import com.ariel.Atlantida.Model.Pedido;
+import com.ariel.Atlantida.Model.Produto;
+import com.ariel.Atlantida.Model.Cartao;
+import com.ariel.Atlantida.dto.PedidoDtoCreate;
 import com.ariel.Atlantida.Repository.PedidoRepository;
+import com.ariel.Atlantida.Repository.ProdutoRepository;
+import com.ariel.Atlantida.Repository.CartaoRepository;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class PedidoService {
     private final PedidoRepository pedidoRepository;
+    private final ProdutoRepository produtoRepository;
+    private final CartaoRepository cartaoRepository;
 
-    public PedidoService(PedidoRepository pedidoRepository) {
+    public PedidoService(PedidoRepository pedidoRepository, ProdutoRepository produtoRepository, CartaoRepository cartaoRepository) {
         this.pedidoRepository = pedidoRepository;
+        this.produtoRepository = produtoRepository;
+        this.cartaoRepository = cartaoRepository;
     }
 
-    public List<Pedido> listarTodos() {
-        return pedidoRepository.findAll();
-    }
+    public Pedido criarPedido(PedidoDtoCreate pedidoDTO) {
+        Produto produto = (Produto) produtoRepository.findById(pedidoDTO.getIdProduto())
+                .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
 
-    public Pedido buscarPorId(Long id) {
-        return pedidoRepository.findById(Math.toIntExact(id)).orElse(null);
-    }
+        Cartao cartao = (pedidoDTO.getIdCartao() != null) ?
+                cartaoRepository.findById(pedidoDTO.getIdCartao()).orElse(null) : null;
 
-    public Pedido salvar(Pedido pedido) {
+        Pedido pedido = new Pedido();
+        pedido.setIdProduto(produto);
+        pedido.setDataPedido(pedidoDTO.getDataPedido());
+        pedido.setValorTotal(pedidoDTO.getValorTotal());
+        pedido.setIdCartao(cartao);
+
         return pedidoRepository.save(pedido);
     }
 
-    public Pedido atualizar(Long id, Pedido pedidoAtualizado) {
-        Optional<Pedido> pedidoExistente = pedidoRepository.findById(Math.toIntExact(id));
-        if (pedidoExistente.isPresent()) {
-            Pedido pedido = pedidoExistente.get();
-            pedido.setId(pedidoAtualizado.getId());
-            pedido.setProduto(pedidoAtualizado.getProduto());
-            pedido.setCartao(pedidoAtualizado.getCartao());
-            pedido.setDataPedido(pedidoAtualizado.getDataPedido());
-            pedido.setValorTotal(pedidoAtualizado.getValorTotal());
-            return pedidoRepository.save(pedido);
-        }
-        return null;
+    public Pedido buscarPedido(int id) {
+        return pedidoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Pedido não encontrado"));
     }
 
-    public void deletar(Long id) {
-        pedidoRepository.deleteById(Math.toIntExact(id));
+    public List<Pedido> listarPedidos() {
+        return pedidoRepository.findAll();
+    }
+
+    public Pedido atualizarPedido(int id, PedidoDtoCreate pedidoDTO) {
+        Pedido pedido = buscarPedido(id);
+        Produto produto = (Produto) produtoRepository.findById(pedidoDTO.getIdProduto())
+                .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
+
+        Cartao cartao = (pedidoDTO.getIdCartao() != null) ?
+                cartaoRepository.findById(pedidoDTO.getIdCartao()).orElse(null) : null;
+
+        pedido.setIdProduto(produto);
+        pedido.setDataPedido(pedidoDTO.getDataPedido());
+        pedido.setValorTotal(pedidoDTO.getValorTotal());
+        pedido.setIdCartao(cartao);
+
+        return pedidoRepository.save(pedido);
+    }
+
+    public void deletarPedido(int id) {
+        Pedido pedido = buscarPedido(id);
+        pedidoRepository.delete(pedido);
     }
 }

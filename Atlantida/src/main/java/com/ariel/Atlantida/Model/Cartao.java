@@ -2,7 +2,6 @@ package com.ariel.Atlantida.Model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-
 import java.time.LocalDate;
 
 @Data
@@ -11,7 +10,7 @@ public class Cartao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_cartao")
-    private Long id;
+    private int idCartao;
 
     @Column(nullable = false, unique = true, length = 16)
     private String numeroCartao;
@@ -30,14 +29,14 @@ public class Cartao {
 
     @ManyToOne
     @JoinColumn(name = "id_cliente")
-    private Cliente clienteId;
+    private Cliente idCliente;
 
-    public Long getId() {
-        return id;
+    public int getIdCartao() {
+        return idCartao;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdCartao(int idCartao) {
+        this.idCartao = idCartao;
     }
 
     public String getNumeroCartao() {
@@ -81,10 +80,10 @@ public class Cartao {
     }
 
     public Cliente getIdCliente() {
-        return clienteId;
+        return idCliente;
     }
 
-    public void setIdCliente(Cliente clienteId) {
-        this.clienteId = clienteId;
+    public void setIdCliente(Cliente idCliente) {
+        this.idCliente = idCliente;
     }
 }

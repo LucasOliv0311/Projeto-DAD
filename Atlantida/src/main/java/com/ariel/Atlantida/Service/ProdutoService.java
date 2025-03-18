@@ -19,19 +19,19 @@ public class ProdutoService {
         return produtoRepository.findAll();
     }
 
-    public Produto buscarPorId(Long id) {
-        return produtoRepository.findById(Math.toIntExact(id)).orElse(null);
+    public Produto buscarPorId(int idProduto) {
+        return produtoRepository.findById(idProduto).orElse(null);
     }
 
     public Produto salvar(Produto produto) {
         return produtoRepository.save(produto);
     }
 
-    public Produto atualizar(Long id, Produto produtoAtualizado) {
-        Optional<Produto> produtoExistente = produtoRepository.findById(Math.toIntExact(id));
+    public Produto atualizar(int idProduto, Produto produtoAtualizado) {
+        Optional<Produto> produtoExistente = produtoRepository.findById(idProduto);
         if (produtoExistente.isPresent()) {
             Produto produto = produtoExistente.get();
-            produto.setId(produtoAtualizado.getId());
+            produto.setIdProduto(produtoAtualizado.getIdProduto());
             produto.setNome(produtoAtualizado.getNome());
             produto.setTipo(produtoAtualizado.getTipo());
             produto.setDescricao(produtoAtualizado.getDescricao());
@@ -42,7 +42,8 @@ public class ProdutoService {
         return null;
     }
 
-    public void deletar(Long id) {
-        produtoRepository.deleteById(Math.toIntExact(id));
+    public void deletar(int idProduto) {
+        produtoRepository.deleteById(idProduto);
     }
+
 }

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -18,38 +19,37 @@ public class ClienteController implements ClienteApi {
     private ClienteService clienteService;
 
     @Override
-    public ResponseEntity<Cliente> criarCliente(@RequestBody ClienteDtoCreate clienteDTO) {
-        Cliente cliente = clienteService.criarCliente(clienteDTO);
+    public ResponseEntity<Cliente> criarCliente(@Valid @RequestBody ClienteDtoCreate clienteDtoCreate) {
+        Cliente cliente = clienteService.criarCliente(clienteDtoCreate);
         return ResponseEntity.status(201).body(cliente);
     }
 
     @Override
-    public ResponseEntity<Cliente> buscarCliente(@PathVariable Long id) {
-        Cliente cliente = clienteService.buscarCliente(id);
-        return cliente != null ? ResponseEntity.ok(cliente) : ResponseEntity.notFound().build();
+    public ResponseEntity<Cliente> buscarCliente(@PathVariable int idCliente) {
+        Cliente cliente = clienteService.buscarCliente(idCliente);
+        return ResponseEntity.ok(cliente);
     }
 
     @Override
     public ResponseEntity<Cliente> buscarClientePorCpf(@PathVariable String cpf) {
         Cliente cliente = clienteService.buscarClientePorCpf(cpf);
-        return cliente != null ? ResponseEntity.ok(cliente) : ResponseEntity.notFound().build();
+        return ResponseEntity.ok(cliente);
     }
 
     @Override
     public ResponseEntity<List<Cliente>> listarClientes() {
-        List<Cliente> clientes = clienteService.listarClientes();
-        return ResponseEntity.ok(clientes);
+        return ResponseEntity.ok(clienteService.listarClientes());
     }
 
     @Override
-    public ResponseEntity<Cliente> atualizarCliente(@PathVariable Long id, @RequestBody ClienteDtoCreate clienteDTO) {
-        Cliente cliente = clienteService.atualizarCliente(id, clienteDTO);
-        return cliente != null ? ResponseEntity.ok(cliente) : ResponseEntity.notFound().build();
+    public ResponseEntity<Cliente> atualizarCliente(@PathVariable int idCliente, @Valid @RequestBody ClienteDtoCreate clienteDtoCreate) {
+        Cliente cliente = clienteService.atualizarCliente(idCliente, clienteDtoCreate);
+        return ResponseEntity.ok(cliente);
     }
 
     @Override
-    public ResponseEntity<Void> deletarCliente(@PathVariable Long id) {
-        clienteService.deletarCliente(id);
+    public ResponseEntity<Void> deletarCliente(@PathVariable int idCliente) {
+        clienteService.deletarCliente(idCliente);
         return ResponseEntity.noContent().build();
     }
 }
