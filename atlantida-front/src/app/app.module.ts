@@ -39,7 +39,7 @@ import { ShopCartComponent } from './pages/shop-cart/shop-cart.component';
     StoreFilterCutsComponent,
     StoreProductsComponent,
     StoreProductBoxComponent,
-    ShopCartComponent
+    ShopCartComponent,
   ],
   imports: [
     BrowserModule,

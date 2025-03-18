@@ -47,7 +47,7 @@ export class BestOffersComponent {
 
   addToShopCart(item: ItemViewModel) {
     this.authService.addToShopCart(item);
-  }
+  };
   
   navigateToStore() {
     this.router.navigate(['/store']);

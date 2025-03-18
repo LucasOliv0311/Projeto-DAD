@@ -33,7 +33,7 @@
     padding: 15px 10px;
     background-color: #fefefe;
     border: 2px solid #194569;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .itemDesc {
@@ -55,7 +55,7 @@
 .cardImage img {
     max-width: 180px;
     max-height: 180px;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .productName {
@@ -100,7 +100,7 @@
     padding: 10px 15px;
     background-color: #194569;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: none;
     transition: 0.3s;
     user-select: none;

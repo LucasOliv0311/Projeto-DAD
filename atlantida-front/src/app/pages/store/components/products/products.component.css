@@ -1,31 +1,48 @@
 .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 colunas */
-    gap: 56px; /* Espaçamento entre os itens */
-  }
-  
-  .grid-item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .more-offers{
-    width: 384px;
-    height: 56px;
-    background-color: #194569;
-    border-radius: 12px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px;
 }
+
+.grid-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.more-offers{
+  width: 384px;
+  height: 56px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #194569;
+  transition: 0.5s;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.more-offers:hover{
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.more-offers:active{
+  transform: scale(1);
+  background-color: #13344f;
+}
+
 .more-offers p{
-    font-family: inter-bold;
-    font-size: 24px;
-    color: white;
-    text-align: center;
-    padding-top: 14px;
+  font-family: inter-bold;
+  font-size: 24px;
+  color: white;
+  text-align: center;
 }
+
 .giggs{
-    margin-top: 64px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  margin-top: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -9,10 +9,9 @@
     width: 800px;
     height: fit-content;
     margin-top: 100px;
-    border-radius: 2px;
-    padding: 5px;
+    border-radius: 5px;
     background-color: #B7D0E1;
-    border: 2px solid #B7D0E1;
+    border: 1px solid #B7D0E1;
     box-shadow: 0 2px 2px 1px #c6c6c6;
 }
 
@@ -85,7 +84,7 @@
 .itemDesc {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
     padding: 5px 10px;
 }
 
@@ -143,7 +142,7 @@
     border: none;
     font-family: inter-bold;
     color: white;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .removeItem:hover {
@@ -157,6 +156,7 @@
 }
 
 .itemPrice {
+    font-size: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -240,7 +240,7 @@
     align-items: center;
     gap: 30px;
     margin-top: 100px;
-    border-radius: 2px;
+    border-radius: 5px;
     padding: 20px;
     background-color: #B7D0E1;
     border: 2px solid #B7D0E1;
@@ -274,7 +274,7 @@
 
 .summaryItemName {
     max-width: 250px;
-    font-size: 20px;
+    font-size: 18px;
     font-family: inter-bold;
     color: #194569;
     white-space: nowrap;
@@ -284,6 +284,7 @@
 
 .purchaseValue {
     width: 100%;
+    font-size: 18px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -301,7 +302,7 @@
     justify-content: center;
     align-items: center;
     padding: 10px;
-    border-radius: 2px;
+    border-radius: 5px;
     transition: 0.5s;
     user-select: none;
     background-color: #194569;

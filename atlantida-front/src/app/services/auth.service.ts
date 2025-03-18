@@ -7,30 +7,69 @@ import { ItemViewModel } from '../view-models/item.vm';
   providedIn: 'root'
 })
 export class AuthService {
+  private usersLoginList: BehaviorSubject<UserViewModel[]>;
   private userData: BehaviorSubject<UserViewModel | null>;
   private shopCart: BehaviorSubject<ItemViewModel[]>;
 
+  usersLoginList$: Observable<UserViewModel[]>;
   user$: Observable<UserViewModel | null>;
-  shopCart$: Observable<ItemViewModel[]>
+  shopCart$: Observable<ItemViewModel[]>;
 
   constructor() {
+    const storedUsersLoginList = localStorage.getItem('usersLoginList');
     const storedUser = localStorage.getItem('userData');
     const storedShopCart = localStorage.getItem('shopCart');
 
+    this.usersLoginList = new BehaviorSubject<UserViewModel[]>(storedUsersLoginList ? JSON.parse(storedUsersLoginList) : []);
     this.userData = new BehaviorSubject<UserViewModel | null>(storedUser ? JSON.parse(storedUser) : null);
-    this.shopCart = new BehaviorSubject<ItemViewModel[]>(storedShopCart ? JSON.parse(storedShopCart) ?? [] : []);
+    this.shopCart = new BehaviorSubject<ItemViewModel[]>(storedShopCart ? JSON.parse(storedShopCart) : []);
 
+    this.usersLoginList$ = this.usersLoginList.asObservable();
     this.user$ = this.userData.asObservable();
     this.shopCart$ = this.shopCart.asObservable();
   };
 
-  sendUserData(user: UserViewModel) {
-    this.userData.next(user);
-    localStorage.setItem('userData', JSON.stringify(user));
+  signup(newUser: UserViewModel) {
+    const currentUsersList = this.usersLoginList.value;
+  
+    const userExists = currentUsersList.some(user => user.nome === newUser.nome);
+    if (userExists) {
+      return false;
+    };
+  
+    const updatedUsersList = [...currentUsersList, newUser];
+    
+    this.usersLoginList.next(updatedUsersList);
+    localStorage.setItem('usersLoginList', JSON.stringify(updatedUsersList));
+  
+    return true;
+  };
+
+  login(loginUser: UserViewModel) {
+    const user = this.usersLoginList.value.find(user => 
+      user.email === loginUser.email && user.password === loginUser.password
+    );
+  
+    if (user) {
+      this.userData.next(user);
+      localStorage.setItem('userData', JSON.stringify(user));
+      return true;
+    };
+  
+    return false;
+  };
+
+  deleteUsers() {
+    this.usersLoginList.next([]);
+    localStorage.setItem('usersLoginList', JSON.stringify([]));
   };
 
   getUserData() {
     return this.userData.value ?? null;
+  };
+
+  getUsersData() {
+    return this.usersLoginList.value;
   };
 
   logout() {
@@ -55,7 +94,7 @@ export class AuthService {
   
     this.shopCart.next(updatedCart);
     localStorage.setItem('shopCart', JSON.stringify(updatedCart));
-  }
+  };
 
   removeFromShopCart(removedItem: ItemViewModel) {
     const currentCart = this.shopCart.value;
