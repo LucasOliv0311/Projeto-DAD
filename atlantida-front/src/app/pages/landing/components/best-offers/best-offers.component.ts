@@ -14,39 +14,35 @@ export class BestOffersComponent {
       id: 0,
       name: "Tilápia Fresca",
       price: 64.99,
-      quantity: 1,
       image: "/assets/images/tilapia.png"
     },
     {
       id: 1,
       name: "Camarão",
       price: 49.99,
-      quantity: 1,
       image: "/assets/images/camarao.png"
     },
     {
       id: 2,
       name: "Filé de Salmão",
       price: 54.99,
-      quantity: 1,
       image: "/assets/images/salmao.png"
     },
     {
       id: 3,
       name: "Sardinha",
       price: 29.99,
-      quantity: 1,
       image: "/assets/images/sardinha.jpg"
     }
   ];
 
   constructor(
     private router: Router,
-    private authService: AuthService,
   ) {};
 
-  addToShopCart(item: ItemViewModel) {
-    this.authService.addToShopCart(item);
+  navigateToPurchase() {
+    this.router.navigate(['store/purchase']);
+    window.scrollTo(0, 0);
   };
   
   navigateToStore() {

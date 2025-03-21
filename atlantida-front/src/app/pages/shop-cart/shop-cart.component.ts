@@ -37,11 +37,11 @@ export class ShopCartComponent {
   };
 
   totalValue() {
-    return this.shopCart.reduce((total, item) => total + item.price * item.quantity, 0);
+    return this.shopCart.reduce((total, item) => total + item.price * item.quantity!, 0);
   };
 
   totalItems() {
-    return this.shopCart.reduce((total, item) => total + item.quantity, 0);
+    return this.shopCart.reduce((total, item) => total + item.quantity!, 0);
   };
 
   navigateToStore() {

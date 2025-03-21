@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { AuthService } from '../../../../../../services/auth.service';
 import { ItemViewModel } from '../../../../../../view-models/item.vm';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'store-products-product-box',
@@ -11,9 +12,12 @@ export class StoreProductBoxComponent {
   @Input() item!: ItemViewModel;
   cuts: string[] = ['Completo', 'Cabeça', 'Filé', 'Iscas'];
 
-  constructor(private authService: AuthService) {};
+  constructor(
+    private router: Router
+  ) {};
 
-  addToShopCart() {
-    this.authService.addToShopCart(this.item);
+  navigateToPurchase() {
+    this.router.navigate(['store/purchase']);
+    window.scrollTo(0, 0);
   };
 }

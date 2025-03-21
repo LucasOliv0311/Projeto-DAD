@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, filter, Observable } from 'rxjs';
-import { loginViewModel, UserViewModel } from '../view-models';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { UserViewModel } from '../view-models';
 import { ItemViewModel } from '../view-models/item.vm';
 
 @Injectable({
@@ -84,7 +84,8 @@ export class AuthService {
   addToShopCart(addedItem: ItemViewModel) {
     const currentCart = this.shopCart.value.map(item => {
       if (item.id === addedItem.id) {
-        return { ...item, quantity: item.quantity + 1 };
+        const newQuantity = (item.quantity ?? 0) + 1;
+        return { ...item, quantity: newQuantity };
       }
       return item;
     });
@@ -105,25 +106,24 @@ export class AuthService {
   };
 
   decreaseQuant(updatedItem: ItemViewModel) {
-    let currentCart = this.shopCart.value.map(item => {
-      if (item.id === updatedItem.id) {
-        if (item.quantity > 1) {
-          return { ...item, quantity: item.quantity - 1 };
-        } else {
-          return null;
+    const currentCart = this.shopCart.value
+      .map(item => {
+        if (item.id === updatedItem.id && (item.quantity ?? 0) > 1) {
+          return { ...item, quantity: item.quantity! - 1 };
         }
-      }
-      return item;
-    }).filter(item => item !== null) as ItemViewModel[];
+        return item;
+      })
+      .filter(item => item.quantity && item.quantity > 0);
   
     this.shopCart.next(currentCart);
     localStorage.setItem('shopCart', JSON.stringify(currentCart));
-  };
+  }
 
   increaseQuant(updatedItem: ItemViewModel) {
     const currentCart = this.shopCart.value.map(item => {
       if (item.id === updatedItem.id) {
-        return { ...item, quantity: item.quantity + 1 };
+        const newQuantity = (item.quantity ?? 0) + 1;
+        return { ...item, quantity: newQuantity };
       };
       return item;
     });

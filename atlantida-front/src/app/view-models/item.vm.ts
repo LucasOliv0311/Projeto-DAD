@@ -3,5 +3,5 @@ export interface ItemViewModel {
     name: string,
     price: number,
     image: string,
-    quantity: number,
+    quantity?: number,
 }

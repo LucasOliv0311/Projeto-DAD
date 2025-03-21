@@ -106,27 +106,15 @@
     color: #194569;
 }
 
-.changeItemQuant {
-    width: 15px;
-    height: 15px;
+.plus, .minus {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 5px;
-    user-select: none;
-    background-color: #194569;
-    border: none;
-    color: white;
-    font-size: 14px;
-    text-decoration: none;
 }
 
-.changeItemQuant:hover {
+.plus img, .minus img {
+    width: 20px;
     cursor: pointer;
-}
-
-.changeItemQuant:active {
-    background-color: #13344f;
 }
 
 .removeItem {
