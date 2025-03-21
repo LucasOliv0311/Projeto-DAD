@@ -27,20 +27,21 @@ export class LoginComponent {
     if (this.authService.getUserData() != null) {
       this.authService.logout();
     };
+    console.log(this.authService.getUsersData());
   };
 
   submit() {
     if (this.form.valid) {
       const userData: UserViewModel = {
-        nome: 'Atlântida',
-        email: 'email@atlantida.org.br',
-        tel: '11 11111-1111',
-        cpf: '111.111.111-11',
-        endereco: 'Rua Atlântida, 111',
-        password: 'Atlantida123'
+        nome: '',
+        cpf: '',
+        endereco: '',
+        tel: '',
+        email: this.form.get('email')?.value,
+        password: this.form.get('password')?.value,
       }
 
-      this.authService.sendUserData(userData);
+      this.authService.login(userData);
       this.router.navigate(['']);
     };
   };
@@ -48,5 +49,9 @@ export class LoginComponent {
   goToSignup() {
     this.router.navigate(['/register/signup']);
     window.scrollTo(0, 0);
+  };
+
+  deleteUsers() {
+    this.authService.deleteUsers();
   };
 }

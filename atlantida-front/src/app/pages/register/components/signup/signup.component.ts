@@ -47,7 +47,9 @@ export class SignupComponent {
         };
 
         window.alert("Cadastro realizado com sucesso!");
+        this.authService.signup(userData);
         this.router.navigate(['register/login']);
+        window.scrollTo(0, 0);
       } else {
         console.log("senha inválida");
       };

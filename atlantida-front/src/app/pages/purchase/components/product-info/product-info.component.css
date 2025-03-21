@@ -1,6 +1,5 @@
 .box{
     display: flex;
-    flex-direction: row;
     color: #194569;
 }
 .salmaoTitulo{
@@ -84,8 +83,12 @@
     transition: 0.5s;
 }
 .addToCart:hover{
-    transition: 0.5s;
+    transform: scale(1.01);
     box-shadow:4px 4px 10px rgba(0, 0, 0, 0.3);
+}
+.addToCart:active{
+    transform: scale(1);
+    background-color: #b3b3b3;
 }
 .addToCart h4{
     font-size: 16px;

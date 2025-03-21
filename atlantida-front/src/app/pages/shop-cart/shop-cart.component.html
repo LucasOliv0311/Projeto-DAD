@@ -1,0 +1,95 @@
+<div class="shopCart">
+    <div class="itemsTable">
+        <div class="itemsTableHeader">
+            <h1 class="itemsTableTitle">Seu Carrinho</h1>
+            <h2 class="itemCounter">Itens: {{totalItems()}}</h2>
+        </div>
+
+        <div class="tableDesc">
+            <h3 class="columnDesc">ITEM</h3>
+            <h3 class="columnDesc">VALOR</h3>
+        </div>
+
+        <ng-container *ngIf="shopCart.length > 0; else noItems">
+            <ng-template *ngTemplateOutlet="itemsTable"></ng-template>
+        </ng-container>
+
+        <ng-template #itemsTable>
+            <div class="items">
+                <div class="item" *ngFor="let item of shopCart">
+                    <div class="itemImg">
+                        <img src={{item.image}} alt="imagem do item" class="img">
+                    </div>
+                    <div class="itemDesc">
+                        <span class="itemName">{{item.name}}</span>
+                        <div class="itemQuant">
+                            <p>Quantidade:</p>
+                            <div class="minus" (click)="decreaseQuant(item)">
+                                <img src="/assets/images/plusButton (2).png"/>
+                            </div>
+                            <p class="quant">
+                                {{item.quantity!}}
+                            </p>
+                            <div class="plus" (click)="increaseQuant(item)">
+                                <img src="/assets/images/plusButton (1).png"/>
+                            </div>
+                        </div>
+                        <button class="removeItem" (click)="removeItem(item)">
+                            Remover Item
+                        </button>
+                    </div>
+                    <div class="itemPrice">
+                        R${{item.price | number: '1.2-2'}}
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+
+        <ng-template #noItems>
+            <div class="noItemsTable">
+                <h1 class="noItemsTitle">VOCÊ NÃO POSSUI ITENS NO SEU CARRINHO</h1>
+
+                <h2 class="noItemsSubtitle">Explore nossa seção de produtos</h2>
+
+                <button class="button" (click)="navigateToStore()">
+                    <img src="/assets/images/shopcart_1.svg" alt="carrinho"/>
+                    Ver todos os produtos
+                </button>
+            </div>
+        </ng-template>
+    </div>
+
+    <div class="purchaseSummary">
+        <div class="purchaseTable">
+            <div class="purchaseTableHeader">
+                <h1 class="purchaseTableTitle">RESUMO DO CARRINHO</h1>
+            </div>
+
+            <div class="purchaseTableItems">
+                <div class="purchaseTableItem" *ngFor="let item of shopCart">
+                    <span class="summaryItemName">
+                        {{item.name}} ({{item.quantity!}})
+                    </span>
+
+                    <span class="itemPrice">
+                        R${{(item.price * item.quantity!) | number: '1.2-2'}}
+                    </span>
+                </div>
+            </div>
+
+            <div class="purchaseValue">
+                <span class="purchaseValueText">
+                    TOTAL A PAGAR
+                </span>
+
+                <span class="purchaseValueText">
+                    R${{totalValue() | number: '1.2-2'}}
+                </span>
+            </div>
+        </div>
+
+        <button class="finishPurchase" *ngIf="shopCart.length > 0">
+            Finalizar Compra
+        </button>
+    </div>
+</div>

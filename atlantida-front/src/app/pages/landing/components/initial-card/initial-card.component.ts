@@ -7,9 +7,10 @@ import { Router } from '@angular/router'; // Importe o Router
   styleUrl: './initial-card.component.css'
 })
 export class InitialCardComponent {
-  constructor(private router: Router) {}
+  constructor(private router: Router) {};
 
-  navigateToStore(): void {
+  navigateToStore() {
     this.router.navigate(['/store']);
+    window.scrollTo(0, 0);
   }
 }

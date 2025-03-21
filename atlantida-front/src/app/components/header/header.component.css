@@ -65,6 +65,7 @@
     user-select: none;
     background-color: #B7D0E1;
     border: none;
+    font-family: inter-bold;
     color: #194569;
     font-size: 16px;
     text-decoration: none;
@@ -81,6 +82,7 @@
     user-select: none;
     background-color: #194569;
     border: none;
+    font-family: inter-bold;
     color: white;
     font-size: 16px;
     text-decoration: none;
@@ -109,7 +111,7 @@
 
 .shopCart {
     width: 200px;
-    height: 35px;
+    height: 40px;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -119,11 +121,12 @@
     user-select: none;
     background-color: #B7D0E1;
     border: none;
+    font-family: inter-bold;
     color: #194569;
     font-size: 16px;
     text-decoration: none;
     position: relative;
-    left: 20px;
+    left: 15px;
 }
 
 .shopCart:hover {
@@ -153,9 +156,9 @@
     user-select: none;
     background-color: #F1290A;
     border: none;
+    font-family: inter-bold;
     color: white;
     font-size: 16px;
-    text-decoration: none;
 }
 
 .logout:hover {

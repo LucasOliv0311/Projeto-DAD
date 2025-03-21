@@ -9,6 +9,10 @@ import { Router } from '@angular/router';
 export class FooterComponent {
   constructor(private router: Router) {};
 
+  goToStore() {
+    this.router.navigate(['store']);
+    window.scrollTo(0, 0);
+  };
   goToLanding() {
     this.router.navigate(['']);
     window.scrollTo(0, 0);
