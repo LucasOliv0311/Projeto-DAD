@@ -1,0 +1,39 @@
+table {
+    width: 1312px;
+    border-collapse: collapse;
+    margin-left: 64px;
+    margin-top: 16px;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #B7D0E1;
+    color: white;
+    font-family: inter-bold;
+  }
+  
+  .action-btn {
+    background-color: #FEFEFE;
+    box-shadow:2px 2px 5px rgba(0, 0, 0, 0.3);
+    border: none;
+    border-radius: 8px;
+    padding: 3px 6px;     
+    margin-right: 5px;
+    cursor: pointer;
+  }
+  .icons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: nowrap;
+    margin: 8px 16px 8px 16px;
+  }
+  td:first-child {
+    width: 1%;
+    white-space: nowrap; 
+  }

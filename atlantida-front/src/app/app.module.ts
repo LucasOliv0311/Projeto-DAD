@@ -23,6 +23,14 @@ import { StoreProductOptionsComponent } from "./pages/store/components/product-o
 import { StoreProductBoxComponent } from "./pages/store/components/products/components/product-box/product-box.component";
 import { StoreProductsComponent } from "./pages/store/components/products/products.component";
 import { StoreComponent } from "./pages/store/store.component";
+import { AdminSpaceComponent } from "./pages/admin-space/admin-space.component";
+import { AdminSpaceQuickAccessComponent } from "./pages/admin-space/components/quick-access/quick-access.component";
+import { AdminSpaceClientsAreaComponent } from "./pages/clients-area/clients-area.component";
+import { ClientsAreaTableComponent } from "./pages/clients-area/components/table/table.component";
+import { ProductsAreaTableComponent } from "./pages/products-area/components/table/table.component";
+import { AdminSpaceProductsAreaComponent } from "./pages/products-area/products-area.component";
+import { AdminSpaceSalesAreaComponent } from "./pages/sales-area/sales-area.component";
+import { SalesAreaTableComponent } from "./pages/sales-area/components/table/table.component";
 
 @NgModule({
   declarations: [
@@ -46,7 +54,15 @@ import { StoreComponent } from "./pages/store/store.component";
     PurchaseComponent,
     PurchaseProductInfoComponent,
     PurchaseMoreOffersComponent,
-    PurchaseInfoSectionComponent
+    PurchaseInfoSectionComponent,
+    AdminSpaceComponent,
+    AdminSpaceQuickAccessComponent,
+    AdminSpaceClientsAreaComponent,
+    ClientsAreaTableComponent,
+    AdminSpaceProductsAreaComponent,
+    ProductsAreaTableComponent,
+    AdminSpaceSalesAreaComponent,
+    SalesAreaTableComponent,
   ],
   imports: [
     BrowserModule,

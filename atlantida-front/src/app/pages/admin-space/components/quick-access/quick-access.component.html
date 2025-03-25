@@ -1,0 +1,16 @@
+<div class="items">
+    <div class="content" *ngFor="let item of quickAccess; let i = index" (click)="navigateToArea(i)">
+      <div class="title">
+        <div>
+          <img [src]="item.imgPath" alt="{{item.title}}">
+        </div>
+        <div>
+          <h5>{{item.title}}</h5>
+        </div>
+      </div>
+      <div class="description">
+        {{item.description}}
+      </div>
+    </div>
+  </div>
+  
