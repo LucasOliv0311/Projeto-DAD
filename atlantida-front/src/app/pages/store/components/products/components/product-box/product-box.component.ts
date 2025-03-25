@@ -12,12 +12,10 @@ export class StoreProductBoxComponent {
   @Input() item!: ItemViewModel;
   cuts: string[] = ['Completo', 'Cabeça', 'Filé', 'Iscas'];
 
-  constructor(
-    private router: Router
-  ) {};
+    constructor (private router: Router){}
 
-  navigateToPurchase() {
-    this.router.navigate(['store/purchase']);
-    window.scrollTo(0, 0);
-  };
+    navigateToPurchase(): void {
+        this.router.navigate(['/store/purchase']);
+        window.scrollTo(0, 0);
+    }
 }
