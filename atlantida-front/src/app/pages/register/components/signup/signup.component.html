@@ -35,12 +35,12 @@
     </div>
 
     <div class="buttons">
-        <button class="button confirm" type="submit" [disabled]="form.invalid">
-            CONFIRMAR
-        </button>
-
         <button class="button login" type="button" (click)="goToLogin()">
             FAZER LOGIN
+        </button>
+        
+        <button class="button confirm" type="submit" [disabled]="form.invalid">
+            CONFIRMAR
         </button>
     </div>
 </form>
