@@ -8,19 +8,19 @@ import java.time.LocalDate;
 @Data
 public class CartaoDtoCreate {
 
-    @Column(nullable = false, unique = true, length = 16)
+    @Column(nullable = false, unique = true)
     private String numeroCartao;
 
     @Column(nullable = false)
     private LocalDate validade;
 
-    @Column(nullable = false, length = 3)
+    @Column(nullable = false)
     private String cvv;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false)
     private String bandeira;
 
-    @Column(nullable = false, length = 10)
+    @Column(nullable = false)
     private String tipo;
 
     private int clienteId;

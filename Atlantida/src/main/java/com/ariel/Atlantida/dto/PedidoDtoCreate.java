@@ -10,20 +10,11 @@ import lombok.Data;
 
 @Data
 public class PedidoDtoCreate {
-    private int idPedido;
     private Integer idProduto;
     private LocalDateTime dataPedido;
     private BigDecimal valorTotal;
     private Integer idCartao;
-
-    public int getIdPedido() {
-        return idPedido;
-    }
-
-    public void setIdPedido(int idPedido) {
-        this.idPedido = idPedido;
-    }
-
+    private int idCliente;
 
     public LocalDateTime getDataPedido() {
         return dataPedido;

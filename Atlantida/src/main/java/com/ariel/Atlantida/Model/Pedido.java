@@ -23,6 +23,9 @@ public class Pedido {
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal valorTotal;
 
+    @Transient
+    private Cliente idCliente;
+
     @ManyToOne
     @JoinColumn(name = "id_cartao")
     private Cartao idCartao;

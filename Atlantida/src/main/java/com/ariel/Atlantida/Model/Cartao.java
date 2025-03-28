@@ -12,19 +12,19 @@ public class Cartao {
     @Column(name = "id_cartao")
     private int idCartao;
 
-    @Column(nullable = false, unique = true, length = 16)
+    @Column(nullable = false, unique = true)
     private String numeroCartao;
 
     @Column(nullable = false)
     private LocalDate validade;
 
-    @Column(nullable = false, length = 3)
+    @Column(nullable = false)
     private String cvv;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false)
     private String bandeira;
 
-    @Column(nullable = false, length = 10)
+    @Column(nullable = false)
     private String tipo;
 
     @ManyToOne

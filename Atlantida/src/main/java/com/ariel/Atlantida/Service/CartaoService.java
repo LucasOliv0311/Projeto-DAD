@@ -20,7 +20,7 @@ public class CartaoService {
 
     public Cartao criarCartao(CartaoDtoCreate cartaoDTO) {
         Cliente cliente = clienteRepository.findById(cartaoDTO.getClienteId())
-                .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
+                .orElseThrow(() -> new RuntimeException("Cliente com ID " + cartaoDTO.getClienteId() + " não encontrado"));
 
         Cartao cartao = new Cartao();
         cartao.setNumeroCartao(cartaoDTO.getNumeroCartao());
@@ -35,12 +35,13 @@ public class CartaoService {
 
     public Cartao buscarCartao(int id) {
         return cartaoRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Cartão não encontrado"));
+                .orElseThrow(() -> new RuntimeException("Cartão com ID " + id + " não encontrado"));
     }
 
     public List<Cartao> buscarCartoesPorCliente(int clienteId) {
-        clienteRepository.findById(clienteId)
-                .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
+        if (!clienteRepository.existsById(clienteId)) {
+            throw new RuntimeException("Cliente com ID " + clienteId + " não encontrado");
+        }
         return cartaoRepository.findByIdCliente_IdCliente(clienteId);
     }
 
@@ -51,7 +52,7 @@ public class CartaoService {
     public Cartao atualizarCartao(int id, CartaoDtoCreate cartaoDTO) {
         Cartao cartao = buscarCartao(id);
         Cliente cliente = clienteRepository.findById(cartaoDTO.getClienteId())
-                .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
+                .orElseThrow(() -> new RuntimeException("Cliente com ID " + cartaoDTO.getClienteId() + " não encontrado"));
 
         cartao.setNumeroCartao(cartaoDTO.getNumeroCartao());
         cartao.setValidade(cartaoDTO.getValidade());
