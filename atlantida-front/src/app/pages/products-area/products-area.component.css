@@ -1,0 +1,35 @@
+.title{
+    padding-top: 144px;
+    padding-left: 64px;
+    color: #194569;
+}
+.title h1{
+    font-size: 48px;
+    font-family: inter-black;
+}
+.title h3{
+    margin-top: 16px;
+    font-size: 24px;
+    font-family: inter;
+}
+.table{
+    margin-top: 40px;
+    margin-bottom: 80px;
+}
+.add-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    background-color: #B7D0E1;
+    width: 216px;
+    height: 40px;
+    color: white;
+    font-family: inter-bold;
+    border-radius: 8px;
+}
+.butao{
+    display: flex;
+    justify-content: end;
+    margin-right: 136px;
+}

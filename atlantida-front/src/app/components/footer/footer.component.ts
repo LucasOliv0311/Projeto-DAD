@@ -16,5 +16,9 @@ export class FooterComponent {
   goToLanding() {
     this.router.navigate(['']);
     window.scrollTo(0, 0);
+  }
+  goToAdminSpace() {
+    this.router.navigate(['/admin-space']);
+    window.scrollTo(0, 0);
   };
 }
