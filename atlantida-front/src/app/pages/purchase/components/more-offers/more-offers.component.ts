@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ItemViewModel } from '../../../../view-models/item.vm';
-import { AuthService } from '../../../../services/auth.service';
+import { AuthService } from '../../../../services/auth/auth.service';
 
 @Component({
   selector: 'atlantida-purchase-more-offers',
