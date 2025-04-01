@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ItemViewModel } from '../../../../view-models/item.vm';
-import { AuthService } from '../../../../services/auth.service';
+import { AuthService } from '../../../../services/auth/auth.service';
 import { Router } from '@angular/router';
 import { UserViewModel } from '../../../../view-models';
 
