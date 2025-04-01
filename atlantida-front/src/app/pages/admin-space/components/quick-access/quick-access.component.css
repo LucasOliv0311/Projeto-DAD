@@ -1,0 +1,39 @@
+.items{
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+.content{
+    width: 304px;
+    height: 176px;
+    border: 2px solid #194569;
+    box-shadow:2px 2px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.content:hover{
+    box-shadow:4px 4px 10px rgba(0, 0, 0, 0.3);
+    transition: 0.5s;
+}
+.title{
+    display: flex;
+    flex-direction: row;
+    margin-top: 24px;
+    margin-left: 24px;
+}
+.title h5{
+    font-size: 24px;
+    font-family: inter-bold ;
+    color: #194569;
+    margin-left: 8px;
+}
+.description{
+    margin-top: 16px;
+    margin-left: 24px;
+    margin-right: 24px;
+}
+.description p{
+    color: #194569;
+    font-family: inter;
+}
