@@ -6,11 +6,12 @@ import java.util.List;
 
 
 import com.ariel.Atlantida.Model.Produto;
+import com.fasterxml.jackson.databind.JsonNode;
 import lombok.Data;
 
 @Data
 public class PedidoDtoCreate {
-    private Integer idProduto;
+    private JsonNode idProduto;
     private LocalDateTime dataPedido;
     private BigDecimal valorTotal;
     private Integer idCartao;
@@ -40,11 +41,11 @@ public class PedidoDtoCreate {
         this.idCartao = idCartao;
     }
 
-    public Integer getIdProduto() {
-        return idProduto;
-    }
+    public JsonNode getIdProduto() {return idProduto;}
 
-    public void setIdProduto(Integer idProduto) {
-        this.idProduto = idProduto;
-    }
+    public void setIdProduto(JsonNode idProduto) {this.idProduto = idProduto;}
+
+    public int getIdCliente() {return idCliente;}
+
+    public void setIdCliente(int idCliente) {this.idCliente = idCliente;}
 }
