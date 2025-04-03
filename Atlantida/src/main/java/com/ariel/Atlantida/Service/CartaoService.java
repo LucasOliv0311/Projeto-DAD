@@ -1,11 +1,11 @@
 package com.ariel.Atlantida.Service;
 
 import com.ariel.Atlantida.Model.Cartao;
-import com.ariel.Atlantida.Model.Cliente;
-import com.ariel.Atlantida.dto.CartaoDtoCreate;
 import com.ariel.Atlantida.Repository.CartaoRepository;
 import com.ariel.Atlantida.Repository.ClienteRepository;
+import com.ariel.Atlantida.dto.CartaoDtoCreate;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
@@ -19,16 +19,17 @@ public class CartaoService {
     }
 
     public Cartao criarCartao(CartaoDtoCreate cartaoDTO) {
-        Cliente cliente = clienteRepository.findById(cartaoDTO.getClienteId())
-                .orElseThrow(() -> new RuntimeException("Cliente com ID " + cartaoDTO.getClienteId() + " não encontrado"));
+        if (!clienteRepository.existsById(cartaoDTO.getClienteId())) {
+            throw new RuntimeException("Cliente com ID " + cartaoDTO.getClienteId() + " não encontrado");
+        }
 
         Cartao cartao = new Cartao();
         cartao.setNumeroCartao(cartaoDTO.getNumeroCartao());
         cartao.setValidade(cartaoDTO.getValidade());
         cartao.setCvv(cartaoDTO.getCvv());
         cartao.setBandeira(cartaoDTO.getBandeira());
-        cartao.setTipo(cartaoDTO.getTipo());
-        cartao.setIdCliente(cliente);
+//        cartao.setTipo(cartaoDTO.getTipo());
+        cartao.setIdCliente(cartaoDTO.getClienteId());
 
         return cartaoRepository.save(cartao);
     }
@@ -42,7 +43,7 @@ public class CartaoService {
         if (!clienteRepository.existsById(clienteId)) {
             throw new RuntimeException("Cliente com ID " + clienteId + " não encontrado");
         }
-        return cartaoRepository.findByIdCliente_IdCliente(clienteId);
+        return cartaoRepository.findByIdCliente(clienteId);
     }
 
     public List<Cartao> listarCartoes() {
@@ -51,15 +52,17 @@ public class CartaoService {
 
     public Cartao atualizarCartao(int id, CartaoDtoCreate cartaoDTO) {
         Cartao cartao = buscarCartao(id);
-        Cliente cliente = clienteRepository.findById(cartaoDTO.getClienteId())
-                .orElseThrow(() -> new RuntimeException("Cliente com ID " + cartaoDTO.getClienteId() + " não encontrado"));
+
+        if (!clienteRepository.existsById(cartaoDTO.getClienteId())) {
+            throw new RuntimeException("Cliente com ID " + cartaoDTO.getClienteId() + " não encontrado");
+        }
 
         cartao.setNumeroCartao(cartaoDTO.getNumeroCartao());
         cartao.setValidade(cartaoDTO.getValidade());
         cartao.setCvv(cartaoDTO.getCvv());
         cartao.setBandeira(cartaoDTO.getBandeira());
-        cartao.setTipo(cartaoDTO.getTipo());
-        cartao.setIdCliente(cliente);
+//        cartao.setTipo(cartaoDTO.getTipo());
+        cartao.setIdCliente(cartaoDTO.getClienteId());
 
         return cartaoRepository.save(cartao);
     }

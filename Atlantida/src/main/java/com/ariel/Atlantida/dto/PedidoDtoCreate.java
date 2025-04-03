@@ -5,17 +5,15 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 
-import com.ariel.Atlantida.Model.Produto;
-import com.fasterxml.jackson.databind.JsonNode;
 import lombok.Data;
 
 @Data
 public class PedidoDtoCreate {
-    private JsonNode idProduto;
+    private List<Integer> idProduto;
     private LocalDateTime dataPedido;
     private BigDecimal valorTotal;
     private Integer idCartao;
-    private int idCliente;
+    private Integer cliente;
 
     public LocalDateTime getDataPedido() {
         return dataPedido;
@@ -41,11 +39,12 @@ public class PedidoDtoCreate {
         this.idCartao = idCartao;
     }
 
-    public JsonNode getIdProduto() {return idProduto;}
+    public int getCliente() {return cliente;}
 
-    public void setIdProduto(JsonNode idProduto) {this.idProduto = idProduto;}
+    public void setCliente(int cliente) {this.cliente = cliente;}
 
-    public int getIdCliente() {return idCliente;}
 
-    public void setIdCliente(int idCliente) {this.idCliente = idCliente;}
+    public void setIdProduto(List<Integer> idProduto) {
+        this.idProduto = idProduto;
+    }
 }

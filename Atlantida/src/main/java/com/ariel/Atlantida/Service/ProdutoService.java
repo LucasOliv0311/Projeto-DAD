@@ -20,7 +20,14 @@ public class ProdutoService {
     }
 
     public Produto buscarPorId(int idProduto) {
-        return produtoRepository.findById(idProduto).orElse(null);
+        return produtoRepository.findById((long) idProduto).orElse(null);
+    }
+
+    public List<Produto> buscarPorIds(List<Integer> idsProduto) {
+        List<Long> idsLong = idsProduto.stream()
+                .map(Long::valueOf)
+                .toList();
+        return produtoRepository.findAllByIdProdutoIn(idsLong);
     }
 
     public Produto salvar(Produto produto) {
@@ -28,10 +35,9 @@ public class ProdutoService {
     }
 
     public Produto atualizar(int idProduto, Produto produtoAtualizado) {
-        Optional<Produto> produtoExistente = produtoRepository.findById(idProduto);
+        Optional<Produto> produtoExistente = produtoRepository.findById((long) idProduto);
         if (produtoExistente.isPresent()) {
             Produto produto = produtoExistente.get();
-            produto.setIdProduto(produtoAtualizado.getIdProduto());
             produto.setNome(produtoAtualizado.getNome());
             produto.setTipo(produtoAtualizado.getTipo());
             produto.setDescricao(produtoAtualizado.getDescricao());
@@ -43,7 +49,6 @@ public class ProdutoService {
     }
 
     public void deletar(int idProduto) {
-        produtoRepository.deleteById(idProduto);
+        produtoRepository.deleteById((long) idProduto);
     }
-
 }

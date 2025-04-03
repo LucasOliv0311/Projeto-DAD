@@ -24,12 +24,11 @@ public class Cartao {
     @Column(nullable = false)
     private String bandeira;
 
-    @Column(nullable = false)
-    private String tipo;
+//    @Column(nullable = false)
+//    private String tipo;
 
-    @ManyToOne
-    @JoinColumn(name = "id_cliente")
-    private Cliente idCliente;
+    @Column(name = "id_cliente", nullable = false)
+    private int idCliente;
 
     public int getIdCartao() {
         return idCartao;
@@ -70,20 +69,13 @@ public class Cartao {
     public void setBandeira(String bandeira) {
         this.bandeira = bandeira;
     }
+//
+//    public String getTipo() {
+//        return tipo;
+//    }
+//
+//    public void setTipo(String tipo) {
+//        this.tipo = tipo;
+//    }
 
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public Cliente getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(Cliente idCliente) {
-        this.idCliente = idCliente;
-    }
 }

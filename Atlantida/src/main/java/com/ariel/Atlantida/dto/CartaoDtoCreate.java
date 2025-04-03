@@ -20,8 +20,8 @@ public class CartaoDtoCreate {
     @Column(nullable = false)
     private String bandeira;
 
-    @Column(nullable = false)
-    private String tipo;
+//    @Column(nullable = false)
+//    private String tipo;
 
     private int clienteId;
 
@@ -56,14 +56,14 @@ public class CartaoDtoCreate {
     public void setBandeira(String bandeira) {
         this.bandeira = bandeira;
     }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
+//
+//    public String getTipo() {
+//        return tipo;
+//    }
+//
+//    public void setTipo(String tipo) {
+//        this.tipo = tipo;
+//    }
 
     public int getClienteId() {
         return clienteId;

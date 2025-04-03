@@ -3,6 +3,8 @@ package com.ariel.Atlantida.Model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @Entity
 public class Cliente {
@@ -25,6 +27,12 @@ public class Cliente {
 
     @Column(columnDefinition = "TEXT")
     private String endereco;
+
+    @OneToMany(mappedBy = "cliente")
+    private List<Pedido> pedidos;
+
+    @OneToMany(mappedBy = "idCliente")
+    private List<Cartao> cartaos;
 
     public int getIdCliente() {
         return idCliente;
