@@ -1,0 +1,44 @@
+.developers {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    background-color: #B7D0E1;
+}
+
+.title {
+    font-family: inter-black;
+    font-size: 48px;
+    color: #194569;
+}
+
+.cards {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    align-items: center;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.devImage {
+    max-width: 300px;
+    max-height: 420px;
+    border-radius: 5px;
+}
+
+.devName {
+    font-size: 28px;
+    text-align: center;
+    color: #194569;
+}

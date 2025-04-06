@@ -1,0 +1,87 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 40px;
+    margin: 80px 0;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.label {
+    font-size: 20px;
+    user-select: none;
+}
+
+.text {
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 2px 1px #c6c6c6;
+    font-size: 16px;
+}
+
+.text:focus {
+    border: 2px solid #194569;
+    box-shadow: none;
+    outline: none;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.confirm {
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    transition: 0.5s;
+    user-select: none;
+    background-color: #194569;
+    border: none;
+    color: white;
+    font-size: 20px;
+    font-family: inter-bold;
+    text-decoration: none;
+}
+
+.login {
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    transition: 0.5s;
+    user-select: none;
+    background-color: #B7D0E1;
+    border: none;
+    color: #194569;
+    font-size: 20px;
+    font-family: inter-bold;
+    text-decoration: none;
+}
+
+.login:hover, .confirm:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.login:active {
+    background-color: #9aafbd;
+    transform: scale(1);
+}
+
+.confirm:active {
+    background-color: #13344f;
+    transform: scale(1);
+}

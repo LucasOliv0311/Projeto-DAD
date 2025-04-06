@@ -1,126 +1,119 @@
-# Projeto-DAD
-
-
-
-
-Documentação das Dependências do Projeto
-1. Dependências do Spring Boot
-* Redis Reativo
+DocumentaÃ§Ã£o das DependÃªncias do Projeto
+1. DependÃªncias do Spring Boot
+â€¢	Redis Reativo
 <dependency>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
 </dependency>
-Fornece integração reativa com o Redis usando Spring Data Redis e Project Reactor.
-* Web
+Fornece integraÃ§Ã£o reativa com o Redis usando Spring Data Redis e Project Reactor.
+â€¢	Web
 <dependency>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-web</artifactId>
 </dependency>
-Inclui suporte ao desenvolvimento de APIs REST e aplicações MVC com Spring Boot.
-
-2. Dependências de Inteligência Artificial
-* Neo4j Store
+Inclui suporte ao desenvolvimento de APIs REST e aplicaÃ§Ãµes MVC com Spring Boot.
+________________________________________
+2. DependÃªncias de InteligÃªncia Artificial
+â€¢	Neo4j Store
 <dependency>
     <groupId>org.springframework.ai</groupId>
     <artifactId>spring-ai-neo4j-store-spring-boot-starter</artifactId>
 </dependency>
-Habilita o uso do Neo4j como um armazenamento para inteligência artificial com Spring AI.
-* PostgresML
+Habilita o uso do Neo4j como um armazenamento para inteligÃªncia artificial com Spring AI.
+â€¢	PostgresML
 <dependency>
     <groupId>org.springframework.ai</groupId>
     <artifactId>spring-ai-postgresml-spring-boot-starter</artifactId>
 </dependency>
-Permite a integração entre o Spring AI e o PostgreSQL Machine Learning (PostgresML).
-
-3. Dependência para Kafka
+Permite a integraÃ§Ã£o entre o Spring AI e o PostgreSQL Machine Learning (PostgresML).
+________________________________________
+3. DependÃªncia para Kafka
 <dependency>
     <groupId>org.springframework.kafka</groupId>
     <artifactId>spring-kafka</artifactId>
 </dependency>
-Facilita a comunicação assíncrona entre serviços usando Apache Kafka.
-
-4. Dependência para Lombok
+Facilita a comunicaÃ§Ã£o assÃ­ncrona entre serviÃ§os usando Apache Kafka.
+________________________________________
+4. DependÃªncia para Lombok
 <dependency>
     <groupId>org.projectlombok</groupId>
     <artifactId>lombok</artifactId>
     <scope>provided</scope>
 </dependency>
-Automatiza a geração de métodos boilerplate, como getters e setters, reduzindo código repetitivo.
-
-5. Dependências para Testes
-* Spring Boot Test
+Automatiza a geraÃ§Ã£o de mÃ©todos boilerplate, como getters e setters, reduzindo cÃ³digo repetitivo.
+________________________________________
+5. DependÃªncias para Testes
+â€¢	Spring Boot Test
 <dependency>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-test</artifactId>
     <scope>test</scope>
 </dependency>
-Inclui ferramentas para testes unitários e de integração no Spring Boot.
-* Reactor Test
+Inclui ferramentas para testes unitÃ¡rios e de integraÃ§Ã£o no Spring Boot.
+â€¢	Reactor Test
 <dependency>
     <groupId>io.projectreactor</groupId>
     <artifactId>reactor-test</artifactId>
     <scope>test</scope>
 </dependency>
-Suporte a testes para aplicações reativas baseadas em Project Reactor.
-* Kafka Test
+Suporte a testes para aplicaÃ§Ãµes reativas baseadas em Project Reactor.
+â€¢	Kafka Test
 <dependency>
     <groupId>org.springframework.kafka</groupId>
     <artifactId>spring-kafka-test</artifactId>
     <scope>test</scope>
 </dependency>
-Oferece ferramentas para testes de integração com Kafka.
-
-6. Dependência para JPA
+Oferece ferramentas para testes de integraÃ§Ã£o com Kafka.
+________________________________________
+6. DependÃªncia para JPA
 <dependency>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-data-jpa</artifactId>
 </dependency>
 Fornece suporte ao Hibernate e JPA para interagir com bancos de dados relacionais.
-
-
-
-7. Dependência para PostgreSQL
+________________________________________
+â€ƒ
+7. DependÃªncia para PostgreSQL
 <dependency>
     <groupId>org.postgresql</groupId>
     <artifactId>postgresql</artifactId>
 </dependency>
-Driver JDBC para conexão com PostgreSQL.
-
-8. Dependência para JavaFX
+Driver JDBC para conexÃ£o com PostgreSQL.
+________________________________________
+8. DependÃªncia para JavaFX
 <dependency>
     <groupId>org.openjfx</groupId>
     <artifactId>javafx-graphics</artifactId>
     <version>21</version>
 </dependency>
-Biblioteca para desenvolvimento de interfaces gráficas com JavaFX.
-
-9. Dependências para Azure
+Biblioteca para desenvolvimento de interfaces grÃ¡ficas com JavaFX.
+________________________________________
+9. DependÃªncias para Azure
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-core</artifactId>
     <version>1.54.1</version>
 </dependency>
-Biblioteca base para integração com serviços da Microsoft Azure.
-
-10. Dependências para Geração de Esquema JSON
+Biblioteca base para integraÃ§Ã£o com serviÃ§os da Microsoft Azure.
+________________________________________
+10. DependÃªncias para GeraÃ§Ã£o de Esquema JSON
 <dependency>
     <groupId>com.github.victools</groupId>
     <artifactId>jsonschema-module-swagger-2</artifactId>
     <version>4.37.0</version>
 </dependency>
-Permite a geração automática de esquemas JSON baseados no Swagger/OpenAPI.
-
-11. Dependência para Documentação da API
+Permite a geraÃ§Ã£o automÃ¡tica de esquemas JSON baseados no Swagger/OpenAPI.
+________________________________________
+11. DependÃªncia para DocumentaÃ§Ã£o da API
 <dependency>
     <groupId>org.springdoc</groupId>
     <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
     <version>2.3.0</version>
 </dependency>
-Gera documentação interativa da API baseada no OpenAPI com Swagger UI.
-
-
-
-12 . Gerenciamento de Dependências
+Gera documentaÃ§Ã£o interativa da API baseada no OpenAPI com Swagger UI.
+________________________________________
+â€ƒ
+12 . Gerenciamento de DependÃªncias
 <dependencyManagement>
     <dependencies>
         <dependency>
@@ -132,10 +125,10 @@ Gera documentação interativa da API baseada no OpenAPI com Swagger UI.
         </dependency>
     </dependencies>
 </dependencyManagement>
-Garante compatibilidade entre as versões das bibliotecas do Spring AI.
-
+Garante compatibilidade entre as versÃµes das bibliotecas do Spring AI.
+________________________________________
 13. Plugins do Maven
-* Maven Compiler Plugin
+â€¢	Maven Compiler Plugin
 <plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-compiler-plugin</artifactId>
@@ -150,8 +143,8 @@ Garante compatibilidade entre as versões das bibliotecas do Spring AI.
         </annotationProcessorPaths>
     </configuration>
 </plugin>
-Configura a versão do Java e o processamento de anotações.
-* Spring Boot Maven Plugin
+Configura a versÃ£o do Java e o processamento de anotaÃ§Ãµes.
+â€¢	Spring Boot Maven Plugin
 <plugin>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-maven-plugin</artifactId>
@@ -164,5 +157,4 @@ Configura a versão do Java e o processamento de anotações.
         </excludes>
     </configuration>
 </plugin>
-Facilita o empacotamento e execução da aplicação Spring Boot como um JAR independente.
-
+Facilita o empacotamento e execuÃ§Ã£o da aplicaÃ§Ã£o Spring Boot como um JAR independente.

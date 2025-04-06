@@ -1,0 +1,33 @@
+@font-face {
+font-family: inter;
+src: url('/assets/fonts/Inter/Inter-VariableFont_opsz\,wght.ttf') format('truetype');
+font-weight: normal;
+font-style: normal;
+}
+
+@font-face {
+font-family: inter-bold;
+src: url('/assets/fonts/Inter/static/Inter_18pt-Bold.ttf') format('truetype');
+font-weight: normal;
+font-style: normal;
+}
+
+@font-face {
+    font-family: inter-black;
+    src: url('/assets/fonts/Inter/static/Inter_18pt-Black.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: inter-light;
+    src: url('/assets/fonts/Inter/static/Inter_18pt-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+margin: 0;
+padding: 0;
+font-family: inter;
+}
