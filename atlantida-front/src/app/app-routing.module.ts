@@ -14,8 +14,7 @@ const routes: Routes = [
     path: 'register', 
     loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule) 
   },
-  { path: 'shop-cart', component: ShopCartComponent },
-  // { path: 'shop-cart', component: ShopCartComponent, canActivate: [AuthGuard] },
+  { path: 'shop-cart', component: ShopCartComponent },  
   { 
     path: 'admin-space', 
     loadChildren: () => import('./pages/admin-space/admin-space.module').then(m => m.AdminSpaceModule) 
