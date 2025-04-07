@@ -1,10 +1,11 @@
 package com.ariel.Atlantida.dto;
 
+import com.ariel.Atlantida.Model.Cliente;
 import jakarta.persistence.Column;
 import lombok.Data;
 
 @Data
-public class ClienteDtoCreate {
+public class ClienteDtoCreate extends Cliente {
     @Column(nullable = false, length = 100)
     private String nome;
 

@@ -6,6 +6,7 @@ import com.ariel.Atlantida.dto.ClienteDtoCreate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ClienteService {
@@ -26,19 +27,24 @@ public class ClienteService {
         return clienteRepository.save(cliente);
     }
 
-    public Cliente buscarCliente(int idCliente) {
-        return clienteRepository.findById(idCliente)
+    public ClienteDtoCreate buscarCliente(int idCliente) {
+        Cliente cliente = clienteRepository.findById(idCliente)
                 .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
+        return toDto(cliente);
     }
 
-    public Cliente buscarClientePorCpf(String cpf) {
-        return clienteRepository.findByCpf(cpf)
-                .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
+    public List<ClienteDtoCreate> listarClientes() {
+        return clienteRepository.findAll().stream()
+                .map(this::toDto)
+                .collect(Collectors.toList());
     }
 
-    public List<Cliente> listarClientes() {
-        return clienteRepository.findAll();
+    public ClienteDtoCreate buscarClientePorCpf(String cpf) {
+        Cliente cliente = clienteRepository.findByCpf(cpf)
+                .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
+        return toDto(cliente);
     }
+
 
     public Cliente atualizarCliente(int idCliente, ClienteDtoCreate clienteDTO) {
         Cliente cliente = buscarCliente(idCliente);
@@ -51,7 +57,17 @@ public class ClienteService {
     }
 
     public void deletarCliente(int idCliente) {
-        Cliente cliente = buscarCliente(idCliente);
+        ClienteDtoCreate cliente = buscarCliente(idCliente);
         clienteRepository.delete(cliente);
+    }
+
+    private ClienteDtoCreate toDto(Cliente cliente) {
+        ClienteDtoCreate dto = new ClienteDtoCreate();
+        dto.setNome(cliente.getNome());
+        dto.setCpf(cliente.getCpf());
+        dto.setTelefone(cliente.getTelefone());
+        dto.setEmail(cliente.getEmail());
+        dto.setEndereco(cliente.getEndereco());
+        return dto;
     }
 }

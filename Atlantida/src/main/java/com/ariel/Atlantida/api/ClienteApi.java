@@ -35,7 +35,7 @@ public interface ClienteApi {
             @ApiResponse(responseCode = "404", description = "Cliente não encontrado")
     })
     @GetMapping("/{idCliente}")
-    ResponseEntity<Cliente> buscarCliente(@PathVariable int idCliente);
+    ResponseEntity<ClienteDtoCreate> buscarCliente(@PathVariable int idCliente);
 
     @Operation(summary = "Busca um Cliente pelo CPF")
     @ApiResponses({
@@ -44,7 +44,7 @@ public interface ClienteApi {
             @ApiResponse(responseCode = "404", description = "Cliente não encontrado")
     })
     @GetMapping("/cpf/{cpf}")
-    ResponseEntity<Cliente> buscarClientePorCpf(@PathVariable String cpf);
+    ResponseEntity<ClienteDtoCreate> buscarClientePorCpf(@PathVariable String cpf);
 
     @Operation(summary = "Lista todos os Clientes")
     @ApiResponses({
@@ -52,7 +52,7 @@ public interface ClienteApi {
                     content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Cliente.class))))
     })
     @GetMapping
-    ResponseEntity<List<Cliente>> listarClientes();
+    ResponseEntity<List<ClienteDtoCreate>> listarClientes();
 
     @Operation(summary = "Atualiza um Cliente pelo ID")
     @ApiResponses({

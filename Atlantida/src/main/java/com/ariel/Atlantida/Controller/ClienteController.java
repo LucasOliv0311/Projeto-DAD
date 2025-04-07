@@ -25,24 +25,26 @@ public class ClienteController implements ClienteApi {
     }
 
     @Override
-    public ResponseEntity<Cliente> buscarCliente(@PathVariable int idCliente) {
-        Cliente cliente = clienteService.buscarCliente(idCliente);
+    public ResponseEntity<ClienteDtoCreate> buscarCliente(@PathVariable int idCliente) {
+        ClienteDtoCreate cliente = clienteService.buscarCliente(idCliente);
         return ResponseEntity.ok(cliente);
     }
 
     @Override
-    public ResponseEntity<Cliente> buscarClientePorCpf(@PathVariable String cpf) {
-        Cliente cliente = clienteService.buscarClientePorCpf(cpf);
+    public ResponseEntity<List<ClienteDtoCreate>> listarClientes() {
+        List<ClienteDtoCreate> clientes = clienteService.listarClientes();
+        return ResponseEntity.ok(clientes);
+    }
+
+    @Override
+    public ResponseEntity<ClienteDtoCreate> buscarClientePorCpf(@PathVariable String cpf) {
+        ClienteDtoCreate cliente = clienteService.buscarClientePorCpf(cpf);
         return ResponseEntity.ok(cliente);
     }
 
     @Override
-    public ResponseEntity<List<Cliente>> listarClientes() {
-        return ResponseEntity.ok(clienteService.listarClientes());
-    }
-
-    @Override
-    public ResponseEntity<Cliente> atualizarCliente(@PathVariable int idCliente, @Valid @RequestBody ClienteDtoCreate clienteDtoCreate) {
+    public ResponseEntity<Cliente> atualizarCliente(@PathVariable int idCliente,
+                                                    @Valid @RequestBody ClienteDtoCreate clienteDtoCreate) {
         Cliente cliente = clienteService.atualizarCliente(idCliente, clienteDtoCreate);
         return ResponseEntity.ok(cliente);
     }
