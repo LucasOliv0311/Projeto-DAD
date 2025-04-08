@@ -30,12 +30,12 @@ public class Cartao {
     @Column(name = "id_cliente", nullable = false)
     private int idCliente;
 
-    public int getIdCartao() {
-        return idCartao;
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
 
-    public void setIdCartao(int idCartao) {
-        this.idCartao = idCartao;
+    public int getIdCartao() {
+        return idCartao;
     }
 
     public String getNumeroCartao() {

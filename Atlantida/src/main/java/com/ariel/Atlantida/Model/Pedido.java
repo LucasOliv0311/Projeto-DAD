@@ -14,9 +14,6 @@ public class Pedido {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idPedido;
 
-    @ManyToMany
-    private List<Produto> idProduto;
-
     @Column(nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime dataPedido;
 
@@ -35,11 +32,6 @@ public class Pedido {
     public int getIdPedido() {
         return idPedido;
     }
-
-    public void setIdPedido(int idPedido) {
-        this.idPedido = idPedido;
-    }
-
     public Cartao getIdCartao() {
         return idCartao;
     }
@@ -64,4 +56,11 @@ public class Pedido {
         this.valorTotal = valorTotal;
     }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 }

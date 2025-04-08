@@ -31,10 +31,6 @@ public class Produto {
         return idProduto;
     }
 
-    public void setIdProduto(long idProduto) {
-        this.idProduto = idProduto;
-    }
-
     public String getNome() {
         return nome;
     }

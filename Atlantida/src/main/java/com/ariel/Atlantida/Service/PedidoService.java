@@ -31,15 +31,6 @@ public class PedidoService {
     }
 
     public Pedido criarPedido(PedidoDtoCreate pedidoDTO) {
-        List<Long> idsProduto = pedidoDTO.getIdProduto().stream()
-                .map(Integer::longValue)
-                .collect(Collectors.toList());
-
-        List<Produto> produtos = produtoRepository.findAllById(idsProduto);
-        if (produtos.size() != pedidoDTO.getIdProduto().size()) {
-            throw new RuntimeException("Alguns produtos não foram encontrados");
-        }
-
         Cliente cliente = clienteRepository.findById(pedidoDTO.getCliente())
                 .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
 
@@ -48,7 +39,6 @@ public class PedidoService {
                 : null;
 
         Pedido pedido = new Pedido();
-        pedido.setIdProduto(produtos);
         pedido.setDataPedido(pedidoDTO.getDataPedido());
         pedido.setValorTotal(pedidoDTO.getValorTotal());
         pedido.setIdCartao(cartao);
@@ -74,15 +64,6 @@ public class PedidoService {
         Pedido pedido = pedidoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Pedido não encontrado"));
 
-        List<Long> idsProduto = pedidoDTO.getIdProduto().stream()
-                .map(Integer::longValue)
-                .collect(Collectors.toList());
-
-        List<Produto> produtos = produtoRepository.findAllById(idsProduto);
-        if (produtos.size() != pedidoDTO.getIdProduto().size()) {
-            throw new RuntimeException("Alguns produtos não foram encontrados");
-        }
-
         Cliente cliente = clienteRepository.findById(pedidoDTO.getCliente())
                 .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
 
@@ -90,7 +71,6 @@ public class PedidoService {
                 ? cartaoRepository.findById(pedidoDTO.getIdCartao()).orElse(null)
                 : null;
 
-        pedido.setIdProduto(produtos);
         pedido.setDataPedido(pedidoDTO.getDataPedido());
         pedido.setValorTotal(pedidoDTO.getValorTotal());
         pedido.setCliente(cliente);
@@ -108,12 +88,6 @@ public class PedidoService {
     private PedidoDtoCreate toDto(Pedido pedido) {
         PedidoDtoCreate dto = new PedidoDtoCreate();
 
-        List<Integer> idsProduto = pedido.getIdProduto().stream()
-                .map(Produto::getIdProduto)
-                .map(Long::intValue)
-                .collect(Collectors.toList());
-
-        dto.setIdProduto(idsProduto);
         dto.setDataPedido(pedido.getDataPedido());
         dto.setValorTotal(pedido.getValorTotal());
         dto.setCliente(pedido.getCliente().getIdCliente());
