@@ -34,7 +34,7 @@ public interface PedidoApi {
             @ApiResponse(responseCode = "404", description = "Pedido não encontrado")
     })
     @GetMapping("/{id}")
-    ResponseEntity<Pedido> buscarPedido(@PathVariable int id);
+    ResponseEntity<PedidoDtoCreate> buscarPedido(@PathVariable int id);
 
     @Operation(summary = "Lista todos os Pedidos", description = "Endpoint para listar todos os pedidos cadastrados")
     @ApiResponses(value = {
@@ -42,7 +42,7 @@ public interface PedidoApi {
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = Pedido.class)))
     })
     @GetMapping
-    ResponseEntity<List<Pedido>> listarPedidos();
+    ResponseEntity<List<PedidoDtoCreate>> listarPedidos();
 
     @Operation(summary = "Atualiza um Pedido pelo ID", description = "Endpoint para atualizar um pedido existente")
     @ApiResponses(value = {
