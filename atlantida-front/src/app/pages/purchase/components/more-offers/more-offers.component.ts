@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ItemViewModel } from '../../../../view-models/item.vm';
+import { ItemViewModel, ProductViewModel } from '../../../../view-models';
 import { AuthService } from '../../../../services/auth/auth.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { AuthService } from '../../../../services/auth/auth.service';
   styleUrl: './more-offers.component.css'
 })
 export class PurchaseMoreOffersComponent {
-  items: ItemViewModel[] = [
+  items = [
     {
       id: 0,
       name: "Tilápia Fresca",

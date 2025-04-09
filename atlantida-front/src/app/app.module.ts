@@ -31,6 +31,7 @@ import { ProductsAreaTableComponent } from "./pages/products-area/components/tab
 import { AdminSpaceProductsAreaComponent } from "./pages/products-area/products-area.component";
 import { AdminSpaceSalesAreaComponent } from "./pages/sales-area/sales-area.component";
 import { SalesAreaTableComponent } from "./pages/sales-area/components/table/table.component";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { SalesAreaTableComponent } from "./pages/sales-area/components/table/tab
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

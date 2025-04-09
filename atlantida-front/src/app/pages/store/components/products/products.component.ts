@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ItemViewModel } from '../../../../view-models/item.vm';
+import { ItemViewModel } from '../../../../view-models';
 
 @Component({
   selector: 'store-products',

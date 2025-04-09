@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ItemViewModel } from '../../../../view-models/item.vm';
+import { ItemViewModel } from '../../../../view-models';
 import { AuthService } from '../../../../services/auth/auth.service';
 import { Router } from '@angular/router';
 import { UserViewModel } from '../../../../view-models';
@@ -40,13 +40,13 @@ export class PurchaseProductInfoComponent {
     };
   };
 
-  decreaseQuant() {
-    if (this.item.quantity! > 1) {
-      this.item.quantity! -= 1;
-    };
-  };
+  // decreaseQuant() {
+  //   if (this.item.quantity! > 1) {
+  //     this.item.quantity! -= 1;
+  //   };
+  // };
 
-  increaseQuant() {
-    this.item.quantity! += 1;
-  };
+  // increaseQuant() {
+  //   this.item.quantity! += 1;
+  // };
 }

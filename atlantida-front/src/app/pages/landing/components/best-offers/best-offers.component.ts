@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../../../services/auth/auth.service';
-import { ItemViewModel } from '../../../../view-models/item.vm';
+import { ProductViewModel } from '../../../../view-models'
+import { LandingService } from '../../../../services';
 
 @Component({
   selector: 'app-best-offers',
@@ -9,36 +9,22 @@ import { ItemViewModel } from '../../../../view-models/item.vm';
   styleUrl: './best-offers.component.css'
 })
 export class BestOffersComponent {
-  items: ItemViewModel[] = [
-    {
-      id: 0,
-      name: "Tilápia Fresca",
-      price: 64.99,
-      image: "/assets/images/tilapia.png"
-    },
-    {
-      id: 1,
-      name: "Camarão",
-      price: 49.99,
-      image: "/assets/images/camarao.png"
-    },
-    {
-      id: 2,
-      name: "Filé de Salmão",
-      price: 54.99,
-      image: "/assets/images/salmao.png"
-    },
-    {
-      id: 3,
-      name: "Sardinha",
-      price: 29.99,
-      image: "/assets/images/sardinha.jpg"
-    }
-  ];
+  products: ProductViewModel[] = [];
 
   constructor(
-    private router: Router,
-  ) {};
+    private landingService: LandingService,
+    private router: Router
+  ) {}
+
+  ngOnInit() {
+    this.landingService.getProducts().subscribe({
+      next: (data) => {
+        this.products = data;
+        console.log(this.products);
+      },
+      error: (err) => console.error('Erro ao buscar produtos:', err),
+    });
+  }
 
   navigateToPurchase() {
     this.router.navigate(['store/purchase']);
