@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { UserViewModel } from '../../view-models';
-import { ItemViewModel } from '../../view-models/item.vm';
+import { ItemViewModel } from '../../view-models';
 
 @Injectable({
   providedIn: 'root'

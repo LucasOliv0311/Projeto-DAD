@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
-import { ItemViewModel } from '../../view-models/item.vm';
+import { ItemViewModel } from '../../view-models';
 import { Subscription } from 'rxjs';
 
 @Component({

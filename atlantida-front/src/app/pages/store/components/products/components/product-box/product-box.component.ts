@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { AuthService } from '../../../../../../services/auth/auth.service';
-import { ItemViewModel } from '../../../../../../view-models/item.vm';
 import { Router } from '@angular/router';
+import { ItemViewModel } from '../../../../../../view-models';
 
 @Component({
   selector: 'store-products-product-box',

@@ -2,15 +2,15 @@
     <h1 class="title">AS MELHORES OFERTAS DO MERCADO</h1>
 
     <div class="cards">
-        <div class="card" *ngFor="let item of items">
+        <div class="card" *ngFor="let product of products">
             <div class="cardImage">
-                <img src={{item.image}} alt="imagem do produto"/>
+                <img src="/assets/images/tilapia.png" alt="imagem do produto"/>
             </div>
 
-            <div class="itemDesc">
-                <h3 class="productName">{{item.name}}</h3>
+            <div class="productDesc">
+                <h3 class="productName">{{product.nome}}</h3>
 
-                <h4 class="productPrice">R${{item.price}} /Kg</h4>
+                <h4 class="productPrice">R${{product.preco}} /Kg</h4>
             </div>
 
             <div class="button" (click)="navigateToPurchase()">Comprar Agora!</div>

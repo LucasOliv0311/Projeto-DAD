@@ -72,7 +72,8 @@
               "buildTarget": "atlantida-front-angular:build:production"
             },
             "development": {
-              "buildTarget": "atlantida-front-angular:build:development"
+              "buildTarget": "atlantida-front-angular:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
