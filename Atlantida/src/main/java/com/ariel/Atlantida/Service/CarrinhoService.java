@@ -28,7 +28,7 @@ public class CarrinhoService {
         Produto produto = produtoRepository.findById(dto.getProdutoId())
                 .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
 
-        Pedido pedido = pedidoRepository.findById(dto.getPedidoId())
+        Pedido pedido = pedidoRepository.findById(Math.toIntExact(dto.getPedidoId()))
                 .orElseThrow(() -> new RuntimeException("Pedido não encontrado"));
 
         if (produto.getEstoque() < dto.getQuantidade()) {

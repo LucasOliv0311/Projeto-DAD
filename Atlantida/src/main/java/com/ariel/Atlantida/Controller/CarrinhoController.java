@@ -1,41 +1,47 @@
 package com.ariel.Atlantida.Controller;
+
 import com.ariel.Atlantida.Model.Carrinho;
 import com.ariel.Atlantida.Service.CarrinhoService;
+import com.ariel.Atlantida.api.CarrinhoApi;
 import com.ariel.Atlantida.dto.CarrinhoDtoCreate;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/carrinho")
-public class CarrinhoController {
+@RequestMapping("/carrinho")
+public class CarrinhoController implements CarrinhoApi {
 
-    @Autowired
-    private CarrinhoService carrinhoService;
+    private final CarrinhoService carrinhoService;
 
-    @PostMapping
-    public Carrinho adicionar(@RequestBody CarrinhoDtoCreate dto) {
-        return carrinhoService.adicionarAoCarrinho(dto);
+    public CarrinhoController(CarrinhoService carrinhoService) {
+        this.carrinhoService = carrinhoService;
     }
 
-    @GetMapping
-    public List<Carrinho> listarTodos() {
-        return carrinhoService.listarTodos();
+    @Override
+    public ResponseEntity<Carrinho> adicionar(@RequestBody CarrinhoDtoCreate dto) {
+        return ResponseEntity.status(201).body(carrinhoService.adicionarAoCarrinho(dto));
     }
 
-    @GetMapping("/{id}")
-    public Carrinho buscarPorId(@PathVariable Long id) {
-        return carrinhoService.buscarPorId(id);
+    @Override
+    public ResponseEntity<List<Carrinho>> listar() {
+        return ResponseEntity.ok(carrinhoService.listarTodos());
     }
 
-    @DeleteMapping("/{id}")
-    public void remover(@PathVariable Long id) {
+    @Override
+    public ResponseEntity<Carrinho> buscarPorId(@PathVariable Long id) {
+        return ResponseEntity.ok(carrinhoService.buscarPorId(id));
+    }
+
+    @Override
+    public ResponseEntity<Carrinho> atualizarQuantidade(@PathVariable Long id, @RequestParam int quantidade) {
+        return ResponseEntity.ok(carrinhoService.atualizarQuantidade(id, quantidade));
+    }
+
+    @Override
+    public ResponseEntity<Void> remover(@PathVariable Long id) {
         carrinhoService.remover(id);
-    }
-
-    @PutMapping("/{id}")
-    public Carrinho atualizarQuantidade(@PathVariable Long id, @RequestBody CarrinhoDtoCreate dto) {
-        return carrinhoService.atualizarQuantidade(id, dto.getQuantidade());
+        return ResponseEntity.noContent().build();
     }
 }
-

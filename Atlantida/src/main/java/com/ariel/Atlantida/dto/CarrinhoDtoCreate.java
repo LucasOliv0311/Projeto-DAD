@@ -1,18 +1,18 @@
 package com.ariel.Atlantida.dto;
 
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
+import jakarta.persistence.Column;
 import lombok.Data;
 
 @Data
 public class CarrinhoDtoCreate {
-    @NotNull
+
+    @Column(nullable = false)
     private Long produtoId;
 
-    @NotNull
+    @Column(nullable = false)
     private Long pedidoId;
 
-    @Min(1)
+    @Column(nullable = false)
     private int quantidade;
 
     public Long getProdutoId() {
@@ -23,7 +23,7 @@ public class CarrinhoDtoCreate {
         this.produtoId = produtoId;
     }
 
-    public Integer getPedidoId() {
+    public Long getPedidoId() {
         return pedidoId;
     }
 
