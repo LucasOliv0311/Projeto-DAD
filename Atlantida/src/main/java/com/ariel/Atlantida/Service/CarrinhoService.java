@@ -1,4 +1,5 @@
 package com.ariel.Atlantida.Service;
+
 import com.ariel.Atlantida.Model.Carrinho;
 import com.ariel.Atlantida.Model.Pedido;
 import com.ariel.Atlantida.Model.Produto;
@@ -23,7 +24,6 @@ public class CarrinhoService {
     @Autowired
     private PedidoRepository pedidoRepository;
 
-    // Adiciona item ao carrinho
     public Carrinho adicionarAoCarrinho(CarrinhoDtoCreate dto) {
         Produto produto = produtoRepository.findById(dto.getProdutoId())
                 .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
@@ -40,25 +40,21 @@ public class CarrinhoService {
         carrinho.setId_pedido(pedido);
         carrinho.setQuantidade_produtos(dto.getQuantidade());
 
-        // Atualiza estoque
         produto.setEstoque(produto.getEstoque() - dto.getQuantidade());
         produtoRepository.save(produto);
 
         return carrinhoRepository.save(carrinho);
     }
 
-    // Lista todos os itens do carrinho
     public List<Carrinho> listarTodos() {
         return carrinhoRepository.findAll();
     }
 
-    // Busca item por ID
     public Carrinho buscarPorId(Long id) {
         return carrinhoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Item do carrinho não encontrado"));
     }
 
-    // Remove item do carrinho e devolve estoque
     public void remover(Long id) {
         Carrinho carrinho = buscarPorId(id);
 
@@ -69,7 +65,6 @@ public class CarrinhoService {
         carrinhoRepository.deleteById(id);
     }
 
-    // Atualiza a quantidade de um item do carrinho
     public Carrinho atualizarQuantidade(Long id, int novaQuantidade) {
         Carrinho carrinho = buscarPorId(id);
         Produto produto = carrinho.getId_produto();
@@ -78,13 +73,11 @@ public class CarrinhoService {
         int diferenca = novaQuantidade - quantidadeAtual;
 
         if (diferenca > 0) {
-            // Tentando aumentar
             if (produto.getEstoque() < diferenca) {
                 throw new RuntimeException("Estoque insuficiente para aumentar a quantidade");
             }
             produto.setEstoque(produto.getEstoque() - diferenca);
         } else if (diferenca < 0) {
-            // Diminuindo: devolver estoque
             produto.setEstoque(produto.getEstoque() + Math.abs(diferenca));
         }
 

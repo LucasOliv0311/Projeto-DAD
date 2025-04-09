@@ -1,16 +1,18 @@
 package com.ariel.Atlantida.Service;
 
 import com.ariel.Atlantida.Model.Pedido;
-import com.ariel.Atlantida.Model.Produto;
 import com.ariel.Atlantida.Model.Cartao;
 import com.ariel.Atlantida.Model.Cliente;
+import com.ariel.Atlantida.Model.Carrinho;
 import com.ariel.Atlantida.dto.PedidoDtoCreate;
+import com.ariel.Atlantida.dto.PedidoDtoResponse;
 import com.ariel.Atlantida.Repository.PedidoRepository;
 import com.ariel.Atlantida.Repository.ProdutoRepository;
 import com.ariel.Atlantida.Repository.CartaoRepository;
 import com.ariel.Atlantida.Repository.ClienteRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -53,10 +55,24 @@ public class PedidoService {
         return toDto(pedido);
     }
 
+    public PedidoDtoResponse buscarPedidoComCarrinhos(int id) {
+        Pedido pedido = pedidoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Pedido não encontrado"));
+
+        return toResponseDto(pedido);
+    }
+
     public List<PedidoDtoCreate> listarPedidos() {
         return pedidoRepository.findAll()
                 .stream()
                 .map(this::toDto)
+                .collect(Collectors.toList());
+    }
+
+    public List<PedidoDtoResponse> listarPedidosComCarrinhos() {
+        return pedidoRepository.findAll()
+                .stream()
+                .map(this::toResponseDto)
                 .collect(Collectors.toList());
     }
 
@@ -97,5 +113,30 @@ public class PedidoService {
         }
 
         return dto;
+    }
+
+    private PedidoDtoResponse toResponseDto(Pedido pedido) {
+        PedidoDtoResponse response = new PedidoDtoResponse();
+        response.setIdPedido(pedido.getIdPedido());
+        response.setDataPedido(LocalDate.from(pedido.getDataPedido()));
+        response.setValorTotal(pedido.getValorTotal());
+
+        if (pedido.getIdCartao() != null) {
+            response.setIdCartao(pedido.getIdCartao().getIdCartao());
+        }
+
+        response.setIdCliente(pedido.getCliente().getIdCliente());
+
+        response.setCarrinhos(
+                pedido.getCarrinhos().stream().map(carrinho -> {
+                    PedidoDtoResponse.CarrinhoResumo c = new PedidoDtoResponse.CarrinhoResumo();
+                    c.setIdCarrinho(carrinho.getId_carrinho());
+                    c.setIdProduto(carrinho.getId_produto().getIdProduto());
+                    c.setQuantidade(carrinho.getQuantidade_produtos());
+                    return c;
+                }).collect(Collectors.toList())
+        );
+
+        return response;
     }
 }

@@ -4,6 +4,7 @@ import com.ariel.Atlantida.Model.Pedido;
 import com.ariel.Atlantida.Service.PedidoService;
 import com.ariel.Atlantida.api.PedidoApi;
 import com.ariel.Atlantida.dto.PedidoDtoCreate;
+import com.ariel.Atlantida.dto.PedidoDtoResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,14 +27,15 @@ public class PedidoController implements PedidoApi {
     }
 
     @Override
-    public ResponseEntity<PedidoDtoCreate> buscarPedido(@PathVariable int id) {
-        PedidoDtoCreate dto = pedidoService.buscarPedido(id);
+    public ResponseEntity<PedidoDtoResponse> buscarPedido(@PathVariable int id) {
+        PedidoDtoResponse dto = pedidoService.buscarPedidoComCarrinhos(id);
         return ResponseEntity.ok(dto);
     }
 
     @Override
-    public ResponseEntity<List<PedidoDtoCreate>> listarPedidos() {
-        return ResponseEntity.ok(pedidoService.listarPedidos());
+    public ResponseEntity<List<PedidoDtoResponse>> listarPedidos() {
+        List<PedidoDtoResponse> pedidos = pedidoService.listarPedidosComCarrinhos();
+        return ResponseEntity.ok(pedidos);
     }
 
     @Override

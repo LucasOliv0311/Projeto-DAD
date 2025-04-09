@@ -2,6 +2,7 @@ package com.ariel.Atlantida.api;
 
 import com.ariel.Atlantida.Model.Pedido;
 import com.ariel.Atlantida.dto.PedidoDtoCreate;
+import com.ariel.Atlantida.dto.PedidoDtoResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -30,19 +31,19 @@ public interface PedidoApi {
     @Operation(summary = "Busca um Pedido pelo ID", description = "Endpoint para recuperar um pedido específico pelo ID")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Pedido encontrado",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = Pedido.class))),
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = PedidoDtoResponse.class))),
             @ApiResponse(responseCode = "404", description = "Pedido não encontrado")
     })
     @GetMapping("/{id}")
-    ResponseEntity<PedidoDtoCreate> buscarPedido(@PathVariable int id);
+    ResponseEntity<PedidoDtoResponse> buscarPedido(@PathVariable int id);
 
     @Operation(summary = "Lista todos os Pedidos", description = "Endpoint para listar todos os pedidos cadastrados")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Lista de pedidos recuperada com sucesso",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = Pedido.class)))
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = PedidoDtoResponse.class)))
     })
     @GetMapping
-    ResponseEntity<List<PedidoDtoCreate>> listarPedidos();
+    ResponseEntity<List<PedidoDtoResponse>> listarPedidos();
 
     @Operation(summary = "Atualiza um Pedido pelo ID", description = "Endpoint para atualizar um pedido existente")
     @ApiResponses(value = {

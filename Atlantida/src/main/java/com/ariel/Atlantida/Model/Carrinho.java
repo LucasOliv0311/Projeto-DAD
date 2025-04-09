@@ -22,8 +22,8 @@ public class Carrinho {
     // Getters e setters
 
 
-    public Long getId_carrinho() {
-        return id_carrinho;
+    public Integer getId_carrinho() {
+        return Math.toIntExact(id_carrinho);
     }
 
     public void setId_carrinho(Long id_carrinho) {

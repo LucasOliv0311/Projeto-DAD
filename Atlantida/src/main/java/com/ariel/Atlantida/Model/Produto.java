@@ -27,8 +27,8 @@ public class Produto {
     @Column(nullable = false)
     private Integer estoque;
 
-    public long getIdProduto() {
-        return idProduto;
+    public int getIdProduto() {
+        return (int) idProduto;
     }
 
     public String getNome() {

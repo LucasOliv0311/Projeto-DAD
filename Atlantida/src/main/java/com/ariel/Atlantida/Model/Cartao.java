@@ -34,7 +34,7 @@ public class Cartao {
         this.idCliente = idCliente;
     }
 
-    public int getIdCartao() {
+    public Integer getIdCartao() {
         return idCartao;
     }
 

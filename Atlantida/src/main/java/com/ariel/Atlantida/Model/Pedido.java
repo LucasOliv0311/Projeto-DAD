@@ -10,6 +10,7 @@ import java.util.List;
 @Data
 @Entity
 public class Pedido {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idPedido;
@@ -28,16 +29,17 @@ public class Pedido {
     @JoinColumn(name = "id_cartao")
     private Cartao idCartao;
 
+    @OneToMany(mappedBy = "id_pedido", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Carrinho> carrinhos;
+
+    // Getters e setters
 
     public int getIdPedido() {
         return idPedido;
     }
-    public Cartao getIdCartao() {
-        return idCartao;
-    }
 
-    public void setIdCartao(Cartao idCartao) {
-        this.idCartao = idCartao;
+    public void setIdPedido(int idPedido) {
+        this.idPedido = idPedido;
     }
 
     public LocalDateTime getDataPedido() {
@@ -62,5 +64,21 @@ public class Pedido {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public Cartao getIdCartao() {
+        return idCartao;
+    }
+
+    public void setIdCartao(Cartao idCartao) {
+        this.idCartao = idCartao;
+    }
+
+    public List<Carrinho> getCarrinhos() {
+        return carrinhos;
+    }
+
+    public void setCarrinhos(List<Carrinho> carrinhos) {
+        this.carrinhos = carrinhos;
     }
 }
