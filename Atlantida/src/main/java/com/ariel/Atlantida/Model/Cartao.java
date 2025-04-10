@@ -24,8 +24,8 @@ public class Cartao {
     @Column(nullable = false)
     private String bandeira;
 
-//    @Column(nullable = false)
-//    private String tipo;
+    @Column(nullable = false)
+    private String tipo;
 
     @Column(name = "id_cliente", nullable = false)
     private int idCliente;
