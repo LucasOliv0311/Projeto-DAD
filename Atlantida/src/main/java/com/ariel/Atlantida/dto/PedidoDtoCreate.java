@@ -11,7 +11,7 @@ import lombok.Data;
 public class PedidoDtoCreate {
     private List<Integer> idProduto;
     private LocalDateTime dataPedido;
-    private double valorTotal;
+    private BigDecimal valorTotal;
     private Integer idCartao;
     private Integer cliente;
 
@@ -23,11 +23,11 @@ public class PedidoDtoCreate {
         this.dataPedido = dataPedido;
     }
 
-    public double getValorTotal() {
+    public BigDecimal getValorTotal() {
         return valorTotal;
     }
 
-    public void setValorTotal(double valorTotal) {
+    public void setValorTotal(BigDecimal valorTotal) {
         this.valorTotal = valorTotal;
     }
 
