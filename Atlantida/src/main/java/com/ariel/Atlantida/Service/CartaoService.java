@@ -28,7 +28,7 @@ public class CartaoService {
         cartao.setValidade(cartaoDTO.getValidade());
         cartao.setCvv(cartaoDTO.getCvv());
         cartao.setBandeira(cartaoDTO.getBandeira());
-//        cartao.setTipo(cartaoDTO.getTipo());
+        cartao.setTipo(cartaoDTO.getTipo());
         cartao.setIdCliente(cartaoDTO.getClienteId());
 
         return cartaoRepository.save(cartao);
@@ -61,7 +61,7 @@ public class CartaoService {
         cartao.setValidade(cartaoDTO.getValidade());
         cartao.setCvv(cartaoDTO.getCvv());
         cartao.setBandeira(cartaoDTO.getBandeira());
-//        cartao.setTipo(cartaoDTO.getTipo());
+        cartao.setTipo(cartaoDTO.getTipo());
         cartao.setIdCliente(cartaoDTO.getClienteId());
 
         return cartaoRepository.save(cartao);

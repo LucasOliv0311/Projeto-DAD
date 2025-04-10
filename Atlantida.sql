@@ -18,7 +18,7 @@ CREATE TABLE Cartao (
                         validade DATE NOT NULL,
                         cvv CHAR(3) NOT NULL,
                         bandeira VARCHAR(50) NOT NULL,
-                        tipo VARCHAR(10) ,--CHECK (tipo IN ('Crédito', 'Débito')) NOT NULL
+                        tipo VARCHAR(10),
                         id_cliente INT NOT NULL,
                         FOREIGN KEY (id_cliente) REFERENCES Cliente(id_cliente) ON DELETE CASCADE
 );
@@ -36,7 +36,6 @@ CREATE TABLE Pedido (
                         id_pedido SERIAL PRIMARY KEY,
                         id_cliente INT NOT NULL,
                         data_pedido TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                        id_produto JSON,
                         valor_total DECIMAL(10,2) NOT NULL CHECK (valor_total >= 0),
                         id_cartao INT NOT NULL,
                         FOREIGN KEY (id_cliente) REFERENCES Cliente(id_cliente) ON DELETE CASCADE,
