@@ -22,7 +22,7 @@ public class Produto {
     private String tipo;
 
     @Column(nullable = false, precision = 10, scale = 2)
-    private double preco;
+    private BigDecimal preco;
 
     @Column(nullable = false)
     private Integer estoque;
@@ -59,11 +59,11 @@ public class Produto {
         this.tipo = tipo;
     }
 
-    public double getPreco() {
+    public BigDecimal getPreco() {
         return preco;
     }
 
-    public void setPreco(double preco) {
+    public void setPreco(BigDecimal preco) {
         this.preco = preco;
     }
 

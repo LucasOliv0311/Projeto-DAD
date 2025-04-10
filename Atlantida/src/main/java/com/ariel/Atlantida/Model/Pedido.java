@@ -21,7 +21,7 @@ public class Pedido {
     private LocalDateTime dataPedido;
 
     @Column(nullable = false, precision = 10, scale = 2)
-    private double valorTotal;
+    private BigDecimal valorTotal;
 
     @ManyToOne
     @JoinColumn(name = "id_cliente", nullable = false)
@@ -56,11 +56,11 @@ public class Pedido {
         this.dataPedido = dataPedido;
     }
 
-    public double getValorTotal() {
+    public BigDecimal getValorTotal() {
         return valorTotal;
     }
 
-    public void setValorTotal(double valorTotal) {
+    public void setValorTotal(BigDecimal valorTotal) {
         this.valorTotal = valorTotal;
     }
 

@@ -27,7 +27,7 @@ CREATE TABLE Produto (
                          id_produto SERIAL PRIMARY KEY,
                          nome VARCHAR(100) NOT NULL,
                          descricao TEXT,
-                         preco DECIMAL(10,2) NOT NULL CHECK (preco >= 0),
+                         preco DOUBLE NOT NULL CHECK (preco >= 0),
                          estoque INT NOT NULL CHECK (estoque >= 0),
                          tipo VARCHAR(100) NOT NULL DEFAULT 'valor_default'
 );
@@ -36,7 +36,7 @@ CREATE TABLE Pedido (
                         id_pedido SERIAL PRIMARY KEY,
                         id_cliente INT NOT NULL,
                         data_pedido TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                        valor_total DECIMAL(10,2) NOT NULL CHECK (valor_total >= 0),
+                        valor_total DOUBLE NOT NULL CHECK (valor_total >= 0),
                         id_cartao INT NOT NULL,
                         FOREIGN KEY (id_cliente) REFERENCES Cliente(id_cliente) ON DELETE CASCADE,
                         FOREIGN KEY (id_cartao) REFERENCES Cartao(id_cartao) ON DELETE SET NULL
