@@ -10,4 +10,4 @@ export class LandingController {
   async getProducts(): Promise<ProductViewModel[]> {
     return this.landingService.getProducts();
   }
-}
+} 

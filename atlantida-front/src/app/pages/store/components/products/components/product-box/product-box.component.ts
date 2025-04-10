@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { ItemViewModel } from '../../../../../../view-models';
+import { ItemViewModel, ProductViewModel } from '../../../../../../view-models';
 
 @Component({
   selector: 'store-products-product-box',
@@ -8,10 +8,11 @@ import { ItemViewModel } from '../../../../../../view-models';
   styleUrls: ['./product-box.component.css']
 })
 export class StoreProductBoxComponent {
-  @Input() item!: ItemViewModel;
-  cuts: string[] = ['Completo', 'Cabeça', 'Filé', 'Iscas'];
+  @Input() item!: ProductViewModel;
 
-    constructor (private router: Router){}
+  constructor (private router: Router){}
+ 
+
 
     navigateToPurchase(): void {
         this.router.navigate(['/store/purchase']);
