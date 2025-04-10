@@ -20,7 +20,6 @@ export class BestOffersComponent {
     this.landingService.getProducts().subscribe({
       next: (data) => {
         this.products = data;
-        console.log(this.products);
       },
       error: (err) => console.error('Erro ao buscar produtos:', err),
     });

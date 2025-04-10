@@ -31,13 +31,7 @@ export class PurchaseProductInfoComponent {
   }
 
   addToShopCart() {
-    console.log(this.userData);
-    if (this.userData != null) {
-      this.authService.addToShopCart(this.item);
-    } else {
-      this.router.navigate(['register/login']);
-      window.scrollTo(0, 0);
-    };
+    
   };
 
   // decreaseQuant() {

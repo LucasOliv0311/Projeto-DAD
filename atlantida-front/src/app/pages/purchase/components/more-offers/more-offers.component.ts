@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ItemViewModel, ProductViewModel } from '../../../../view-models';
 import { AuthService } from '../../../../services/auth/auth.service';
+import { LandingService } from '../../../../services';
 
 @Component({
   selector: 'atlantida-purchase-more-offers',
@@ -9,44 +10,29 @@ import { AuthService } from '../../../../services/auth/auth.service';
   styleUrl: './more-offers.component.css'
 })
 export class PurchaseMoreOffersComponent {
-  items = [
-    {
-      id: 0,
-      name: "Tilápia Fresca",
-      price: 64.99,
-      image: "/assets/images/tilapia.png"
-    },
-    {
-      id: 0,
-      name: "Camarão",
-      price: 49.99,
-      image: "/assets/images/camarao.png"
-    },
-    {
-      id: 0,
-      name: "Filé de Salmão",
-      price: 54.99,
-      image: "/assets/images/salmao.png"
-    },
-    {
-      id: 0,
-      name: "Sardinha",
-      price: 29.99,
-      image: "/assets/images/sardinha.jpg"
-    }
-  ];
+  products: ProductViewModel[] = [];
 
   constructor(
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private landingService: LandingService
   ) {};
+
+  ngOnInit() {
+    this.landingService.getProducts().subscribe({
+      next: (data) => {
+        this.products = data;
+      },
+      error: (err) => console.error('Erro ao buscar produtos:', err),
+    });
+  }
 
   navigateToStore() {
     this.router.navigate(['/store']);
     window.scrollTo(0, 0);
   };
 
-  addToShopCart(item: ItemViewModel) {
+  addToShopCart(item: ProductViewModel) {
     this.authService.addToShopCart(item);
   };
 }

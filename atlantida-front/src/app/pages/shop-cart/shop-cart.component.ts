@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
-import { ItemViewModel } from '../../view-models';
+import { ProductViewModel } from '../../view-models';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
   styleUrl: './shop-cart.component.css'
 })
 export class ShopCartComponent {
-  shopCart: ItemViewModel[] = [];
+  shopCart: ProductViewModel[] = [];
   private subscription!: Subscription;
 
   constructor(
@@ -24,24 +24,19 @@ export class ShopCartComponent {
     });
   };
 
-  decreaseQuant(item: ItemViewModel) {
-    this.authService.decreaseQuant(item);
+  decreaseQuant(item: ProductViewModel) {
   };
 
-  increaseQuant(item: ItemViewModel) {
-    this.authService.increaseQuant(item);
+  increaseQuant(item: ProductViewModel) {
   };
 
-  removeItem(item: ItemViewModel) {
-    this.authService.removeFromShopCart(item);
+  removeItem(item: ProductViewModel) {
   };
 
   totalValue() {
-    return this.shopCart.reduce((total, item) => total + item.price * item.quantity!, 0);
   };
 
   totalItems() {
-    return this.shopCart.reduce((total, item) => total + item.quantity!, 0);
   };
 
   navigateToStore() {
