@@ -43,9 +43,9 @@ export class AuthService {
     return this.shopCart.value ?? [];
   };
 
-  addToShopCart(addedItem: number) {
+  addToShopCart(itemId: number) {
     const currentCart = this.shopCart.value;
-    const updatedCart = [...currentCart, addedItem];
+    const updatedCart = [...currentCart, itemId];
   
     this.shopCart.next(updatedCart);
     localStorage.setItem('shopCart', JSON.stringify(updatedCart));

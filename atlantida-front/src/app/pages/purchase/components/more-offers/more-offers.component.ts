@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductViewModel } from '../../../../view-models';
-import { AuthService } from '../../../../services/auth/auth.service';
 import { LandingService } from '../../../../services';
 
 @Component({
@@ -14,7 +13,6 @@ export class PurchaseMoreOffersComponent {
 
   constructor(
     private router: Router,
-    private authService: AuthService,
     private landingService: LandingService
   ) {};
 
@@ -27,13 +25,13 @@ export class PurchaseMoreOffersComponent {
     });
   }
 
-  navigateToStore() {
-    this.router.navigate(['/store']);
+  navigateToPurchase(itemId: number) {
+    this.router.navigate(['store/purchase', itemId]);
     window.scrollTo(0, 0);
   };
 
-  navigateToPurchase() {
-    this.router.navigate(['store/purchase']);
+  navigateToStore() {
+    this.router.navigate(['/store']);
     window.scrollTo(0, 0);
   };
 }

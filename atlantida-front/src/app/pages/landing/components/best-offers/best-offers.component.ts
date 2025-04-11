@@ -12,9 +12,9 @@ export class BestOffersComponent {
   products: ProductViewModel[] = [];
 
   constructor(
-    private landingService: LandingService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private landingService: LandingService
+  ) {};
 
   ngOnInit() {
     this.landingService.getProducts().subscribe({
@@ -25,8 +25,8 @@ export class BestOffersComponent {
     });
   }
 
-  navigateToPurchase() {
-    this.router.navigate(['store/purchase']);
+  navigateToPurchase(itemId: number) {
+    this.router.navigate(['store/purchase', itemId]);
     window.scrollTo(0, 0);
   };
   

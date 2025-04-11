@@ -10,7 +10,7 @@ export class PurchaseService {
 
     constructor(private http: HttpClient) {};
 
-    async getProduct(id: number) {
+    getProduct(id: number) {
         return this.http.get<ProductViewModel>(`${this.apiUrl}/${id}`);
     }
 }

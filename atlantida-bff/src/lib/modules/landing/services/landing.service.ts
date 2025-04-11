@@ -6,7 +6,7 @@ import { productDto } from 'data-access/src/lib/dtos/productDto';
 export class LandingService {
   private apiUrl = "https://atlantida-dad.onrender.com/produto";
 
-  async getProducts() {
+  async getProducts(): Promise<productDto[]> {
     const response = await axios.get(this.apiUrl);
 
     return response.data.map((product: productDto) => ({
