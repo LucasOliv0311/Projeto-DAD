@@ -8,11 +8,7 @@ export class StoreService {
   private apiUrl = "https://atlantida-dad.onrender.com/produto";
 
   async getProducts(): Promise<ProductViewModel[]> {
-    console.log('oi')
     const response = await axios.get(this.apiUrl);
-
-    console.log(response.data)
-    
     return response.data.map((product: productDto) => ({
       id: product.idProduto,
       nome: product.nome,
