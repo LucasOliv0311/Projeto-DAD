@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ItemViewModel, ProductViewModel } from '../../../../view-models';
+import { ProductViewModel } from '../../../../view-models';
 import { AuthService } from '../../../../services/auth/auth.service';
 import { LandingService } from '../../../../services';
 
@@ -32,7 +32,8 @@ export class PurchaseMoreOffersComponent {
     window.scrollTo(0, 0);
   };
 
-  addToShopCart(item: ProductViewModel) {
-    this.authService.addToShopCart(item);
+  navigateToPurchase() {
+    this.router.navigate(['store/purchase']);
+    window.scrollTo(0, 0);
   };
 }

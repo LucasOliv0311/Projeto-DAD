@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { ProductViewModel, UserViewModel } from '../../view-models';
+import { UserViewModel } from '../../view-models';
 import { ItemViewModel } from '../../view-models';
 
 @Injectable({
@@ -8,17 +8,17 @@ import { ItemViewModel } from '../../view-models';
 })
 export class AuthService {
   private userData: BehaviorSubject<UserViewModel | null>;
-  private shopCart: BehaviorSubject<ProductViewModel[]>;
+  private shopCart: BehaviorSubject<number[]>;
 
   user$: Observable<UserViewModel | null>;
-  shopCart$: Observable<ProductViewModel[]>;
+  shopCart$: Observable<number[]>;
 
   constructor() {
     const storedUser = localStorage.getItem('userData');
     const storedShopCart = localStorage.getItem('shopCart');
 
     this.userData = new BehaviorSubject<UserViewModel | null>(storedUser ? JSON.parse(storedUser) : null);
-    this.shopCart = new BehaviorSubject<ProductViewModel[]>(storedShopCart ? JSON.parse(storedShopCart) : []);
+    this.shopCart = new BehaviorSubject<number[]>(storedShopCart ? JSON.parse(storedShopCart) : []);
 
     this.user$ = this.userData.asObservable();
     this.shopCart$ = this.shopCart.asObservable();
@@ -43,13 +43,17 @@ export class AuthService {
     return this.shopCart.value ?? [];
   };
 
-  addToShopCart(addedItem: ProductViewModel) {
-    
+  addToShopCart(addedItem: number) {
+    const currentCart = this.shopCart.value;
+    const updatedCart = [...currentCart, addedItem];
+  
+    this.shopCart.next(updatedCart);
+    localStorage.setItem('shopCart', JSON.stringify(updatedCart));
   };
 
-  removeFromShopCart(removedItem: ItemViewModel) {
+  removeFromShopCart(itemId: number) {
     const currentCart = this.shopCart.value;
-    const updatedCart = currentCart.filter(item => item.id !== removedItem.id);
+    const updatedCart = currentCart.filter(item => item !== itemId);
     
     this.shopCart.next(updatedCart);
     localStorage.setItem('shopCart', JSON.stringify(updatedCart));
