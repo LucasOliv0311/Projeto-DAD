@@ -11,12 +11,12 @@
   <div class="description">
     <div class="title">
       <h6>FILÉ • SALMÃO</h6>
-      <h4>{{ item.name }}</h4>
+      <h4>{{ product.nome }}</h4>
     </div>
     <div class="values">
       <div class="price">
         <h6>PREÇO</h6>
-        <h5>{{ item.price }}</h5>
+        <h5>{{ product.preco }}</h5>
       </div>
       <div class="weight">
         <h6>PESO</h6>
@@ -25,17 +25,17 @@
     </div>
     <div class="purchaseInfos">
       <div class="quantity">
-        <div class="minus" (click)="decreaseQuant()">
+        <div class="minus">
           <img src="/assets/images/plusButton (2).png"/>
         </div>
         <div class="number">
-          <h6>{{ item.quantity }}</h6>
+          <h6>1</h6>
         </div>
-        <div class="plus" (click)="increaseQuant()">
+        <div class="plus">
           <img src="/assets/images/plusButton (1).png"/>
         </div>
       </div>
-      <div class="addToCart" (click)="addToShopCart()">
+      <div class="addToCart" (click)="addToShopCart(product.id)">
             <img src="/assets/images/Add Shopping Cart.png">
             <h4>Comprar Agora</h4>
       </div>

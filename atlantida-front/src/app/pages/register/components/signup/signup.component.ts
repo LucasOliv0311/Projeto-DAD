@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserViewModel } from '../../../../view-models';
+import { ClientViewModel, UserViewModel } from '../../../../view-models';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../../services/auth/auth.service';
+import { SignupService } from '../../../../services/register/signup/signup.service';
 
 @Component({
   selector: 'app-signup',
@@ -15,7 +16,8 @@ export class SignupComponent {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private signupService: SignupService
   ) {
     this.form = this.fb.group({
       name: ['', Validators.required],
@@ -37,7 +39,7 @@ export class SignupComponent {
   submit() {
     if (this.form.valid) {
       if (this.form.get('password')?.value === this.form.get('confPassword')?.value) {
-        const userData: UserViewModel = {
+        const userData: ClientViewModel = {
           nome: this.form.get('name')?.value,
           email: this.form.get('email')?.value,
           tel: this.form.get('tel')?.value,
@@ -46,10 +48,17 @@ export class SignupComponent {
           password: this.form.get('password')?.value,
         };
 
-        window.alert("Cadastro realizado com sucesso!");
-        this.authService.signup(userData);
-        this.router.navigate(['register/login']);
-        window.scrollTo(0, 0);
+        this.signupService.register(userData)
+        .subscribe({
+          next: () => {
+            window.alert("Cadastro realizado com sucesso!");
+            this.router.navigate(['register/login']);
+            window.scrollTo(0, 0);
+          },
+          error: (err) => {
+            console.error('Erro ao cadastrar:', err);
+          }
+        });
       } else {
         console.log("senha inválida");
       };

@@ -10,36 +10,36 @@
             <h3 class="columnDesc">VALOR</h3>
         </div>
 
-        <ng-container *ngIf="shopCart.length > 0; else noItems">
+        <ng-container *ngIf="products.length > 0; else noItems">
             <ng-template *ngTemplateOutlet="itemsTable"></ng-template>
         </ng-container>
 
         <ng-template #itemsTable>
             <div class="items">
-                <div class="item" *ngFor="let item of shopCart">
+                <div class="item" *ngFor="let product of products">
                     <div class="itemImg">
-                        <img src={{item.image}} alt="imagem do item" class="img">
+                        <img src="/assets/images/tilapia.png" alt="imagem do item" class="img">
                     </div>
                     <div class="itemDesc">
-                        <span class="itemName">{{item.name}}</span>
+                        <span class="itemName">{{product.nome}}</span>
                         <div class="itemQuant">
                             <p>Quantidade:</p>
-                            <div class="minus" (click)="decreaseQuant(item)">
+                            <div class="minus" (click)="decreaseQuant(product)">
                                 <img src="/assets/images/plusButton (2).png"/>
                             </div>
                             <p class="quant">
-                                {{item.quantity!}}
+                                1
                             </p>
-                            <div class="plus" (click)="increaseQuant(item)">
+                            <div class="plus" (click)="increaseQuant(product)">
                                 <img src="/assets/images/plusButton (1).png"/>
                             </div>
                         </div>
-                        <button class="removeItem" (click)="removeItem(item)">
+                        <button class="removeItem" (click)="removeItem(product.id)">
                             Remover Item
                         </button>
                     </div>
                     <div class="itemPrice">
-                        R${{item.price | number: '1.2-2'}}
+                        R${{product.preco}}
                     </div>
                 </div>
             </div>
@@ -66,13 +66,13 @@
             </div>
 
             <div class="purchaseTableItems">
-                <div class="purchaseTableItem" *ngFor="let item of shopCart">
+                <div class="purchaseTableItem" *ngFor="let product of products">
                     <span class="summaryItemName">
-                        {{item.name}} ({{item.quantity!}})
+                        {{product.nome}} 1
                     </span>
 
                     <span class="itemPrice">
-                        R${{(item.price * item.quantity!) | number: '1.2-2'}}
+                        R${{product.preco}}
                     </span>
                 </div>
             </div>
@@ -83,12 +83,12 @@
                 </span>
 
                 <span class="purchaseValueText">
-                    R${{totalValue() | number: '1.2-2'}}
+                    R${{totalValue()}}
                 </span>
             </div>
         </div>
 
-        <button class="finishPurchase" *ngIf="shopCart.length > 0">
+        <button class="finishPurchase" *ngIf="products.length > 0">
             Finalizar Compra
         </button>
     </div>
