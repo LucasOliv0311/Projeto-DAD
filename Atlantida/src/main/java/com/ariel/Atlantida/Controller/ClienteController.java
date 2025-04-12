@@ -49,9 +49,4 @@ public class ClienteController implements ClienteApi {
         return ResponseEntity.ok(cliente);
     }
 
-    @Override
-    public ResponseEntity<Void> deletarCliente(@PathVariable int idCliente) {
-        clienteService.deletarCliente(idCliente);
-        return ResponseEntity.noContent().build();
-    }
 }

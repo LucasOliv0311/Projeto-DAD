@@ -16,6 +16,8 @@ public class ProdutoDtoCreate {
     private BigDecimal preco;
     @Column(nullable = false)
     private Integer estoque;
+    private String imagem;
+
 
     public String getNome() {
         return nome;

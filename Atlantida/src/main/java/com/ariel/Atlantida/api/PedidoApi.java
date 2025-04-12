@@ -25,7 +25,7 @@ public interface PedidoApi {
             @ApiResponse(responseCode = "409", description = "Conflito ao criar o Pedido")
     })
     @PostMapping
-    ResponseEntity<Pedido> criarPedido(@RequestBody PedidoDtoCreate pedidoDtoCreate);
+    ResponseEntity<PedidoDtoCreate> criarPedido(@RequestBody PedidoDtoCreate pedidoDtoCreate);
 
     @Operation(summary = "Busca um Pedido pelo ID", description = "Endpoint para recuperar um pedido específico pelo ID")
     @ApiResponses(value = {
@@ -52,13 +52,6 @@ public interface PedidoApi {
             @ApiResponse(responseCode = "404", description = "Pedido não encontrado")
     })
     @PutMapping("/{id}")
-    ResponseEntity<Pedido> atualizarPedido(@PathVariable int id, @RequestBody PedidoDtoCreate pedidoDtoCreate);
+    ResponseEntity<PedidoDtoCreate> atualizarPedido(@PathVariable int id, @RequestBody PedidoDtoCreate pedidoDtoCreate);
 
-    @Operation(summary = "Deleta um Pedido pelo ID", description = "Endpoint para deletar um pedido específico pelo ID")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "204", description = "Pedido deletado com sucesso"),
-            @ApiResponse(responseCode = "404", description = "Pedido não encontrado")
-    })
-    @DeleteMapping("/{id}")
-    ResponseEntity<Void> deletarPedido(@PathVariable int id);
 }

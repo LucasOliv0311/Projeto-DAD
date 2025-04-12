@@ -1,16 +1,11 @@
 package com.ariel.Atlantida.Service;
 
-import com.ariel.Atlantida.Model.Pedido;
-import com.ariel.Atlantida.Model.Produto;
-import com.ariel.Atlantida.Model.Cartao;
-import com.ariel.Atlantida.Model.Cliente;
+import com.ariel.Atlantida.Model.*;
+import com.ariel.Atlantida.Repository.*;
 import com.ariel.Atlantida.dto.PedidoDtoCreate;
-import com.ariel.Atlantida.Repository.PedidoRepository;
-import com.ariel.Atlantida.Repository.ProdutoRepository;
-import com.ariel.Atlantida.Repository.CartaoRepository;
-import com.ariel.Atlantida.Repository.ClienteRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,43 +13,44 @@ import java.util.stream.Collectors;
 public class PedidoService {
 
     private final PedidoRepository pedidoRepository;
-    private final ProdutoRepository produtoRepository;
+    private final CarrinhoRepository carrinhoRepository;
     private final CartaoRepository cartaoRepository;
     private final ClienteRepository clienteRepository;
 
-    public PedidoService(PedidoRepository pedidoRepository, ProdutoRepository produtoRepository,
+    public PedidoService(PedidoRepository pedidoRepository, CarrinhoRepository carrinhoRepository,
                          CartaoRepository cartaoRepository, ClienteRepository clienteRepository) {
         this.pedidoRepository = pedidoRepository;
-        this.produtoRepository = produtoRepository;
+        this.carrinhoRepository = carrinhoRepository;
         this.cartaoRepository = cartaoRepository;
         this.clienteRepository = clienteRepository;
     }
 
-    public Pedido criarPedido(PedidoDtoCreate pedidoDTO) {
-        List<Long> idsProduto = pedidoDTO.getIdProduto().stream()
-                .map(Integer::longValue)
-                .collect(Collectors.toList());
+    public PedidoDtoCreate criarPedido(PedidoDtoCreate pedidoDTO) {
+        if (pedidoDTO.getIdCartao() == null) {
+            throw new RuntimeException("O campo idCartao é obrigatório");
+        }
 
-        List<Produto> produtos = produtoRepository.findAllById(idsProduto);
-        if (produtos.size() != pedidoDTO.getIdProduto().size()) {
-            throw new RuntimeException("Alguns produtos não foram encontrados");
+        List<Carrinho> carrinhos = carrinhoRepository.findAllById(pedidoDTO.getIdCarrinho());
+
+        if (carrinhos.size() != pedidoDTO.getIdCarrinho().size()) {
+            throw new RuntimeException("Alguns produtos do carrinho não foram encontrados");
         }
 
         Cliente cliente = clienteRepository.findById(pedidoDTO.getCliente())
                 .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
 
-        Cartao cartao = (pedidoDTO.getIdCartao() != null)
-                ? cartaoRepository.findById(pedidoDTO.getIdCartao()).orElse(null)
-                : null;
+        Cartao cartao = cartaoRepository.findById(pedidoDTO.getIdCartao())
+                .orElseThrow(() -> new RuntimeException("Cartão não encontrado"));
 
         Pedido pedido = new Pedido();
-        pedido.setIdProduto(produtos);
-        pedido.setDataPedido(pedidoDTO.getDataPedido());
+        pedido.setCarrinhos(carrinhos);
+        pedido.setDataPedido(pedidoDTO.getDataPedido() != null ? pedidoDTO.getDataPedido() : LocalDateTime.now());
         pedido.setValorTotal(pedidoDTO.getValorTotal());
         pedido.setIdCartao(cartao);
         pedido.setCliente(cliente);
 
-        return pedidoRepository.save(pedido);
+        pedidoRepository.save(pedido);
+        return toDto(pedido);
     }
 
     public PedidoDtoCreate buscarPedido(int id) {
@@ -70,57 +66,49 @@ public class PedidoService {
                 .collect(Collectors.toList());
     }
 
-    public Pedido atualizarPedido(int id, PedidoDtoCreate pedidoDTO) {
+    public PedidoDtoCreate atualizarPedido(int id, PedidoDtoCreate pedidoDTO) {
+        if (pedidoDTO.getIdCartao() == null) {
+            throw new RuntimeException("O campo idCartao é obrigatório");
+        }
+
         Pedido pedido = pedidoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Pedido não encontrado"));
 
-        List<Long> idsProduto = pedidoDTO.getIdProduto().stream()
-                .map(Integer::longValue)
-                .collect(Collectors.toList());
+        List<Carrinho> carrinhos = carrinhoRepository.findAllById(pedidoDTO.getIdCarrinho());
 
-        List<Produto> produtos = produtoRepository.findAllById(idsProduto);
-        if (produtos.size() != pedidoDTO.getIdProduto().size()) {
-            throw new RuntimeException("Alguns produtos não foram encontrados");
+        if (carrinhos.size() != pedidoDTO.getIdCarrinho().size()) {
+            throw new RuntimeException("Alguns produtos do carrinho não foram encontrados");
         }
 
         Cliente cliente = clienteRepository.findById(pedidoDTO.getCliente())
                 .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
 
-        Cartao cartao = (pedidoDTO.getIdCartao() != null)
-                ? cartaoRepository.findById(pedidoDTO.getIdCartao()).orElse(null)
-                : null;
+        Cartao cartao = cartaoRepository.findById(pedidoDTO.getIdCartao())
+                .orElseThrow(() -> new RuntimeException("Cartão não encontrado"));
 
-        pedido.setIdProduto(produtos);
-        pedido.setDataPedido(pedidoDTO.getDataPedido());
+        pedido.setCarrinhos(carrinhos);
+        pedido.setDataPedido(pedidoDTO.getDataPedido() != null ? pedidoDTO.getDataPedido() : LocalDateTime.now());
         pedido.setValorTotal(pedidoDTO.getValorTotal());
-        pedido.setCliente(cliente);
         pedido.setIdCartao(cartao);
+        pedido.setCliente(cliente);
 
-        return pedidoRepository.save(pedido);
+        pedidoRepository.save(pedido);
+        return toDto(pedido);
     }
 
-    public void deletarPedido(int id) {
-        Pedido pedido = pedidoRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Pedido não encontrado"));
-        pedidoRepository.delete(pedido);
-    }
 
     private PedidoDtoCreate toDto(Pedido pedido) {
         PedidoDtoCreate dto = new PedidoDtoCreate();
 
-        List<Integer> idsProduto = pedido.getIdProduto().stream()
-                .map(Produto::getIdProduto)
-                .map(Long::intValue)
+        List<Integer> idsCarrinho = pedido.getCarrinhos().stream()
+                .map(Carrinho::getIdCarrinho)
                 .collect(Collectors.toList());
 
-        dto.setIdProduto(idsProduto);
+        dto.setIdCarrinho(idsCarrinho);
         dto.setDataPedido(pedido.getDataPedido());
         dto.setValorTotal(pedido.getValorTotal());
         dto.setCliente(pedido.getCliente().getIdCliente());
-
-        if (pedido.getIdCartao() != null) {
-            dto.setIdCartao(pedido.getIdCartao().getIdCartao());
-        }
+        dto.setIdCartao(pedido.getIdCartao().getIdCartao());
 
         return dto;
     }

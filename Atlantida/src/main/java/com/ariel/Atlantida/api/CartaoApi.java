@@ -65,12 +65,4 @@ public interface CartaoApi {
     ResponseEntity<Cartao> atualizarCartao(@PathVariable("id") int id,
                                            @RequestBody CartaoDtoCreate cartaoDtoCreate);
 
-    @Operation(summary = "Deleta um Cartão pelo ID")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Cartão deletado com sucesso"),
-            @ApiResponse(responseCode = "404", description = "Cartão não encontrado",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = Errors.class)))
-    })
-    @DeleteMapping("/{id}")
-    ResponseEntity<Void> deletarCartao(@PathVariable("id") int id);
 }
