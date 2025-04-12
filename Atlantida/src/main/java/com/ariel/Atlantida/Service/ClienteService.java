@@ -16,7 +16,6 @@ public class ClienteService {
         this.clienteRepository = clienteRepository;
     }
 
-
     public Cliente criarCliente(ClienteDtoCreate clienteDTO) {
         Cliente cliente = new Cliente();
         cliente.setNome(clienteDTO.getNome());
@@ -45,20 +44,15 @@ public class ClienteService {
         return toDto(cliente);
     }
 
-
     public Cliente atualizarCliente(int idCliente, ClienteDtoCreate clienteDTO) {
-        Cliente cliente = buscarCliente(idCliente);
+        Cliente cliente = clienteRepository.findById(idCliente)
+                .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
         cliente.setNome(clienteDTO.getNome());
         cliente.setCpf(clienteDTO.getCpf());
         cliente.setTelefone(clienteDTO.getTelefone());
         cliente.setEmail(clienteDTO.getEmail());
         cliente.setEndereco(clienteDTO.getEndereco());
         return clienteRepository.save(cliente);
-    }
-
-    public void deletarCliente(int idCliente) {
-        ClienteDtoCreate cliente = buscarCliente(idCliente);
-        clienteRepository.delete(cliente);
     }
 
     private ClienteDtoCreate toDto(Cliente cliente) {

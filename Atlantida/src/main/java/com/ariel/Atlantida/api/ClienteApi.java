@@ -64,11 +64,4 @@ public interface ClienteApi {
     ResponseEntity<Cliente> atualizarCliente(@PathVariable int idCliente,
                                              @Valid @RequestBody ClienteDtoCreate clienteDtoCreate);
 
-    @Operation(summary = "Deleta um Cliente pelo ID")
-    @ApiResponses({
-            @ApiResponse(responseCode = "204", description = "Cliente deletado com sucesso"),
-            @ApiResponse(responseCode = "404", description = "Cliente não encontrado")
-    })
-    @DeleteMapping("/{idCliente}")
-    ResponseEntity<Void> deletarCliente(@PathVariable int idCliente);
 }

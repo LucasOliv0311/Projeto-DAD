@@ -1,16 +1,15 @@
 package com.ariel.Atlantida.Controller;
 
-import com.ariel.Atlantida.Model.Pedido;
 import com.ariel.Atlantida.Service.PedidoService;
 import com.ariel.Atlantida.api.PedidoApi;
 import com.ariel.Atlantida.dto.PedidoDtoCreate;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/pedidos")
 public class PedidoController implements PedidoApi {
 
     private final PedidoService pedidoService;
@@ -20,31 +19,26 @@ public class PedidoController implements PedidoApi {
     }
 
     @Override
-    public ResponseEntity<Pedido> criarPedido(@RequestBody PedidoDtoCreate pedidoDTO) {
-        Pedido pedido = pedidoService.criarPedido(pedidoDTO);
-        return ResponseEntity.status(201).body(pedido);
+    public ResponseEntity<PedidoDtoCreate> criarPedido(@RequestBody PedidoDtoCreate pedidoDtoCreate) {
+        PedidoDtoCreate criado = pedidoService.criarPedido(pedidoDtoCreate);
+        return ResponseEntity.status(HttpStatus.CREATED).body(criado);
     }
 
     @Override
     public ResponseEntity<PedidoDtoCreate> buscarPedido(@PathVariable int id) {
-        PedidoDtoCreate dto = pedidoService.buscarPedido(id);
-        return ResponseEntity.ok(dto);
-    }
-
-    @Override
-    public ResponseEntity<List<PedidoDtoCreate>> listarPedidos() {
-        return ResponseEntity.ok(pedidoService.listarPedidos());
-    }
-
-    @Override
-    public ResponseEntity<Pedido> atualizarPedido(@PathVariable int id, @RequestBody PedidoDtoCreate pedidoDTO) {
-        Pedido pedido = pedidoService.atualizarPedido(id, pedidoDTO);
+        PedidoDtoCreate pedido = pedidoService.buscarPedido(id);
         return ResponseEntity.ok(pedido);
     }
 
     @Override
-    public ResponseEntity<Void> deletarPedido(@PathVariable int id) {
-        pedidoService.deletarPedido(id);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<List<PedidoDtoCreate>> listarPedidos() {
+        List<PedidoDtoCreate> pedidos = pedidoService.listarPedidos();
+        return ResponseEntity.ok(pedidos);
+    }
+
+    @Override
+    public ResponseEntity<PedidoDtoCreate> atualizarPedido(@PathVariable int id, @RequestBody PedidoDtoCreate pedidoDtoCreate) {
+        PedidoDtoCreate atualizado = pedidoService.atualizarPedido(id, pedidoDtoCreate);
+        return ResponseEntity.ok(atualizado);
     }
 }
