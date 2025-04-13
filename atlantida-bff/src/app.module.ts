@@ -11,9 +11,13 @@ import { ClientService } from './lib/modules/clients/services/clients.service';
 import { SalesModule } from './lib/modules/sales/sales.module';
 import { SalesController } from './lib/modules/sales/controllers/sales.controller';
 import { SalesService } from './lib/modules/sales/services/sales.service';
+import { SignupModule } from './lib/modules/register/signup/signup.module';
+import { LoginModule } from './lib/modules/register/login/login.module';
+import { PurchaseModule } from './lib/modules/purchase/purchase.module';
+import { ShopCartModule } from './lib/modules/shop-cart/shop-cart.module';
 
 @Module({
-  imports: [LandingModule, StoreModule, ClientModule, SalesModule],
+  imports: [LandingModule, SignupModule, LoginModule, PurchaseModule, ShopCartModule, StoreModule, ClientModule, SalesModule],
   controllers: [AppController, StoreController, ClientController, SalesController],
   providers: [AppService, StoreService, ClientService, SalesService],
 })

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { loginViewModel, UserViewModel } from '../../../../view-models';
 import { AuthService } from '../../../../services/auth/auth.service';
+import { LoginService } from '../../../../services/register/login/login.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private loginService: LoginService
   ) {
     this.form = this.fb.group({
       email: ['', Validators.required],
@@ -27,7 +29,6 @@ export class LoginComponent {
     if (this.authService.getUserData() != null) {
       this.authService.logout();
     };
-    console.log(this.authService.getUsersData());
   };
 
   submit() {
@@ -41,17 +42,23 @@ export class LoginComponent {
         password: this.form.get('password')?.value,
       }
 
-      this.authService.login(userData);
-      this.router.navigate(['']);
+      this.loginService.login(userData).subscribe({
+        next: (data) => {
+          if (!data) {
+            console.error("usuário não encontrado")
+          };
+          this.router.navigate(['']);
+          this.authService.login(userData);
+        },
+        error: (err) => {
+          console.error("erro na requisição: ", err);
+        }
+      })
     };
   };
 
   goToSignup() {
     this.router.navigate(['/register/signup']);
     window.scrollTo(0, 0);
-  };
-
-  deleteUsers() {
-    this.authService.deleteUsers();
   };
 }

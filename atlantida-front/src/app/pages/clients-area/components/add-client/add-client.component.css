@@ -1,0 +1,124 @@
+.title, label{
+    color: #194569;
+}
+
+.title h1 {
+    font-size: 32px;
+    font-family: inter-black;
+}
+
+.title h3 {
+    margin-top: 8px;
+    margin-bottom: 16px;
+    font-size: 16px;
+    font-family: inter-bold;
+}
+
+.table {
+    margin-top: 40px;
+    margin-bottom: 80px;
+}
+
+.add-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    background-color: #B7D0E1;
+    width: 216px;
+    height: 40px;
+    color: white;
+    font-family: inter-bold;
+    border-radius: 8px;
+}
+
+.butao {
+    display: flex;
+    justify-content: end;
+    margin-right: 136px;
+}
+.field{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 32px;
+    
+}
+.field label{
+    font-size: 16px;
+    font-family: inter-bold;
+}
+.field input{
+    padding-left: 16px;
+    border-radius: 8px;
+    height: 36px;
+    margin-top: 4px;
+    border: 2px solid #194569;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal.ativo {
+    display: flex;
+}
+
+.modal-content {
+    max-height: 80vh;
+    overflow-y: auto;
+    background: white;
+    border-radius: 16px;
+    padding: 40px 32px;
+    max-width: 600px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: transparent;
+    border: none;
+    font-size: 28px;
+    color: #999;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+    color: #e00;
+}
+.buttons{
+    display: flex;
+    justify-content: end;
+    gap: 16px;
+}
+.confirm-button{
+    cursor: pointer;
+    width: 102px;
+    height: 36px;
+    background-color: #194569;
+    border: 2px solid #194569;
+    color: white;
+    font-family: inter-bold;
+    border-radius: 8px; 
+}
+.cancel-button{
+    cursor: pointer;
+    width: 102px;
+    height: 36px;
+    background-color: #B7D0E1;
+    border: 2px solid #b7d0e1;
+    color: #194569;
+    font-family: inter-bold;
+    border-radius: 8px; 
+}

@@ -12,22 +12,21 @@ export class BestOffersComponent {
   products: ProductViewModel[] = [];
 
   constructor(
-    private landingService: LandingService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private landingService: LandingService
+  ) {};
 
   ngOnInit() {
     this.landingService.getProducts().subscribe({
       next: (data) => {
         this.products = data;
-        console.log(this.products);
       },
       error: (err) => console.error('Erro ao buscar produtos:', err),
     });
   }
 
-  navigateToPurchase() {
-    this.router.navigate(['store/purchase']);
+  navigateToPurchase(itemId: number) {
+    this.router.navigate(['purchase', itemId]);
     window.scrollTo(0, 0);
   };
   
