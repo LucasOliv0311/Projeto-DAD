@@ -29,6 +29,8 @@ public class Produto {
 
     private String imagem;
 
+    private double peso;
+
     public String getNome() {
         return nome;
     }
