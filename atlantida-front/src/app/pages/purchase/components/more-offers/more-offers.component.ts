@@ -26,7 +26,7 @@ export class PurchaseMoreOffersComponent {
   }
 
   navigateToPurchase(itemId: number) {
-    this.router.navigate(['store/purchase', itemId]);
+    this.router.navigate(['purchase', itemId]);
     window.scrollTo(0, 0);
   };
 

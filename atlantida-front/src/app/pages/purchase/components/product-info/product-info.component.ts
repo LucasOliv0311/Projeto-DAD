@@ -1,9 +1,7 @@
-import { Component, Input } from '@angular/core';
-import { ItemViewModel, ProductViewModel } from '../../../../view-models';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { AuthService } from '../../../../services/auth/auth.service';
-import { Router } from '@angular/router';
-import { UserViewModel } from '../../../../view-models';
 import { PurchaseService } from '../../../../services/purchase/purchase.service';
+import { ProductViewModel, UserViewModel } from '../../../../view-models';
 
 @Component({
   selector: 'atlantida-purchase-product-info',
@@ -14,6 +12,7 @@ export class PurchaseProductInfoComponent {
   userData: UserViewModel | null = null;
   @Input() id!: number;
   product!: ProductViewModel;
+  quantity = 1;
 
   constructor (
     private authService: AuthService,
@@ -26,21 +25,34 @@ export class PurchaseProductInfoComponent {
     });
 
     console.log("id: ", this.id);
-
-    
   };
 
-  addToShopCart(itemId: number) {
-    this.authService.addToShopCart(itemId);
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['id'] && this.id) {
+      console.log("id (ngOnChanges):", this.id);
+  
+      this.purchaseService.getProduct(this.id).subscribe({
+        next: (product) => {
+          this.product = product;
+        },
+        error: (err) => {
+          console.error("Erro ao buscar produto:", err);
+        }
+      });
+    }
+  }
+
+  addToShopCart(itemId: number, quantity: number) {
+    this.authService.addToShopCart(itemId, quantity);
   };
 
-  // decreaseQuant() {
-  //   if (this.item.quantity! > 1) {
-  //     this.item.quantity! -= 1;
-  //   };
-  // };
+  decreaseQuant() {
+    if (this.quantity > 1) {
+      this.quantity -= 1;
+    };
+  };
 
-  // increaseQuant() {
-  //   this.item.quantity! += 1;
-  // };
+  increaseQuant() {
+    this.quantity += 1;
+  };
 }

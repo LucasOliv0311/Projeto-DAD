@@ -12,7 +12,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(routes) // Importa as rotas do módulo
+    RouterModule.forChild(routes)
   ]
 })
 export class StoreModule { }

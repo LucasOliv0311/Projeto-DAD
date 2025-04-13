@@ -13,8 +13,8 @@ export class StoreProductBoxComponent {
 
     constructor (private router: Router){}
 
-    navigateToPurchase(): void {
-        this.router.navigate(['/store/purchase']);
-        window.scrollTo(0, 0);
-    }
+    navigateToPurchase(itemId: number) {
+      this.router.navigate(['purchase', itemId]);
+      window.scrollTo(0, 0);
+    };
 }

@@ -28,7 +28,7 @@
                                 <img src="/assets/images/plusButton (2).png"/>
                             </div>
                             <p class="quant">
-                                1
+                                {{ product.quantidade }}
                             </p>
                             <div class="plus" (click)="increaseQuant(product)">
                                 <img src="/assets/images/plusButton (1).png"/>
@@ -68,11 +68,11 @@
             <div class="purchaseTableItems">
                 <div class="purchaseTableItem" *ngFor="let product of products">
                     <span class="summaryItemName">
-                        {{product.nome}} 1
+                        {{product.nome}} {{ product.quantidade }}
                     </span>
 
                     <span class="itemPrice">
-                        R${{product.preco}}
+                        R${{ productValue(product) }}
                     </span>
                 </div>
             </div>
@@ -88,7 +88,7 @@
             </div>
         </div>
 
-        <button class="finishPurchase" *ngIf="products.length > 0">
+        <button class="finishPurchase" *ngIf="products.length > 0" >
             Finalizar Compra
         </button>
     </div>
