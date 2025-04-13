@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { UserViewModel } from '../../view-models';
+import { CartItemViewModel, UserViewModel } from '../../view-models';
 import { ItemViewModel } from '../../view-models';
 
 @Injectable({
@@ -8,17 +8,17 @@ import { ItemViewModel } from '../../view-models';
 })
 export class AuthService {
   private userData: BehaviorSubject<UserViewModel | null>;
-  private shopCart: BehaviorSubject<number[]>;
+  private shopCart: BehaviorSubject<CartItemViewModel[]>;
 
   user$: Observable<UserViewModel | null>;
-  shopCart$: Observable<number[]>;
+  shopCart$: Observable<CartItemViewModel[]>;
 
   constructor() {
     const storedUser = localStorage.getItem('userData');
     const storedShopCart = localStorage.getItem('shopCart');
 
     this.userData = new BehaviorSubject<UserViewModel | null>(storedUser ? JSON.parse(storedUser) : null);
-    this.shopCart = new BehaviorSubject<number[]>(storedShopCart ? JSON.parse(storedShopCart) : []);
+    this.shopCart = new BehaviorSubject<CartItemViewModel[]>(storedShopCart ? JSON.parse(storedShopCart) : []);
 
     this.user$ = this.userData.asObservable();
     this.shopCart$ = this.shopCart.asObservable();
@@ -43,9 +43,13 @@ export class AuthService {
     return this.shopCart.value ?? [];
   };
 
-  addToShopCart(itemId: number) {
+  addToShopCart(itemId: number, quantity: number) {
+    let item: CartItemViewModel = {
+      itemId: itemId,
+      quantity: quantity
+    };
     const currentCart = this.shopCart.value;
-    const updatedCart = [...currentCart, itemId];
+    const updatedCart = [...currentCart, item];
   
     this.shopCart.next(updatedCart);
     localStorage.setItem('shopCart', JSON.stringify(updatedCart));
@@ -53,18 +57,10 @@ export class AuthService {
 
   removeFromShopCart(itemId: number) {
     const currentCart = this.shopCart.value;
-    const updatedCart = currentCart.filter(item => item !== itemId);
+    const updatedCart = currentCart.filter(item => item.itemId !== itemId);
     
     this.shopCart.next(updatedCart);
     localStorage.setItem('shopCart', JSON.stringify(updatedCart));
-  };
-
-  decreaseQuant(updatedItem: ItemViewModel) {
-    
-  }
-
-  increaseQuant(updatedItem: ItemViewModel) {
-    
   };
 
   clearShopCart() {

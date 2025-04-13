@@ -7,6 +7,6 @@ export class ShopCartController {
 
     @Get('product/:id')
     async getProduct(@Param('id') id: number) {
-        return this.shopCartService.getProduct(id);
+        return this.shopCartService.getProduct("https://atlantida-dad.onrender.com/produto", id);
     }
 }

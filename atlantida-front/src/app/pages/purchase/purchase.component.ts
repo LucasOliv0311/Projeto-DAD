@@ -14,6 +14,9 @@ export class PurchaseComponent {
   ) {};
 
   ngOnInit() {
-    this.id = Number.parseInt(this.route.snapshot.paramMap.get('id') ?? "0");
+    this.route.paramMap.subscribe(params => {
+      this.id = Number(params.get('id') ?? "0");
+      console.log("ID atualizado:", this.id);
+    });
   };
 }

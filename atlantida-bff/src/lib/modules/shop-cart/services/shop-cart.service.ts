@@ -4,10 +4,8 @@ import { productDto } from "data-access/src/lib/dtos";
 
 @Injectable()
 export class ShopCartService {
-    private apiUrl = "https://atlantida-dad.onrender.com/produto";
-
-    async getProduct(id: number) {
-        const response = await axios.get(`${this.apiUrl}/${id}`);
+    async getProduct(apiUrl: string, id: number) {
+        const response = await axios.get(`${apiUrl}/${id}`);
         const product: productDto = response.data;
 
         return {
