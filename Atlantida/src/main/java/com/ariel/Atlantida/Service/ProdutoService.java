@@ -16,7 +16,7 @@ public class ProdutoService {
         this.produtoRepository = produtoRepository;
     }
 
-    private static final Pattern IMAGEM_REGEX = Pattern.compile("(?i).+\\.(jpg|jpeg|png)$");
+    private static final Pattern IMAGEM_REGEX = Pattern.compile("^data:image/(png|jpeg|jpg);base64,[a-zA-Z0-9+/=]+=$");
 
     private boolean isImagemValida(String imagem) {
         return imagem != null && IMAGEM_REGEX.matcher(imagem).matches();
@@ -32,7 +32,7 @@ public class ProdutoService {
 
     public Produto salvar(Produto produto) {
         if (!isImagemValida(produto.getImagem())) {
-            throw new IllegalArgumentException("Imagem inválida. Deve ser um arquivo com extensão .jpg, .jpeg, .png, .gif ou .bmp.");
+            throw new IllegalArgumentException("Imagem inválida. Deve ser uma URL Base64 válida iniciando com 'data:image/png;base64,' e terminando com '='.");
         }
         return produtoRepository.save(produto);
     }
@@ -41,7 +41,7 @@ public class ProdutoService {
         Optional<Produto> produtoExistente = produtoRepository.findById((long) idProduto);
         if (produtoExistente.isPresent()) {
             if (!isImagemValida(produtoAtualizado.getImagem())) {
-                throw new IllegalArgumentException("Imagem inválida. Deve ser um arquivo com extensão .jpg, .jpeg ou .png.");
+                throw new IllegalArgumentException("Imagem inválida. Deve ser uma URL Base64 válida iniciando com 'data:image/png;base64,' e terminando com '='.");
             }
             Produto produto = produtoExistente.get();
             produto.setNome(produtoAtualizado.getNome());
