@@ -25,8 +25,7 @@ public class ClienteDtoCreate extends Cliente {
     @Column(columnDefinition = "TEXT")
     private String endereco;
 
-//    @OneToMany(mappedBy = "cliente")
-//    private List<Pedido> pedidos;
+    private String senha;
 
     public String getNome() {
         return nome;

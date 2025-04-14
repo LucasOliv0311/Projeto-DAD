@@ -28,7 +28,7 @@ public class Cliente {
     @Column(columnDefinition = "TEXT")
     private String endereco;
 
-
+    private String senha;
 
     @OneToMany(mappedBy = "idCliente")
     private List<Cartao> cartaos;
