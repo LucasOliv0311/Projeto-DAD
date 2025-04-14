@@ -4,6 +4,7 @@ import jakarta.persistence.Column;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 @Data
 public class CartaoDtoCreate {
@@ -12,7 +13,7 @@ public class CartaoDtoCreate {
     private String numeroCartao;
 
     @Column(nullable = false)
-    private LocalDate validade;
+    private Date validade;
 
     @Column(nullable = false)
     private String cvv;
@@ -33,11 +34,11 @@ public class CartaoDtoCreate {
         this.numeroCartao = numeroCartao;
     }
 
-    public LocalDate getValidade() {
+    public Date getValidade() {
         return validade;
     }
 
-    public void setValidade(LocalDate validade) {
+    public void setValidade(Date validade) {
         this.validade = validade;
     }
 
