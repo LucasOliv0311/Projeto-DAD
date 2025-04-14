@@ -54,7 +54,7 @@ export class ShopCartComponent {
   };
 
   productValue(product: ProductViewModel) {
-    return product.quantidade! * product.preco;
+    return (product.quantidade! * product.preco).toFixed(2);
   };
 
   totalValue() {
@@ -62,7 +62,7 @@ export class ShopCartComponent {
     this.products.forEach(item => {
       total += item.preco * (item.quantidade ?? 0);
     });
-    return total;
+    return total.toFixed(2);
   };
 
   totalItems() {
