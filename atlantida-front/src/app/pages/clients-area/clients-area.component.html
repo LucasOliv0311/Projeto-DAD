@@ -4,10 +4,11 @@
 </div>
 <div class="table">
     <div class="butao">
-    <div class="add-button">
+    <div class="add-button" (click)="openModal()">
         <img src="/assets/images/Add User Male.png" alt="icon"/>
         Adicionar Cliente
     </div>
     </div>
     <clients-area-table></clients-area-table>
 </div>
+<atlantida-admin-space-clients-area-add-client #modalComponent></atlantida-admin-space-clients-area-add-client>

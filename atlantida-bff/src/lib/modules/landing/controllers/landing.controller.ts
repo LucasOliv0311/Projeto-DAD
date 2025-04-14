@@ -10,4 +10,4 @@ export class LandingController {
   async getProducts(): Promise<productDto[]> {
     return (await this.landingService.getProducts()).slice(0, 4);
   }
-}
+} 

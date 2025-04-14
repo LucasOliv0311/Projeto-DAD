@@ -1,40 +1,32 @@
-import { Component } from '@angular/core';
-import { ItemViewModel } from '../../../../view-models';
+import { Component, OnInit } from '@angular/core';
+import { ProductViewModel } from '../../../../view-models';
+import { StoreService } from '../../../../services';
 
 @Component({
   selector: 'store-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
-export class StoreProductsComponent {
-  items: ItemViewModel[] = [
-    {
-      id: 0,
-      name: "Tilápia Fresca",
-      price: 64.99,
-      quantity: 1,
-      image: "/assets/images/tilapia.png"
-    },
-    {
-      id: 1,
-      name: "Camarão",
-      price: 49.99,
-      quantity: 1,
-      image: "/assets/images/camarao.png"
-    },
-    {
-      id: 2,
-      name: "Filé de Salmão",
-      price: 54.99,
-      quantity: 1,
-      image: "/assets/images/salmao.png"
-    },
-    {
-      id: 3,
-      name: "Sardinha",
-      price: 29.99,
-      quantity: 1,
-      image: "/assets/images/sardinha.jpg"
-    }
-  ];
+export class StoreProductsComponent implements OnInit {
+  constructor(private service: StoreService) {}
+
+  items: ProductViewModel[] = [];
+  count = 9;
+
+  ngOnInit(): void {
+    this.service.getProducts().subscribe({
+      next: (data) => {
+        this.items = data;
+      },
+      error: (err) => console.error('Erro ao buscar produtos:', err),
+    });
+  }
+
+  showMore(): void {
+    this.count += 9;
+  }
+
+  get visibleItems(): ProductViewModel[] {
+    return this.items.slice(0, this.count);
+  }
 }

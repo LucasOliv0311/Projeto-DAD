@@ -1,8 +1,8 @@
 export interface UserViewModel {
     nome: string,
     email: string,
-    tel: string,
+    telefone: string,
     cpf: string,
     endereco: string,
-    password: string,
+    senha: string,
 }

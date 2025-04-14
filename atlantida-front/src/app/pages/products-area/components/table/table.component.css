@@ -37,3 +37,25 @@ table {
     width: 1%;
     white-space: nowrap; 
   }
+
+  .voltar, .avancar{
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    background-color: #B7D0E1;
+    width: 96px;
+    height: 40px;
+    color: white;
+    font-family: inter-bold;
+    border-radius: 8px;
+}
+.pagination-button{
+    display: flex;
+    justify-content: end;
+    flex-direction: row;
+    margin-right: 136px;
+    margin-top: 16px;
+    gap: 24px;
+}

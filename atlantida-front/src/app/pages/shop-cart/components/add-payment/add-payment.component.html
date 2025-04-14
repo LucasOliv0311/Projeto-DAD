@@ -1,0 +1,40 @@
+<div #modalComponent class="modal">
+    <div class="modal-content">
+      <button class="close-btn" (click)="closeModal()">&times;</button>
+      <div class="title">
+        <h1>ADICIONAR CARTÃO</h1>
+        <h3>Insira as informações do cartão</h3>
+      </div>
+      <form [formGroup]="cardForm">
+        <div class="field">
+          <label for="numeroCartao">Numero do cartao</label>
+          <input type="text" id="numeroCartao" formControlName="numeroCartao" name="numeroCartao" placeholder="Insira o numero do cartão" required>
+        </div>
+        <div class="field">
+          <label for="validade">Data de Validade</label>
+          <input type="date" id="validade" formControlName="validade" name="validade" placeholder="Insira a data de vencimento do cartão"required>
+        </div>
+        <div class="field">
+          <label for="cvv">CVV</label>
+          <input type="text" id="cvv" formControlName="cvv" name="cvv"  placeholder="Insira o CVV do cartão" required>
+        </div>
+        <div class="field">
+          <label for="bandeira">Bandeira</label>
+          <input type="text" id="bandeira" formControlName="bandeira" name="bandeira"  placeholder="Insira a bandeira do cartão" required>
+        </div>
+        <div class="field">
+            <label for="tipo">Tipo</label>
+            <input type="text" id="tipo" formControlName="tipo" name="tipo" placeholder="Insira o tipo do cartão"required>
+          </div>
+        <div class="field">
+          <label for="clientId">Id do cliente</label>
+          <input type="number" id="clientId" formControlName="clientId" name="clientId"  placeholder="Insira o seu id de cliente" required>
+        </div>
+        <div class="buttons">
+        <button class="cancel-button" (click)="closeModal()">Cancelar</button> 
+        <button class="confirm-button" (click)="addPaymentWay()">Adicionar</button>
+        </div>
+      </form>
+    </div>
+</div>
+  

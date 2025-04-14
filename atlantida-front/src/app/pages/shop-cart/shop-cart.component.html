@@ -39,7 +39,7 @@
                         </button>
                     </div>
                     <div class="itemPrice">
-                        R${{product.preco}}
+                        R${{product.preco.toFixed(2)}}
                     </div>
                 </div>
             </div>
@@ -58,7 +58,7 @@
             </div>
         </ng-template>
     </div>
-
+    <div class="purchase">
     <div class="purchaseSummary">
         <div class="purchaseTable">
             <div class="purchaseTableHeader">
@@ -92,4 +92,10 @@
             Finalizar Compra
         </button>
     </div>
+    <div class="addPaymentWay" (click)="openModal()">
+        <img src="/assets/images/icone-vendas.png">
+        <h1 class="title">Adicionar Forma de Pagamento</h1>
+    </div>
+    </div>
 </div>
+<atlantida-shop-cart-add-payment #modalComponent></atlantida-shop-cart-add-payment>

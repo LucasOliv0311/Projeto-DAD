@@ -5,4 +5,5 @@ export interface ProductViewModel {
     tipo: string,
     preco: number,
     estoque: number,
+    imagem: string,
 }

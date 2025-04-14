@@ -1,10 +1,10 @@
 import { NgModule } from "@angular/core";
-import { ProductsAreaTableComponent } from "./table.component";
+import { SalesAreaTableComponent } from "./table.component";
 
 @NgModule({
-    declarations: [ProductsAreaTableComponent],
+    declarations: [SalesAreaTableComponent],
     imports: [],
     providers: [],
 })
 
-export class ProductsAreaTableModule{};
+export class SalesAreaTableModule{};
