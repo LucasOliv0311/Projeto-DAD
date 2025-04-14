@@ -85,14 +85,12 @@ A BFF é responsável por intermediar a comunicação entre o front-end Angular 
       |-- services/          # Lógica intermediária e regras de negócio
 ```
 
-A BFF utiliza **Spring Boot**, expõe endpoints REST e fornece documentação via Swagger.
+O BFF utiliza **Spring Boot**, expõe endpoints REST e fornece documentação via Swagger.
 
-## DOCUMENTAÇÃO BACK END - SWAGGER
-A API utilizada neste projeto possui documentação disponível via Swagger, facilitando o consumo e testes dos endpoints.
-
-Acesse a documentação do back-end no endereço:  
-[🔗 Swagger - Documentação da API](https://atlantida-dad.onrender.com/swagger-ui/index.html#)
-
+Para rodar o BFF localmente, abra o terminal e digite, isso é essencial para mostrar as tabelas e requisições
+```sh
+npm run start
+```
 
 ## 📚 DOCUMENTAÇÃO DO BACK-END
 
