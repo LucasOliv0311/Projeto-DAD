@@ -17,6 +17,7 @@
     margin-bottom: 80px;
 }
 .add-button{
+    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;

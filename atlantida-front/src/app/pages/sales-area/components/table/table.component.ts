@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router } from '@angular/router'
+import { PedidoViewModel } from '../../../../view-models/pedido.vm';
+import { SalesService } from '../../../../services/sales/sales.service';
+
 
 @Component({
   selector: 'sales-area-table',
@@ -7,6 +10,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./table.component.css']
 })
 export class SalesAreaTableComponent{
-    constructor(private router: Router) { };
+  orders: PedidoViewModel[] = [];
+  constructor(
+  private router: Router,
+         private salesService: SalesService
+       ) {}
+     
+       ngOnInit(): void {
+         this.salesService.getAll().subscribe({
+           next: (orders) => this.orders = orders,
+           error: (error) => console.error('Erro ao carregar clientes:', error)
+         });
+       }
   
 }

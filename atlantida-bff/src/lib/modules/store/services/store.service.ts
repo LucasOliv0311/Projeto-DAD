@@ -18,4 +18,17 @@ export class StoreService {
       estoque: product.estoque
     }));
   }
+
+  async addProduct(product: ProductViewModel): Promise<ProductViewModel> {
+    const response = await axios.post(this.apiUrl, {
+      nome: product.nome,
+      descricao: product.descricao,
+      tipo: product.tipo,
+      preco: product.preco,
+      estoque: product.estoque,
+      imagem: product.imagem,
+    });
+
+    return response.data;
+  }
 }

@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@angular/compiler": "^19.2.6",
     "axios": "^1.8.4"
   }
 }

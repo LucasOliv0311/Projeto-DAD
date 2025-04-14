@@ -14,10 +14,8 @@ export class StoreProductsComponent implements OnInit {
   count = 9;
 
   ngOnInit(): void {
-    console.log('chamando requisição getProducts');
     this.service.getProducts().subscribe({
       next: (data) => {
-        console.log(data);
         this.items = data;
       },
       error: (err) => console.error('Erro ao buscar produtos:', err),

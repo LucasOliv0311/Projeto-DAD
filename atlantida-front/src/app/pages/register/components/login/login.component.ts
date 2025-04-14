@@ -37,7 +37,7 @@ export class LoginComponent {
         nome: '',
         cpf: '',
         endereco: '',
-        tel: '',
+        telefone: '',
         email: this.form.get('email')?.value,
         password: this.form.get('password')?.value,
       }

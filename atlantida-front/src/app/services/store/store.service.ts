@@ -7,12 +7,15 @@ import { ProductViewModel } from '../../view-models';
   providedIn: 'root'
 })
 export class StoreService {
-  private apiUrl = 'http://localhost:3000/store/produto';
+  private apiUrl = 'http://localhost:3000/store';
 
   constructor(private http: HttpClient) {}
 
   getProducts(): Observable<ProductViewModel[]> {
-    console.log('oi')
-    return this.http.get<ProductViewModel[]>(this.apiUrl);
+    return this.http.get<ProductViewModel[]>(`${this.apiUrl}/produto`);
   }
+  
+  addProduct(productData: ProductViewModel): Observable<any> {
+      return this.http.post(`${this.apiUrl}/produto`, productData);
+  }  
 }

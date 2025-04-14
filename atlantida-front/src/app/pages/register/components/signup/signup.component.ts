@@ -22,7 +22,7 @@ export class SignupComponent {
     this.form = this.fb.group({
       name: ['', Validators.required],
       email: ['', Validators.required],
-      tel: ['', Validators.required],
+      telefone: ['', Validators.required],
       cpf: ['', Validators.required],
       endereco: ['', Validators.required],
       password: ['', Validators.required],
@@ -42,7 +42,7 @@ export class SignupComponent {
         const userData: ClientViewModel = {
           nome: this.form.get('name')?.value,
           email: this.form.get('email')?.value,
-          tel: this.form.get('tel')?.value,
+          telefone: this.form.get('telefone')?.value,
           cpf: this.form.get('cpf')?.value,
           endereco: this.form.get('endereco')?.value,
           password: this.form.get('password')?.value,

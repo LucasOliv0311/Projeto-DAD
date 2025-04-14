@@ -19,4 +19,16 @@ export class ClientService {
       endereco: client.endereco
     }));
   }
+
+  async addClient(client: UserViewModel): Promise<UserViewModel> {
+    const response = await axios.post(this.apiUrl, {
+      nome: client.nome,
+      email: client.email,
+      cpf: client.cpf,
+      telefone: client.telefone,
+      endereco: client.endereco,
+    });
+
+    return response.data;
+  }
 }

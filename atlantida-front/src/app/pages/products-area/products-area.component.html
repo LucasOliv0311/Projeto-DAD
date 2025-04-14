@@ -4,10 +4,11 @@
 </div>
 <div class="table">
     <div class="butao">
-    <div class="add-button">
+    <div class="add-button" (click)="openModal()">
         <img src="/assets/images/add-produto.png" alt="icon"/>
         Adicionar Produto
     </div>
     </div>
     <products-area-table></products-area-table>
 </div>
+<atlantida-admin-space-products-area-add-product #modalComponent></atlantida-admin-space-products-area-add-product>

@@ -1,29 +1,30 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ClientService } from '../../../../services/clients/clients.service';
+import { StoreService } from '../../../../services';
 
 @Component({
-  selector: 'atlantida-admin-space-clients-area-add-client',
-  templateUrl: './add-client.component.html',
-  styleUrl: './add-client.component.css'
+  selector: 'atlantida-admin-space-products-area-add-product',
+  templateUrl: './add-product.component.html',
+  styleUrl: './add-product.component.css'
 })
-export class AdminSpaceAddClientComponent {
+export class AdminSpaceAddProductComponent {
   @ViewChild('modalComponent') modal!: ElementRef;
 
-  clientForm: FormGroup;
+  productForm: FormGroup;
 
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
-    private clientService: ClientService
+    private storeService: StoreService
   ){
-    this.clientForm = this.fb.group({
+    this.productForm = this.fb.group({
       nome: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      cpf: ['', Validators.required],
-      telefone: ['', Validators.required],
-      endereco: ['', Validators.required]
+      descricao: ['', Validators.required],
+      tipo: ['', Validators.required],
+      preco: ['', Validators.required],
+      estoque: ['', Validators.required],
+      imagem: ['', Validators.required],
     });
   };
 
@@ -35,15 +36,15 @@ export class AdminSpaceAddClientComponent {
     this.modal.nativeElement.classList.remove('ativo');
   }
 
-  addClient(): void {
-    console.log(this.clientForm.value);
-    if (this.clientForm.valid) {
-      const clientData = this.clientForm.value;
-      this.clientService.addClient(clientData).subscribe({
+  addProduct(): void {
+    console.log(this.productForm.value);
+    if (this.productForm.valid) {
+      const productData = this.productForm.value;
+      this.storeService.addProduct(productData).subscribe({
         next: () => {
           alert('Cliente adicionado com sucesso!');
           this.closeModal();
-          this.clientForm.reset();
+          this.productForm.reset();
         },
         error: (err: HttpErrorResponse) => {
           console.error('Erro ao adicionar cliente:', err);
