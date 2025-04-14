@@ -37,7 +37,6 @@ export class AdminSpaceAddProductComponent {
   }
 
   addProduct(): void {
-    console.log(this.productForm.value);
     if (this.productForm.valid) {
       const productData = this.productForm.value;
       this.storeService.addProduct(productData).subscribe({

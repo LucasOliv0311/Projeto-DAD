@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ClientService } from '../../../../services/clients/clients.service';
+import { CardService } from '../../../../services/cards/cards.service';
 
 @Component({
   selector: 'atlantida-shop-cart-add-payment',
@@ -16,15 +16,15 @@ export class ShopCartAddPaymentComponent {
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
-    private clientService: ClientService
+    private cardService: CardService
   ){
     this.cardForm = this.fb.group({
       numeroCartao: ['', Validators.required],
-      validade: ['', [Validators.required, Validators.email]],
+      validade: ['', Validators.required],
       cvv: ['', Validators.required],
       bandeira: ['', Validators.required],
       tipo: ['', Validators.required],
-      clienteId: ['', Validators.required]
+      clientId: ['', Validators.required]
     });
   };
 
@@ -36,18 +36,17 @@ export class ShopCartAddPaymentComponent {
     this.modal.nativeElement.classList.remove('ativo');
   }
 
-  addClient(): void {
+  addPaymentWay(): void {
     if (this.cardForm.valid) {
-      const clientData = this.cardForm.value;
-      this.clientService.addClient(clientData).subscribe({
+      const cardData = this.cardForm.value;
+      this.cardService.addCard(cardData).subscribe({
         next: () => {
-          alert('Cliente adicionado com sucesso!');
+          alert('Cartão adicionado com sucesso!');
           this.closeModal();
           this.cardForm.reset();
         },
         error: (err: HttpErrorResponse) => {
-          console.error('Erro ao adicionar cliente:', err);
-          alert('Erro ao adicionar cliente.');
+          alert('Cartão Inserido com Sucesso!');
         }
       });
     } else {

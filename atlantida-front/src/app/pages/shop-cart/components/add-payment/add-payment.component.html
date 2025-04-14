@@ -27,12 +27,12 @@
             <input type="text" id="tipo" formControlName="tipo" name="tipo" placeholder="Insira o tipo do cartão"required>
           </div>
         <div class="field">
-          <label for="clienteId">Id do cliente</label>
-          <input type="number" id="clienteId" formControlName="clienteId" name="clienteId"  placeholder="Insira o seu id de cliente" required>
+          <label for="clientId">Id do cliente</label>
+          <input type="number" id="clientId" formControlName="clientId" name="clientId"  placeholder="Insira o seu id de cliente" required>
         </div>
         <div class="buttons">
         <button class="cancel-button" (click)="closeModal()">Cancelar</button> 
-        <button class="confirm-button" (click)="addClient()">Adicionar</button>
+        <button class="confirm-button" (click)="addPaymentWay()">Adicionar</button>
         </div>
       </form>
     </div>

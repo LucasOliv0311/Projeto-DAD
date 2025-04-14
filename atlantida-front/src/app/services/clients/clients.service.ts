@@ -16,7 +16,6 @@ export class ClientService {
   }
 
   addClient(clientData: UserViewModel): Observable<any> {
-    console.log(clientData)
     return this.http.post(`${this.apiUrl}/clientes`, clientData);
   }  
 }

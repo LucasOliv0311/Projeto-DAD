@@ -24,12 +24,10 @@ export class PurchaseProductInfoComponent {
       this.userData = data;
     });
 
-    console.log("id: ", this.id);
   };
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['id'] && this.id) {
-      console.log("id (ngOnChanges):", this.id);
   
       this.purchaseService.getProduct(this.id).subscribe({
         next: (product) => {

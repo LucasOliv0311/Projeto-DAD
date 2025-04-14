@@ -15,10 +15,13 @@ import { SignupModule } from './lib/modules/register/signup/signup.module';
 import { LoginModule } from './lib/modules/register/login/login.module';
 import { PurchaseModule } from './lib/modules/purchase/purchase.module';
 import { ShopCartModule } from './lib/modules/shop-cart/shop-cart.module';
+import { CardsModule } from './lib/modules/cards/cards.module';
+import { CardsController } from './lib/modules/cards/controllers/cards.controller';
+import { CardsService } from './lib/modules/cards/services/cards.service';
 
 @Module({
-  imports: [LandingModule, SignupModule, LoginModule, PurchaseModule, ShopCartModule, StoreModule, ClientModule, SalesModule],
-  controllers: [AppController, StoreController, ClientController, SalesController],
-  providers: [AppService, StoreService, ClientService, SalesService],
+  imports: [LandingModule, SignupModule, LoginModule, PurchaseModule, ShopCartModule, StoreModule, ClientModule, SalesModule, CardsModule],
+  controllers: [AppController, StoreController, ClientController, SalesController, CardsController],
+  providers: [AppService, StoreService, ClientService, SalesService, CardsService],
 })
 export class AppModule {}

@@ -36,7 +36,6 @@ export class AdminSpaceAddClientComponent {
   }
 
   addClient(): void {
-    console.log(this.clientForm.value);
     if (this.clientForm.valid) {
       const clientData = this.clientForm.value;
       this.clientService.addClient(clientData).subscribe({

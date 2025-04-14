@@ -60,10 +60,8 @@ export class SignupComponent {
           }
         });
       } else {
-        console.log("senha inválida");
       };
     } else {
-      console.log("form inválido");
     };
   };
 
