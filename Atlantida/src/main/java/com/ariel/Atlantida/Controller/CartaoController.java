@@ -41,10 +41,4 @@ public class CartaoController implements CartaoApi {
     public ResponseEntity<Cartao> atualizarCartao(@PathVariable int id, @RequestBody CartaoDtoCreate cartaoDTO) {
         return ResponseEntity.ok(cartaoService.atualizarCartao(id, cartaoDTO));
     }
-
-    @Override
-    public ResponseEntity<Void> deletarCartao(@PathVariable int id) {
-        cartaoService.deletarCartao(id);
-        return ResponseEntity.noContent().build();
-    }
 }

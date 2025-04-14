@@ -1,8 +1,12 @@
 package com.ariel.Atlantida.dto;
 
 import com.ariel.Atlantida.Model.Cliente;
+import com.ariel.Atlantida.Model.Pedido;
 import jakarta.persistence.Column;
+import jakarta.persistence.OneToMany;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 public class ClienteDtoCreate extends Cliente {
@@ -20,6 +24,8 @@ public class ClienteDtoCreate extends Cliente {
 
     @Column(columnDefinition = "TEXT")
     private String endereco;
+
+    private String senha;
 
     public String getNome() {
         return nome;

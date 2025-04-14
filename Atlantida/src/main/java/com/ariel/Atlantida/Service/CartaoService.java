@@ -67,8 +67,4 @@ public class CartaoService {
         return cartaoRepository.save(cartao);
     }
 
-    public void deletarCartao(int id) {
-        Cartao cartao = buscarCartao(id);
-        cartaoRepository.delete(cartao);
-    }
 }

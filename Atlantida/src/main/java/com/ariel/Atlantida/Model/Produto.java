@@ -27,13 +27,9 @@ public class Produto {
     @Column(nullable = false)
     private Integer estoque;
 
-    public long getIdProduto() {
-        return idProduto;
-    }
+    private String imagem;
 
-    public void setIdProduto(long idProduto) {
-        this.idProduto = idProduto;
-    }
+    private double peso;
 
     public String getNome() {
         return nome;
