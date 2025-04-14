@@ -3,6 +3,7 @@ package com.ariel.Atlantida.Model;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.time.LocalDate;
+import java.util.Date;
 
 @Data
 @Entity
@@ -16,7 +17,7 @@ public class Cartao {
     private String numeroCartao;
 
     @Column(nullable = false)
-    private LocalDate validade;
+    private Date validade;
 
     @Column(nullable = false)
     private String cvv;
@@ -34,48 +35,23 @@ public class Cartao {
         return idCartao;
     }
 
-    public void setIdCartao(int idCartao) {
-        this.idCartao = idCartao;
-    }
-
-    public String getNumeroCartao() {
-        return numeroCartao;
-    }
-
     public void setNumeroCartao(String numeroCartao) {
         this.numeroCartao = numeroCartao;
-    }
-
-    public LocalDate getValidade() {
-        return validade;
-    }
-
-    public void setValidade(LocalDate validade) {
-        this.validade = validade;
-    }
-
-    public String getCvv() {
-        return cvv;
     }
 
     public void setCvv(String cvv) {
         this.cvv = cvv;
     }
 
-    public String getBandeira() {
-        return bandeira;
-    }
-
     public void setBandeira(String bandeira) {
         this.bandeira = bandeira;
     }
-//
-//    public String getTipo() {
-//        return tipo;
-//    }
-//
-//    public void setTipo(String tipo) {
-//        this.tipo = tipo;
-//    }
 
+    public Date getValidade() {
+        return validade;
+    }
+
+    public void setValidade(Date validade) {
+        this.validade = validade;
+    }
 }
