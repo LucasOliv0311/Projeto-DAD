@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS Pedido CASCADE;
+DROP TABLE IF EXISTS Carrinho CASCADE;
 DROP TABLE IF EXISTS Produto CASCADE;
 DROP TABLE IF EXISTS Cartao CASCADE;
 DROP TABLE IF EXISTS Cliente CASCADE;
@@ -41,6 +42,13 @@ CREATE TABLE Pedido (
                         id_cartao INT NOT NULL,
                         FOREIGN KEY (id_cliente) REFERENCES Cliente(id_cliente) ON DELETE CASCADE,
                         FOREIGN KEY (id_cartao) REFERENCES Cartao(id_cartao) ON DELETE SET NULL
+);
+
+CREATE TABLE Carrinho(
+    id_carrinho SERIAL PRIMARY KEY,
+    id_pedido INT NOT NULL,
+    id_produto INT NOT NULL,
+    quantidade_produtos INT NOT NULL
 );
 
 INSERT INTO Cliente (nome, cpf, telefone, email, endereco) VALUES

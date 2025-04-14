@@ -1,160 +1,304 @@
-Documentação das Dependências do Projeto
-1. Dependências do Spring Boot
-•	Redis Reativo
+
+## 📚 DOCUMENTAÇÃO DO BACK-END
+
+Acesse a documentação interativa da API via Swagger no link abaixo:  
+[🔗 Swagger - Documentação da API](https://atlantida-dad.onrender.com/swagger-ui/index.html#)
+
+---
+
+## 📦 DEPENDÊNCIAS DO PROJETO
+
+### 1. Spring Boot
+- **Redis Reativo**
+```xml
 <dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
 </dependency>
-Fornece integração reativa com o Redis usando Spring Data Redis e Project Reactor.
-•	Web
+```
+Integração reativa com Redis usando Spring Data Redis + Project Reactor.
+
+- **Web**
+```xml
 <dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-web</artifactId>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-web</artifactId>
 </dependency>
-Inclui suporte ao desenvolvimento de APIs REST e aplicações MVC com Spring Boot.
-________________________________________
-2. Dependências de Inteligência Artificial
-•	Neo4j Store
+```
+Suporte para desenvolvimento de APIs REST e MVC.
+
+---
+
+### 2. Inteligência Artificial
+- **Neo4j Store**
+```xml
 <dependency>
-    <groupId>org.springframework.ai</groupId>
-    <artifactId>spring-ai-neo4j-store-spring-boot-starter</artifactId>
+  <groupId>org.springframework.ai</groupId>
+  <artifactId>spring-ai-neo4j-store-spring-boot-starter</artifactId>
 </dependency>
-Habilita o uso do Neo4j como um armazenamento para inteligência artificial com Spring AI.
-•	PostgresML
+```
+Armazenamento em grafo com Spring AI + Neo4j.
+
+- **PostgresML**
+```xml
 <dependency>
-    <groupId>org.springframework.ai</groupId>
-    <artifactId>spring-ai-postgresml-spring-boot-starter</artifactId>
+  <groupId>org.springframework.ai</groupId>
+  <artifactId>spring-ai-postgresml-spring-boot-starter</artifactId>
 </dependency>
-Permite a integração entre o Spring AI e o PostgreSQL Machine Learning (PostgresML).
-________________________________________
-3. Dependência para Kafka
+```
+Integra Spring AI ao PostgresML (machine learning no banco de dados).
+
+---
+
+### 3. Kafka
+```xml
 <dependency>
-    <groupId>org.springframework.kafka</groupId>
-    <artifactId>spring-kafka</artifactId>
+  <groupId>org.springframework.kafka</groupId>
+  <artifactId>spring-kafka</artifactId>
 </dependency>
-Facilita a comunicação assíncrona entre serviços usando Apache Kafka.
-________________________________________
-4. Dependência para Lombok
+```
+Comunicação assíncrona via Apache Kafka.
+
+---
+
+### 4. Lombok
+```xml
 <dependency>
-    <groupId>org.projectlombok</groupId>
-    <artifactId>lombok</artifactId>
-    <scope>provided</scope>
+  <groupId>org.projectlombok</groupId>
+  <artifactId>lombok</artifactId>
+  <scope>provided</scope>
 </dependency>
-Automatiza a geração de métodos boilerplate, como getters e setters, reduzindo código repetitivo.
-________________________________________
-5. Dependências para Testes
-•	Spring Boot Test
+```
+Evita boilerplate gerando métodos como `getters/setters` automaticamente.
+
+---
+
+### 5. Testes
+- **Spring Boot Test**
+```xml
 <dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-test</artifactId>
-    <scope>test</scope>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-test</artifactId>
+  <scope>test</scope>
 </dependency>
-Inclui ferramentas para testes unitários e de integração no Spring Boot.
-•	Reactor Test
+```
+
+- **Reactor Test**
+```xml
 <dependency>
-    <groupId>io.projectreactor</groupId>
-    <artifactId>reactor-test</artifactId>
-    <scope>test</scope>
+  <groupId>io.projectreactor</groupId>
+  <artifactId>reactor-test</artifactId>
+  <scope>test</scope>
 </dependency>
-Suporte a testes para aplicações reativas baseadas em Project Reactor.
-•	Kafka Test
+```
+
+- **Kafka Test**
+```xml
 <dependency>
-    <groupId>org.springframework.kafka</groupId>
-    <artifactId>spring-kafka-test</artifactId>
-    <scope>test</scope>
+  <groupId>org.springframework.kafka</groupId>
+  <artifactId>spring-kafka-test</artifactId>
+  <scope>test</scope>
 </dependency>
-Oferece ferramentas para testes de integração com Kafka.
-________________________________________
-6. Dependência para JPA
+```
+
+---
+
+### 6. JPA
+```xml
 <dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-data-jpa</artifactId>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-data-jpa</artifactId>
 </dependency>
-Fornece suporte ao Hibernate e JPA para interagir com bancos de dados relacionais.
-________________________________________
- 
-7. Dependência para PostgreSQL
+```
+Integração com bancos relacionais via Hibernate e JPA.
+
+---
+
+### 7. PostgreSQL
+```xml
 <dependency>
-    <groupId>org.postgresql</groupId>
-    <artifactId>postgresql</artifactId>
+  <groupId>org.postgresql</groupId>
+  <artifactId>postgresql</artifactId>
 </dependency>
+```
 Driver JDBC para conexão com PostgreSQL.
-________________________________________
-8. Dependência para JavaFX
+
+---
+
+### 8. JavaFX
+```xml
 <dependency>
-    <groupId>org.openjfx</groupId>
-    <artifactId>javafx-graphics</artifactId>
-    <version>21</version>
+  <groupId>org.openjfx</groupId>
+  <artifactId>javafx-graphics</artifactId>
+  <version>21</version>
 </dependency>
-Biblioteca para desenvolvimento de interfaces gráficas com JavaFX.
-________________________________________
-9. Dependências para Azure
+```
+Biblioteca para interfaces gráficas com Java.
+
+---
+
+### 9. Azure
+```xml
 <dependency>
-    <groupId>com.azure</groupId>
-    <artifactId>azure-core</artifactId>
-    <version>1.54.1</version>
+  <groupId>com.azure</groupId>
+  <artifactId>azure-core</artifactId>
+  <version>1.54.1</version>
 </dependency>
-Biblioteca base para integração com serviços da Microsoft Azure.
-________________________________________
-10. Dependências para Geração de Esquema JSON
+```
+Integração base com serviços da Microsoft Azure.
+
+---
+
+### 10. Geração de JSON Schema
+```xml
 <dependency>
-    <groupId>com.github.victools</groupId>
-    <artifactId>jsonschema-module-swagger-2</artifactId>
-    <version>4.37.0</version>
+  <groupId>com.github.victools</groupId>
+  <artifactId>jsonschema-module-swagger-2</artifactId>
+  <version>4.37.0</version>
 </dependency>
-Permite a geração automática de esquemas JSON baseados no Swagger/OpenAPI.
-________________________________________
-11. Dependência para Documentação da API
+```
+Geração automática de schemas JSON com base no Swagger/OpenAPI.
+
+---
+
+### 11. Documentação da API
+```xml
 <dependency>
-    <groupId>org.springdoc</groupId>
-    <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-    <version>2.3.0</version>
+  <groupId>org.springdoc</groupId>
+  <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+  <version>2.3.0</version>
 </dependency>
-Gera documentação interativa da API baseada no OpenAPI com Swagger UI.
-________________________________________
- 
-12 . Gerenciamento de Dependências
+```
+Gera documentação Swagger a partir do código Spring.
+
+---
+
+### 12. Gerenciamento de Dependências
+```xml
 <dependencyManagement>
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-bom</artifactId>
-            <version>${spring-ai.version}</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
-    </dependencies>
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.ai</groupId>
+      <artifactId>spring-ai-bom</artifactId>
+      <version>${spring-ai.version}</version>
+      <type>pom</type>
+      <scope>import</scope>
+    </dependency>
+  </dependencies>
 </dependencyManagement>
-Garante compatibilidade entre as versões das bibliotecas do Spring AI.
-________________________________________
-13. Plugins do Maven
-•	Maven Compiler Plugin
+```
+Garante compatibilidade entre bibliotecas Spring AI.
+
+---
+
+### 13. Plugins do Maven
+
+- **Maven Compiler Plugin**
+```xml
 <plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-compiler-plugin</artifactId>
-    <configuration>
-        <source>${java.version}</source>
-        <target>${java.version}</target>
-        <annotationProcessorPaths>
-            <path>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-            </path>
-        </annotationProcessorPaths>
-    </configuration>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-compiler-plugin</artifactId>
+  <configuration>
+    <source>${java.version}</source>
+    <target>${java.version}</target>
+    <annotationProcessorPaths>
+      <path>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+      </path>
+    </annotationProcessorPaths>
+  </configuration>
 </plugin>
-Configura a versão do Java e o processamento de anotações.
-•	Spring Boot Maven Plugin
+```
+
+- **Spring Boot Maven Plugin**
+```xml
 <plugin>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-maven-plugin</artifactId>
-    <configuration>
-        <excludes>
-            <exclude>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-            </exclude>
-        </excludes>
-    </configuration>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-maven-plugin</artifactId>
+  <configuration>
+    <excludes>
+      <exclude>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+      </exclude>
+    </excludes>
+  </configuration>
 </plugin>
-Facilita o empacotamento e execução da aplicação Spring Boot como um JAR independente.
+```
+
+---
+
+## 🧾 SCRIPT SQL - ESTRUTURA DO BANCO DE DADOS
+
+Abaixo está o script para criação completa das tabelas do banco de dados, incluindo **relacionamentos, constraints e dados padrão**:
+
+```sql
+DROP TABLE IF EXISTS pedido_carrinho CASCADE;
+DROP TABLE IF EXISTS Pedido CASCADE;
+DROP TABLE IF EXISTS Produto CASCADE;
+DROP TABLE IF EXISTS Cartao CASCADE;
+DROP TABLE IF EXISTS Cliente CASCADE;
+DROP TABLE IF EXISTS Carrinho CASCADE;
+
+CREATE TABLE Cliente (
+    id_cliente SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    cpf CHAR(11) UNIQUE NOT NULL,
+    telefone VARCHAR(20),
+    email VARCHAR(100) UNIQUE,
+    endereco TEXT,
+    senha VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE Cartao (
+    id_cartao SERIAL PRIMARY KEY,
+    numero_cartao CHAR(16) UNIQUE NOT NULL,
+    validade DATE NOT NULL,
+    cvv CHAR(3) NOT NULL,
+    bandeira VARCHAR(50) NOT NULL,
+    tipo VARCHAR(10),
+    id_cliente INT NOT NULL,
+    FOREIGN KEY (id_cliente) REFERENCES Cliente(id_cliente)
+);
+
+CREATE TABLE Produto (
+    id_produto SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    descricao TEXT,
+    preco DECIMAL(10,2) NOT NULL CHECK (preco >= 0),
+    estoque INT NOT NULL CHECK (estoque >= 0),
+    tipo VARCHAR(100) NOT NULL DEFAULT 'valor_default',
+    imagem TEXT,
+    peso NUMERIC
+);
+
+CREATE TABLE Carrinho (
+    id_carrinho SERIAL PRIMARY KEY,
+    id_produto INT NOT NULL,
+    quantidade INT NOT NULL,
+    FOREIGN KEY (id_produto) REFERENCES Produto(id_produto)
+);
+
+CREATE TABLE Pedido (
+    id_pedido SERIAL PRIMARY KEY,
+    id_cliente INT NOT NULL,
+    data_pedido TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    valor_total DECIMAL(10,2) NOT NULL CHECK (valor_total >= 0),
+    id_cartao INT NOT NULL,
+    FOREIGN KEY (id_cliente) REFERENCES Cliente(id_cliente),
+    FOREIGN KEY (id_cartao) REFERENCES Cartao(id_cartao)
+);
+
+CREATE TABLE pedido_carrinho (
+    id_pedido INT NOT NULL,
+    id_carrinho INT NOT NULL,
+    PRIMARY KEY (id_pedido, id_carrinho),
+    FOREIGN KEY (id_pedido) REFERENCES Pedido(id_pedido),
+    FOREIGN KEY (id_carrinho) REFERENCES Carrinho(id_carrinho)
+);
+
+UPDATE Produto SET tipo = 'valor_default' WHERE tipo IS NULL;
+```
+
+> 💡 **Dica:** Execute esse script em um ambiente seguro, pois ele *dropa* as tabelas antes de criá-las. Ideal para resets de ambiente em desenvolvimento.
