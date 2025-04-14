@@ -6,14 +6,14 @@ Este é um projeto desenvolvido em Angular para simular um E Commerce de pescado
 
 - **Angular 17**
 - **TypeScript**
-- **Node**
+- **Nest**
 - **Spring**
 
 ## FIGMA DO PROJETO
 O layout visual da aplicação foi desenvolvido no Figma e serve como referência para a interface de usuário.
 
 Acesse o protótipo através do link abaixo:  
-[🔗 Figma - Atlântida Pescados](https://www.figma.com/file/EXEMPLO/Atlantida-Pescados)
+[🔗 Figma - Atlântida Pescados](https://www.figma.com/design/4UtcTVA6LhZYmXx15MyCVV/E-Commerce?node-id=0-1&t=Ret8sq7ckXqS6p5O-1)
 
 ## FRONT END
 
@@ -91,5 +91,4 @@ A BFF utiliza **Spring Boot**, expõe endpoints REST e fornece documentação vi
 A API utilizada neste projeto possui documentação disponível via Swagger, facilitando o consumo e testes dos endpoints.
 
 Acesse a documentação do back-end no endereço:  
-[🔗 Swagger - Documentação da API](http://localhost:8080/swagger-ui.html)
->>>>>>> Stashed changes
+[🔗 Swagger - Documentação da API](https://atlantida-dad.onrender.com/swagger-ui/index.html#)

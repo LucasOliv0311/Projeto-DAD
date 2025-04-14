@@ -11,7 +11,7 @@ export class LoginService {
     const response = await axios.get(this.apiUrl);
 
     return response.data.map((client: ClientDto) => ({
-        id: client.idCLiente,
+        id: client.idCliente,
         nome: client.nome,
         cpf: client.cpf,
         tel: client.telefone,

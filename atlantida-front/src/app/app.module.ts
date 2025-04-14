@@ -34,6 +34,7 @@ import { SalesAreaTableComponent } from "./pages/sales-area/components/table/tab
 import { HttpClientModule } from "@angular/common/http";
 import { AdminSpaceAddClientComponent } from "./pages/clients-area/components/add-client/add-client.component";
 import { AdminSpaceAddProductComponent } from "./pages/products-area/components/add-product/add-product.component";
+import { ShopCartAddPaymentComponent } from "./pages/shop-cart/components/add-payment/add-payment.component";
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { AdminSpaceAddProductComponent } from "./pages/products-area/components/
     AdminSpaceSalesAreaComponent,
     SalesAreaTableComponent,
     AdminSpaceAddClientComponent,
-    AdminSpaceAddProductComponent
+    AdminSpaceAddProductComponent,
+    ShopCartAddPaymentComponent,
   ],
   imports: [
     BrowserModule,

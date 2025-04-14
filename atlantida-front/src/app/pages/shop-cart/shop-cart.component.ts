@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 import { CartViewModel, ProductViewModel } from '../../view-models';
 import { count, firstValueFrom, Subscription } from 'rxjs';
 import { ShopCartService } from '../../services/shop-cart/shop-cart.service';
+import { ShopCartAddPaymentComponent } from './components/add-payment/add-payment.component';
 
 @Component({
   selector: 'app-shop-cart',
@@ -11,6 +12,17 @@ import { ShopCartService } from '../../services/shop-cart/shop-cart.service';
   styleUrl: './shop-cart.component.css'
 })
 export class ShopCartComponent {
+
+  @ViewChild('modalComponent') modalComponent!: ShopCartAddPaymentComponent;
+  
+  openModal(): void {
+    if (this.modalComponent) {
+      this.modalComponent.openModal();
+    } else {
+      console.warn('Modal não inicializado ainda!');
+    }
+  }
+    
   itemsId: number[] = [];
   products: ProductViewModel[] = [];
   private subscription!: Subscription;
@@ -54,7 +66,7 @@ export class ShopCartComponent {
   };
 
   productValue(product: ProductViewModel) {
-    return product.quantidade! * product.preco;
+    return (product.quantidade! * product.preco).toFixed(2);
   };
 
   totalValue() {
@@ -62,7 +74,7 @@ export class ShopCartComponent {
     this.products.forEach(item => {
       total += item.preco * (item.quantidade ?? 0);
     });
-    return total;
+    return total.toFixed(2);
   };
 
   totalItems() {
