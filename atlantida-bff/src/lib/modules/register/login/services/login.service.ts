@@ -16,15 +16,18 @@ export class LoginService {
         cpf: client.cpf,
         tel: client.telefone,
         email: client.email,
-        endereco: client.endereco
+        endereco: client.endereco,
+        senha: client.senha
     }));
   }
 
   async login(loginData: UserViewModel): Promise<ClientDto | undefined> {
-    const allClients = await this.getAll();
+  const allClients = await this.getAll();
 
-    const client = allClients.find(client => client.email === loginData.email);
+  const client = allClients.find(
+    client => client.email === loginData.email && client.senha === loginData.senha
+  );
 
-    return client;
-  }
+  return client;
+}
 }

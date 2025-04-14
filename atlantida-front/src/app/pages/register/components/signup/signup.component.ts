@@ -45,7 +45,7 @@ export class SignupComponent {
           telefone: this.form.get('telefone')?.value,
           cpf: this.form.get('cpf')?.value,
           endereco: this.form.get('endereco')?.value,
-          password: this.form.get('password')?.value,
+          senha: this.form.get('password')?.value,
         };
 
         this.signupService.register(userData)

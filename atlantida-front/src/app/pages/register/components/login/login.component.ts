@@ -39,16 +39,17 @@ export class LoginComponent {
         endereco: '',
         telefone: '',
         email: this.form.get('email')?.value,
-        password: this.form.get('password')?.value,
+        senha: this.form.get('password')?.value,
       }
 
       this.loginService.login(userData).subscribe({
         next: (data) => {
           if (!data) {
-            console.error("usuário não encontrado")
+            console.error("usuário ou login incorretos")
+          } else {
+            this.router.navigate(['']);
+            this.authService.login(userData);
           };
-          this.router.navigate(['']);
-          this.authService.login(userData);
         },
         error: (err) => {
           console.error("erro na requisição: ", err);

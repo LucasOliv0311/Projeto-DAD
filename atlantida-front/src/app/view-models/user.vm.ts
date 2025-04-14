@@ -4,5 +4,5 @@ export interface UserViewModel {
     telefone: string,
     cpf: string,
     endereco: string,
-    password: string,
+    senha: string,
 }
